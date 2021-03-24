@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Size]
+(
+	[SizeID] INT NOT NULL IDENTITY,
+	[SizeName] NVARCHAR(20) NOT NULL,
+	[Freight] NVARCHAR(20) NOT NULL,
+	PRIMARY KEY ([SizeID])
+)

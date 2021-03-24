@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Box]
+(
+  [BoxID] INT NOT NULL IDENTITY(1,1),
+  [BoxName] NVARCHAR(20) NOT NULL,
+  PRIMARY KEY ([BoxID])
+)
