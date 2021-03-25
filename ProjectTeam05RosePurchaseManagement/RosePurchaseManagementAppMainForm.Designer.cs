@@ -31,7 +31,7 @@ namespace ProjectTeam05RosePurchaseManagement
         {
             this.buttonManagerForm = new System.Windows.Forms.Button();
             this.buttonSupplierForm = new System.Windows.Forms.Button();
-            this.buttonontrollerForm = new System.Windows.Forms.Button();
+            this.buttonControllerForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonManagerForm
@@ -52,21 +52,21 @@ namespace ProjectTeam05RosePurchaseManagement
             this.buttonSupplierForm.Text = "Supplier";
             this.buttonSupplierForm.UseVisualStyleBackColor = true;
             // 
-            // buttonontrollerForm
+            // buttonControllerForm
             // 
-            this.buttonontrollerForm.Location = new System.Drawing.Point(405, 80);
-            this.buttonontrollerForm.Name = "buttonontrollerForm";
-            this.buttonontrollerForm.Size = new System.Drawing.Size(143, 80);
-            this.buttonontrollerForm.TabIndex = 2;
-            this.buttonontrollerForm.Text = "Controller";
-            this.buttonontrollerForm.UseVisualStyleBackColor = true;
+            this.buttonControllerForm.Location = new System.Drawing.Point(405, 80);
+            this.buttonControllerForm.Name = "buttonControllerForm";
+            this.buttonControllerForm.Size = new System.Drawing.Size(143, 80);
+            this.buttonControllerForm.TabIndex = 2;
+            this.buttonControllerForm.Text = "Controller";
+            this.buttonControllerForm.UseVisualStyleBackColor = true;
             // 
             // RosePurchaseManagementAppMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 400);
-            this.Controls.Add(this.buttonontrollerForm);
+            this.Controls.Add(this.buttonControllerForm);
             this.Controls.Add(this.buttonSupplierForm);
             this.Controls.Add(this.buttonManagerForm);
             this.Name = "RosePurchaseManagementAppMainForm";
@@ -79,7 +79,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private System.Windows.Forms.Button buttonManagerForm;
         private System.Windows.Forms.Button buttonSupplierForm;
-        private System.Windows.Forms.Button buttonontrollerForm;
+        private System.Windows.Forms.Button buttonControllerForm;
     }
 }
 

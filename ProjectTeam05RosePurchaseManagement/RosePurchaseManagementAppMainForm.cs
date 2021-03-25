@@ -24,9 +24,9 @@ namespace ProjectTeam05RosePurchaseManagement
             ManagerForm managerForm = new ManagerForm();
             buttonManagerForm.Click += (s, e) => ShowForm(managerForm);
             ControllerForm controllerForm = new ControllerForm();
-            buttonontrollerForm.Click += (s, e) => ShowForm(controllerForm);
+            buttonControllerForm.Click += (s, e) => ShowForm(controllerForm);
            SupplierForm supplierForm = new SupplierForm();
-            buttonontrollerForm.Click += (s, e) => ShowForm(supplierForm);
+            buttonSupplierForm.Click += (s, e) => ShowForm(supplierForm);
 
         }
 
@@ -36,7 +36,8 @@ namespace ProjectTeam05RosePurchaseManagement
             this.Hide();
            //display the form
             var result = form.ShowDialog();
-           
+            form.Hide();
+            this.Show();
         }
     }
 }

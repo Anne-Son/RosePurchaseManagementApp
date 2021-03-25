@@ -15,6 +15,9 @@ namespace ProjectTeam05RosePurchaseManagement
         public ManagerForm()
         {
             InitializeComponent();
+           
         }
+
+       
     }
 }
