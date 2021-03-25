@@ -29,13 +29,57 @@ namespace ProjectTeam05RosePurchaseManagement
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.buttonManagerForm = new System.Windows.Forms.Button();
+            this.buttonSupplierForm = new System.Windows.Forms.Button();
+            this.buttonontrollerForm = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // buttonManagerForm
+            // 
+            this.buttonManagerForm.Location = new System.Drawing.Point(67, 80);
+            this.buttonManagerForm.Name = "buttonManagerForm";
+            this.buttonManagerForm.Size = new System.Drawing.Size(143, 80);
+            this.buttonManagerForm.TabIndex = 0;
+            this.buttonManagerForm.Text = "Manager";
+            this.buttonManagerForm.UseVisualStyleBackColor = true;
+            // 
+            // buttonSupplierForm
+            // 
+            this.buttonSupplierForm.Location = new System.Drawing.Point(228, 224);
+            this.buttonSupplierForm.Name = "buttonSupplierForm";
+            this.buttonSupplierForm.Size = new System.Drawing.Size(143, 80);
+            this.buttonSupplierForm.TabIndex = 1;
+            this.buttonSupplierForm.Text = "Supplier";
+            this.buttonSupplierForm.UseVisualStyleBackColor = true;
+            // 
+            // buttonontrollerForm
+            // 
+            this.buttonontrollerForm.Location = new System.Drawing.Point(405, 80);
+            this.buttonontrollerForm.Name = "buttonontrollerForm";
+            this.buttonontrollerForm.Size = new System.Drawing.Size(143, 80);
+            this.buttonontrollerForm.TabIndex = 2;
+            this.buttonontrollerForm.Text = "Controller";
+            this.buttonontrollerForm.UseVisualStyleBackColor = true;
+            // 
+            // RosePurchaseManagementAppMainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(662, 400);
+            this.Controls.Add(this.buttonontrollerForm);
+            this.Controls.Add(this.buttonSupplierForm);
+            this.Controls.Add(this.buttonManagerForm);
+            this.Name = "RosePurchaseManagementAppMainForm";
+            this.Text = "Main";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button buttonManagerForm;
+        private System.Windows.Forms.Button buttonSupplierForm;
+        private System.Windows.Forms.Button buttonontrollerForm;
     }
 }
 

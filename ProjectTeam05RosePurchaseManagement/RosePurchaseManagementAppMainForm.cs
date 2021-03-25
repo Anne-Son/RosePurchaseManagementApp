@@ -19,8 +19,24 @@ namespace ProjectTeam05RosePurchaseManagement
         public RosePurchaseManagementAppMainForm()
         {
             InitializeComponent();
+
+            //  calling eventhandler to display forms
+            ManagerForm managerForm = new ManagerForm();
+            buttonManagerForm.Click += (s, e) => ShowForm(managerForm);
+            ControllerForm controllerForm = new ControllerForm();
+            buttonontrollerForm.Click += (s, e) => ShowForm(controllerForm);
+           SupplierForm supplierForm = new SupplierForm();
+            buttonontrollerForm.Click += (s, e) => ShowForm(supplierForm);
+
         }
 
-
+        private void ShowForm( Form form) 
+        {
+            //hide the current form
+            this.Hide();
+           //display the form
+            var result = form.ShowDialog();
+           
+        }
     }
 }
