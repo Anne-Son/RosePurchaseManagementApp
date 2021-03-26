@@ -159,29 +159,98 @@ namespace SeedDatabaseExtensions
 			};
 
 
-
-
 			Dictionary<int, RoseSize> roseSize = RoseSizeList.ToDictionary(x => x.RoseSizeID, x => x);
 			context.RoseSizes.AddRange(roseSize.Values);
 
+			//Loading size data to the database
+			List<Invoice> invoicesList = new List<Invoice>()  {
+				new  Invoice {InvoiceID= 1233, Date = DateTime.ParseExact("1-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=1  },
+			    new  Invoice {InvoiceID= 1234, Date = DateTime.ParseExact("1-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=1  },
+				new  Invoice {InvoiceID= 2244, Date = DateTime.ParseExact("2-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=2 },
+			    new  Invoice {InvoiceID= 3124, Date = DateTime.ParseExact("2-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=3 },
+				new  Invoice {InvoiceID= 4124, Date = DateTime.ParseExact("2-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=4 },
+			  
+
+			};
+
+			Dictionary<int, Invoice> invoices = invoicesList.ToDictionary(x => x.InvoiceID, x => x);
+			context.Invoices.AddRange(invoices.Values);
+
+
+
+			//Loading order data the database
+			List<Order> OrderList = new List<Order>()  {
+				new  Order {OrderID =1,RoseSizeID=1,Number_of_bunches=52 },
+				new  Order {OrderID =2,RoseSizeID=2,Number_of_bunches=22 },
+				new  Order {OrderID =3,RoseSizeID=3,Number_of_bunches=7 },
+				new  Order {OrderID =4,RoseSizeID=4,Number_of_bunches=15 },
+				new  Order {OrderID =5,RoseSizeID=5,Number_of_bunches=176 },
+				new  Order {OrderID =6,RoseSizeID=7,Number_of_bunches=9 },
+				new  Order {OrderID =7,RoseSizeID=8,Number_of_bunches=139 },
+				new  Order {OrderID =8,RoseSizeID=9,Number_of_bunches=14 },
+				new  Order {OrderID =9,RoseSizeID=10,Number_of_bunches=6 },
+				new  Order {OrderID =10,RoseSizeID=6,Number_of_bunches=12 },
+
+			};
+
+			Dictionary<int, Order> order = OrderList.ToDictionary(x => x.OrderID, x => x);
+			context.Orders.AddRange(order.Values);
+
+			//Loading Inventory data to the database
+			List<Inventory> inventoryList = new List<Inventory>()  {
+				new  Inventory { InventoryID=1,FarmID=1,RoseSizeID=2,Price_per_stem=0.30m },
+				new  Inventory { InventoryID=2,FarmID=2,RoseSizeID=4,Price_per_stem=0.40m },
+				new  Inventory { InventoryID=3,FarmID=3,RoseSizeID=3,Price_per_stem=0.45m },
+				new  Inventory { InventoryID=4,FarmID=4,RoseSizeID=4,Price_per_stem=0.30m },
+				new  Inventory { InventoryID=5,FarmID=1,RoseSizeID=2,Price_per_stem=0.30m },
+				new  Inventory { InventoryID=6,FarmID=2,RoseSizeID=7,Price_per_stem=0.30m },
+				new  Inventory { InventoryID=7,FarmID=2,RoseSizeID=5,Price_per_stem=0.40m },
+
+
+			};
+
+
+
+
+			Dictionary<int, Inventory> inventory = inventoryList.ToDictionary(x => x.InventoryID, x => x);
+			context.Inventories.AddRange(inventory.Values);
+
+
+
+			//Loading purchase data to the database
+			List<Purchase> purchaseList = new List<Purchase>()  {
+				new Purchase {PurchaseID =1 , FarmID = 2, RoseSizeID =3,Price_per_stem=0.25m,InvoiceID=1233,WarehouseID=1 },
+				new Purchase {PurchaseID =2 , FarmID = 1, RoseSizeID =4,Price_per_stem=0.28m,InvoiceID=1234,WarehouseID=2 },
+				new Purchase {PurchaseID =3 , FarmID = 2, RoseSizeID =3,Price_per_stem=0.30m,InvoiceID=3124,WarehouseID=3 },
+				new Purchase {PurchaseID =4 , FarmID = 2, RoseSizeID =6,Price_per_stem=0.29m,InvoiceID=4124,WarehouseID=4 },
+
+			};
+
+			Dictionary<int, Purchase> purchase = purchaseList.ToDictionary(x => x.PurchaseID, x => x);
+			context.Purchases.AddRange(purchase.Values);
+
+			// Loading BoxInventory data to the database
+			List<BoxInventory> boxInventoryList = new List<BoxInventory>()  {
+				new  BoxInventory {InventoryID=1,BoxID=2,Quantity=2 },
+				new  BoxInventory {InventoryID=2,BoxID=3,Quantity=10 },
+				new  BoxInventory {InventoryID=3,BoxID=1,Quantity=4 },
+				new  BoxInventory {InventoryID=4,BoxID=3,Quantity=5 },
+				new  BoxInventory {InventoryID=5,BoxID=3,Quantity=9 },
+			    new  BoxInventory {InventoryID=6,BoxID=1,Quantity=3 },
+				new  BoxInventory {InventoryID=7,BoxID=2,Quantity=2 },
+
+
+			};
+
+
+			Dictionary<int, BoxInventory> boxInventory = boxInventoryList.ToDictionary(x => x.InventoryID, x => x);
+			context.BoxInventories.AddRange(boxInventory.Values);
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-			context.SaveChanges();
 
 
 

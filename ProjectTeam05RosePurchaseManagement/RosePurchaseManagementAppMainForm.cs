@@ -1,4 +1,5 @@
 ﻿using RosePurchaseManagementCodeFirstFromDB;
+using SeedDatabaseExtensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,8 @@ namespace ProjectTeam05RosePurchaseManagement
         public RosePurchaseManagementAppMainForm()
         {
             InitializeComponent();
-
+            this.Load += (s, e) => RosePurchaseManagementMainForm_Load();
+            
             //  calling eventhandler to display forms
             ManagerForm managerForm = new ManagerForm();
             buttonManagerForm.Click += (s, e) => ShowForm(managerForm);
@@ -29,6 +31,16 @@ namespace ProjectTeam05RosePurchaseManagement
             buttonSupplierForm.Click += (s, e) => ShowForm(supplierForm);
 
         }
+
+        private void RosePurchaseManagementMainForm_Load()
+        {
+            using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+            {
+                context.SeedDatabase();
+            }
+        }
+
+        
 
         private void ShowForm( Form form) 
         {
