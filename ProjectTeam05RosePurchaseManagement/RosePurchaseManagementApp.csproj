@@ -118,6 +118,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EFControllerUtilities\EFControllerUtilities.csproj">
+      <Project>{f7b44d6d-563a-4d6d-9718-b554924b4d97}</Project>
+      <Name>EFControllerUtilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RosePurchaseManagementCodeFirstFromDB\RosePurchaseManagementCodeFirstFromDB.csproj">
       <Project>{7EEE5EAF-37A1-45AF-B7B7-5B86A28E06F1}</Project>
       <Name>RosePurchaseManagementCodeFirstFromDB</Name>

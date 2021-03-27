@@ -164,11 +164,11 @@ namespace SeedDatabaseExtensions
 
 			//Loading size data to the database
 			List<Invoice> invoicesList = new List<Invoice>()  {
-				new  Invoice {InvoiceID= 1233, Date = DateTime.ParseExact("1-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=1  },
-			    new  Invoice {InvoiceID= 1234, Date = DateTime.ParseExact("1-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=1  },
-				new  Invoice {InvoiceID= 2244, Date = DateTime.ParseExact("2-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=2 },
-			    new  Invoice {InvoiceID= 3124, Date = DateTime.ParseExact("2-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=3 },
-				new  Invoice {InvoiceID= 4124, Date = DateTime.ParseExact("2-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=4 },
+				new  Invoice {InvoiceID= 1233, Date = DateTime.ParseExact("01-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=1  },
+			    new  Invoice {InvoiceID= 1234, Date = DateTime.ParseExact("01-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=1  },
+				new  Invoice {InvoiceID= 2244, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=2 },
+			    new  Invoice {InvoiceID= 3124, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=3 },
+				new  Invoice {InvoiceID= 4124, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=4 },
 			  
 
 			};
@@ -177,7 +177,7 @@ namespace SeedDatabaseExtensions
 			context.Invoices.AddRange(invoices.Values);
 
 
-
+			
 			//Loading order data the database
 			List<Order> OrderList = new List<Order>()  {
 				new  Order {OrderID =1,RoseSizeID=1,Number_of_bunches=52 },
