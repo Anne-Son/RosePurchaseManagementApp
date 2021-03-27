@@ -5,16 +5,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7EEE5EAF-37A1-45AF-B7B7-5B86A28E06F1}</ProjectGuid>
+    <ProjectGuid>{F7B44D6D-563A-4D6D-9718-B554924B4D97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RosePurchaseManagementCodeFirstFromDB</RootNamespace>
-    <AssemblyName>RosePurchaseManagementCodeFirstFromDB</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>EFControllerUtilities</RootNamespace>
+    <AssemblyName>EFControllerUtilities</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,8 +44,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,22 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Box.cs" />
-    <Compile Include="BoxInventory.cs" />
-    <Compile Include="BoxPurchase.cs" />
-    <Compile Include="Farm.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="Inventory.cs" />
-    <Compile Include="Invoice.cs" />
-    <Compile Include="RosePurchaseManagementEntities.cs" />
-    <Compile Include="Order.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Purchase.cs" />
-    <Compile Include="Rose.cs" />
-    <Compile Include="RoseSize.cs" />
-    <Compile Include="SeedDatabaseExtentionMethods.cs" />
-    <Compile Include="Size.cs" />
-    <Compile Include="Warehouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
