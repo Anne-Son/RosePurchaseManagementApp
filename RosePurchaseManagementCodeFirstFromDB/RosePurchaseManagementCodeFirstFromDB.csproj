@@ -68,6 +68,7 @@
     <Compile Include="RoseSize.cs" />
     <Compile Include="SeedDatabaseExtentionMethods.cs" />
     <Compile Include="Size.cs" />
+    <Compile Include="StringOverrides.cs" />
     <Compile Include="Warehouse.cs" />
   </ItemGroup>
   <ItemGroup>

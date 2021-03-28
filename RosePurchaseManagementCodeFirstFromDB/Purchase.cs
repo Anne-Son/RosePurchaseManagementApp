@@ -25,7 +25,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 
         public int? InvoiceID { get; set; }
 
-        public int? WarehouseID { get; set; }
+        public int WarehouseID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BoxPurchase> BoxPurchases { get; set; }

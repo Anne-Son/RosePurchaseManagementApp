@@ -56,11 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerForm.cs">
+    <Compile Include="PurchasingAgentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ControllerForm.Designer.cs">
-      <DependentUpon>ControllerForm.cs</DependentUpon>
+    <Compile Include="PurchasingAgentForm.Designer.cs">
+      <DependentUpon>PurchasingAgentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagerForm.cs">
       <SubType>Form</SubType>
@@ -82,8 +82,8 @@
     <Compile Include="SupplierForm.Designer.cs">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ControllerForm.resx">
-      <DependentUpon>ControllerForm.cs</DependentUpon>
+    <EmbeddedResource Include="PurchasingAgentForm.resx">
+      <DependentUpon>PurchasingAgentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>

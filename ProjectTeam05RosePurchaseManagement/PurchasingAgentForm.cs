@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace ProjectTeam05RosePurchaseManagement
 {
-    public partial class ControllerForm : Form
+    public partial class PurchasingAgentForm : Form
     {
-        public ControllerForm()
+        public PurchasingAgentForm()
         {
             InitializeComponent();
+
+            //set up database and controls when form loads
+
+            this.Load += (s, e) => PurchasingAgentForm_Load();
         }
     }
 }
