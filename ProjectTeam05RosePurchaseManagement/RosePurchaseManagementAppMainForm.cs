@@ -23,7 +23,7 @@ namespace ProjectTeam05RosePurchaseManagement
             //  calling eventhandler to display forms
             ManagerForm managerForm = new ManagerForm();
             buttonManagerForm.Click += (s, e) => ShowForm(managerForm);
-            ControllerForm controllerForm = new ControllerForm();
+            PurchasingAgentForm controllerForm = new PurchasingAgentForm();
             buttonControllerForm.Click += (s, e) => ShowForm(controllerForm);
             SupplierForm supplierForm = new SupplierForm();
             buttonSupplierForm.Click += (s, e) => ShowForm(supplierForm);
