@@ -15,8 +15,6 @@ namespace ProjectTeam05RosePurchaseManagement
 {
     public partial class RosePurchaseManagementAppMainForm : Form
     {
- 
-
         public RosePurchaseManagementAppMainForm()
         {
             InitializeComponent();
@@ -27,7 +25,7 @@ namespace ProjectTeam05RosePurchaseManagement
             buttonManagerForm.Click += (s, e) => ShowForm(managerForm);
             ControllerForm controllerForm = new ControllerForm();
             buttonControllerForm.Click += (s, e) => ShowForm(controllerForm);
-           SupplierForm supplierForm = new SupplierForm();
+            SupplierForm supplierForm = new SupplierForm();
             buttonSupplierForm.Click += (s, e) => ShowForm(supplierForm);
 
         }

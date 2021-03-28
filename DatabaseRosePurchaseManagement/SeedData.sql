@@ -54,7 +54,7 @@ INSERT INTO [dbo].[Farm] ([FarmID], [FarmName], [Phone], [Email]) VALUES (4, N'I
 SET IDENTITY_INSERT [dbo].[Farm] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Rose] ON
-INSERT INTO [dbo].[Rose] ([RoseID], [RoseName], [GroupCode]) VALUES (1, N'Cream de la Creme', N'CR')
+INSERT INTO [dbo].[Rose] ([RoseID], [RoseName], [GroupCode]) VALUES (1, N'Creme de la Creme', N'CR')
 INSERT INTO [dbo].[Rose] ([RoseID], [RoseName], [GroupCode]) VALUES (2, N'Vendela', N'CR')
 INSERT INTO [dbo].[Rose] ([RoseID], [RoseName], [GroupCode]) VALUES (3, N'Green Tea', N'GR')
 INSERT INTO [dbo].[Rose] ([RoseID], [RoseName], [GroupCode]) VALUES (4, N'Full Mix Color', N'MIX')
