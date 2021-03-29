@@ -20,12 +20,60 @@ namespace ProjectTeam05RosePurchaseManagement
             this.Load += (s, e) => ManagerForm_Load();
 
 
+            //click listner for oderbutton
+            buttonOrder.Click += ButtonOrder_Click;
+            buttonSearch.Click += ButtonSearch_Click;
+
+
+        }
+
+        private void ButtonSearch_Click(object sender, EventArgs e)
+        {
+            dispalyPurchase();
+        }
+
+        /// <summary>
+        /// listner for oder button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void ButtonOrder_Click(object sender, EventArgs e)
+        {
+            Order order = new Order();
+
+            //create an oder
+            using ( RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+            {
+                String selectedRoses = listBoxRoses.SelectedItem.ToString();
+                var roseSizeId = context.RoseSizes.Include("Rose").Where(r => r.Rose.RoseName == selectedRoses).FirstOrDefault();
+                order.RoseSizeID = roseSizeId.RoseSizeID;
+                order.Number_of_bunches = int.Parse(textBoxNumberOfBunches.Text);
+            }
+            // add oder to the list using controller
+            if (Controller<RosePurchaseManagementEntities, Order>.AddEntity(order) == null)
+            {
+                MessageBox.Show("Cannot add student to database");
+                return;
+            }
+            displayOder();
+
         }
 
         private void ManagerForm_Load()
         {
 
             InitializeDataGridView<Order>(dataGridViewOrder);
+            var rose = Controller<RosePurchaseManagementEntities, Rose>.GetEntities().ToList();
+            var roselist = rose.Select(x => x.RoseName).ToList();
+            listBoxRoses.DataSource = roselist;
+
+            listBoxRoses.SelectionMode = SelectionMode.One;
+            listBoxRoses.SelectedIndex = -1;
+
+            textBoxNumberOfBunches.ResetText();
+
+
         }
 
         private void InitializeDataGridView<T>(DataGridView dataGridView, params string[] columnsToHide) where T : class
@@ -66,10 +114,32 @@ namespace ProjectTeam05RosePurchaseManagement
 
             }
         }
+       public void dispalyPurchase()
+        {
+            var s = Controller<RosePurchaseManagementEntities, Purchase>.GetEntitiesWithIncluded("Farm","RoseSize","Invoice","Warehouse").ToList();
+            /* using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+             {
+                 var purchaseList = context.Purchases.Include("Farm").Include("RoseSize").Include("Rose").Select(x=> x).FirstOrDefault();
+                 label1.Text = purchaseList.RoseSize.Rose.RoseName;
+             }*/
+            label4.Text = s.Select(x => x.RoseSizeID).FirstOrDefault().ToString();
+        }
 
         private void tabPageReport_Click(object sender, EventArgs e)
         {
 
         }
+
+
+        public class order
+        {
+            public int oderId;
+            public String roseName;
+            public int numberOfBunches;
+
+            
+        }
+
+       
     }
 }
