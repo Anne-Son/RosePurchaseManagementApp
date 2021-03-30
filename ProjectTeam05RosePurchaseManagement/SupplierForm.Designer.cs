@@ -30,38 +30,72 @@ namespace ProjectTeam05RosePurchaseManagement
         private void InitializeComponent()
         {
             this.tabFlowers = new System.Windows.Forms.TabPage();
+            this.dataGridViewFlowers = new System.Windows.Forms.DataGridView();
             this.tabControlManager = new System.Windows.Forms.TabControl();
+            this.buttonAddUpdateSupplier = new System.Windows.Forms.Button();
+            this.tabFlowers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFlowers)).BeginInit();
             this.tabControlManager.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabFlowers
             // 
-            this.tabFlowers.Location = new System.Drawing.Point(4, 25);
+            this.tabFlowers.Controls.Add(this.buttonAddUpdateSupplier);
+            this.tabFlowers.Controls.Add(this.dataGridViewFlowers);
+            this.tabFlowers.Location = new System.Drawing.Point(4, 29);
+            this.tabFlowers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabFlowers.Name = "tabFlowers";
-            this.tabFlowers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFlowers.Size = new System.Drawing.Size(998, 492);
+            this.tabFlowers.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabFlowers.Size = new System.Drawing.Size(1124, 618);
             this.tabFlowers.TabIndex = 1;
             this.tabFlowers.Text = "Flowers";
             this.tabFlowers.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewFlowers
+            // 
+            this.dataGridViewFlowers.AllowUserToDeleteRows = false;
+            this.dataGridViewFlowers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFlowers.Location = new System.Drawing.Point(25, 17);
+            this.dataGridViewFlowers.Name = "dataGridViewFlowers";
+            this.dataGridViewFlowers.RowHeadersWidth = 62;
+            this.dataGridViewFlowers.RowTemplate.Height = 28;
+            this.dataGridViewFlowers.Size = new System.Drawing.Size(918, 290);
+            this.dataGridViewFlowers.TabIndex = 0;
+            // 
             // tabControlManager
             // 
             this.tabControlManager.Controls.Add(this.tabFlowers);
-            this.tabControlManager.Location = new System.Drawing.Point(12, 12);
+            this.tabControlManager.Location = new System.Drawing.Point(14, 15);
+            this.tabControlManager.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlManager.Name = "tabControlManager";
             this.tabControlManager.SelectedIndex = 0;
-            this.tabControlManager.Size = new System.Drawing.Size(1006, 521);
+            this.tabControlManager.Size = new System.Drawing.Size(1132, 651);
             this.tabControlManager.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlManager.TabIndex = 2;
             // 
+            // buttonAddUpdateSupplier
+            // 
+            this.buttonAddUpdateSupplier.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAddUpdateSupplier.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddUpdateSupplier.ForeColor = System.Drawing.Color.Maroon;
+            this.buttonAddUpdateSupplier.Location = new System.Drawing.Point(320, 356);
+            this.buttonAddUpdateSupplier.Name = "buttonAddUpdateSupplier";
+            this.buttonAddUpdateSupplier.Size = new System.Drawing.Size(312, 45);
+            this.buttonAddUpdateSupplier.TabIndex = 1;
+            this.buttonAddUpdateSupplier.Text = "Add / Update / Delete";
+            this.buttonAddUpdateSupplier.UseVisualStyleBackColor = true;
+            // 
             // SupplierForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1033, 534);
+            this.ClientSize = new System.Drawing.Size(973, 520);
             this.Controls.Add(this.tabControlManager);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SupplierForm";
             this.Text = "SupplierForm";
+            this.tabFlowers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFlowers)).EndInit();
             this.tabControlManager.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -71,5 +105,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private System.Windows.Forms.TabPage tabFlowers;
         private System.Windows.Forms.TabControl tabControlManager;
+        private System.Windows.Forms.DataGridView dataGridViewFlowers;
+        private System.Windows.Forms.Button buttonAddUpdateSupplier;
     }
 }
