@@ -59,8 +59,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Inventory>()
-                .Property(e => e.Price_per_stem)
-                .HasPrecision(18, 0);
+                .Property(e => e.Price_per_stem);
 
             modelBuilder.Entity<Inventory>()
                 .HasMany(e => e.BoxInventories)
@@ -72,8 +71,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Purchase>()
-                .Property(e => e.Price_per_stem)
-                .HasPrecision(18, 0);
+                .Property(e => e.Price_per_stem);
 
             modelBuilder.Entity<Purchase>()
                 .HasMany(e => e.BoxPurchases)

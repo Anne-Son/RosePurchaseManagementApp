@@ -15,13 +15,15 @@ namespace RosePurchaseManagementCodeFirstFromDB
             BoxInventories = new HashSet<BoxInventory>();
         }
 
+        [Key]
         public int InventoryID { get; set; }
 
+        [ForeignKey("Farm")]
         public int FarmID { get; set; }
 
         public int RoseSizeID { get; set; }
 
-        public decimal Price_per_stem { get; set; }
+        public float Price_per_stem { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BoxInventory> BoxInventories { get; set; }

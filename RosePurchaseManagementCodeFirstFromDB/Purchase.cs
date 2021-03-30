@@ -14,17 +14,21 @@ namespace RosePurchaseManagementCodeFirstFromDB
         {
             BoxPurchases = new HashSet<BoxPurchase>();
         }
-
+        [Key]
         public int PurchaseID { get; set; }
 
+        [ForeignKey("Farm")]
         public int FarmID { get; set; }
 
+        [ForeignKey("RoseSize")]
         public int RoseSizeID { get; set; }
 
-        public decimal Price_per_stem { get; set; }
+        public float Price_per_stem { get; set; }
 
+        [ForeignKey("Invoice")]
         public int? InvoiceID { get; set; }
 
+        [ForeignKey("Warehouse")]
         public int WarehouseID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -110,13 +110,13 @@ INSERT INTO [dbo].[Order] ([OrderID], [RoseSizeID], [Number_of_bunches]) VALUES 
 SET IDENTITY_INSERT [dbo].[Order] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Inventory] ON
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (1, 1, 2, N'0.30')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (2, 2, 4, N'0.40')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (3, 3, 3, N'0.45')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (4, 4, 4, N'0.30')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (5, 1, 2, N'0.30')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (6, 2, 7, N'0.30')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (7, 2, 5, N'0.40')
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (1, 1, 2, 0.30)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (2, 2, 4, 0.40)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (3, 3, 3, 0.45)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (4, 4, 4, 0.30)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (5, 1, 2, 0.30)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (6, 2, 7, 0.30)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (7, 2, 5, 0.40)
 SET IDENTITY_INSERT [dbo].[Inventory] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Purchase] ON
@@ -134,4 +134,10 @@ INSERT INTO [dbo].[BoxInventory] ([InventoryID], [BoxID], [Quantity]) VALUES (4,
 INSERT INTO [dbo].[BoxInventory] ([InventoryID], [BoxID], [Quantity]) VALUES (5, 3, N'9')
 INSERT INTO [dbo].[BoxInventory] ([InventoryID], [BoxID], [Quantity]) VALUES (6, 1, N'3')
 INSERT INTO [dbo].[BoxInventory] ([InventoryID], [BoxID], [Quantity]) VALUES (7, 2, N'2')
+GO
+
+INSERT INTO [dbo].[BoxPurchase] ([PurchaseID], [BoxID], [Quantity]) VALUES (1, 2, N'2')
+INSERT INTO [dbo].[BoxPurchase] ([PurchaseID], [BoxID], [Quantity]) VALUES (2, 3, N'2')
+INSERT INTO [dbo].[BoxPurchase] ([PurchaseID], [BoxID], [Quantity]) VALUES (3, 1, N'2')
+INSERT INTO [dbo].[BoxPurchase] ([PurchaseID], [BoxID], [Quantity]) VALUES (4, 3, N'3')
 GO

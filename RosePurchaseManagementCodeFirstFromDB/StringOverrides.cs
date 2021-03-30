@@ -18,9 +18,20 @@ namespace RosePurchaseManagementCodeFirstFromDB
 
         public override string ToString()
         {
-            return PurchaseID + ": " + Farm.FarmName + " " + RoseSize.Rose + " " + RoseSize.Size + " " + Price_per_stem + " " + Invoice.InvoiceID + " " + Warehouse.WarehouseName;
+            return PurchaseID + ": " + Farm.FarmName + " " + RoseSizeID + " " + Price_per_stem + " " + (Invoice is null ? InvoiceID.ToString():"No invoice") + " " + Warehouse.WarehouseName;
         }
+    }
 
+    partial class Warehouse
+    {
+        /// <summary>
+        /// Max length
+        /// </summary>
+        public const int WarehouseNameMax= 50;
 
+        public override string ToString()
+        {
+            return WarehouseID + ": " + WarehouseName;
+        }
     }
 }
