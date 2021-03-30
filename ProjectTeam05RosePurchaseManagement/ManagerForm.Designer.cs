@@ -38,18 +38,18 @@ namespace ProjectTeam05RosePurchaseManagement
             this.listBoxRoses = new System.Windows.Forms.ListBox();
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
             this.tabPageReport = new System.Windows.Forms.TabPage();
+            this.dataGridViewPurchase = new System.Windows.Forms.DataGridView();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageBackup = new System.Windows.Forms.TabPage();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControlManager.SuspendLayout();
             this.tabPageOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             this.tabPageReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlManager
@@ -135,7 +135,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageReport
             // 
-            this.tabPageReport.Controls.Add(this.dataGridView1);
+            this.tabPageReport.Controls.Add(this.dataGridViewPurchase);
             this.tabPageReport.Controls.Add(this.buttonSearch);
             this.tabPageReport.Controls.Add(this.dateTimePickerEndDate);
             this.tabPageReport.Controls.Add(this.dateTimePickerStartDate);
@@ -149,6 +149,25 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageReport.Text = "Report";
             this.tabPageReport.UseVisualStyleBackColor = true;
             this.tabPageReport.Click += new System.EventHandler(this.tabPageReport_Click);
+            // 
+            // dataGridViewPurchase
+            // 
+            this.dataGridViewPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPurchase.Location = new System.Drawing.Point(58, 111);
+            this.dataGridViewPurchase.Name = "dataGridViewPurchase";
+            this.dataGridViewPurchase.RowHeadersWidth = 51;
+            this.dataGridViewPurchase.RowTemplate.Height = 24;
+            this.dataGridViewPurchase.Size = new System.Drawing.Size(850, 189);
+            this.dataGridViewPurchase.TabIndex = 5;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(794, 30);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(98, 32);
+            this.buttonSearch.TabIndex = 4;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
             // 
             // dateTimePickerEndDate
             // 
@@ -191,25 +210,6 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageBackup.Text = "Backup";
             this.tabPageBackup.UseVisualStyleBackColor = true;
             // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(794, 30);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(98, 32);
-            this.buttonSearch.TabIndex = 4;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(58, 111);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(850, 189);
-            this.dataGridView1.TabIndex = 5;
-            // 
             // ManagerForm
             // 
             this.ClientSize = new System.Drawing.Size(1145, 699);
@@ -221,7 +221,7 @@ namespace ProjectTeam05RosePurchaseManagement
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
             this.tabPageReport.ResumeLayout(false);
             this.tabPageReport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,7 +245,7 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewPurchase;
         private System.Windows.Forms.Button buttonSearch;
     }
 }

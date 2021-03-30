@@ -110,20 +110,20 @@ INSERT INTO [dbo].[Order] ([OrderID], [RoseSizeID], [Number_of_bunches]) VALUES 
 SET IDENTITY_INSERT [dbo].[Order] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Inventory] ON
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (1, 1, 2, N'0.30')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (2, 2, 4, N'0.40')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (3, 3, 3, N'0.45')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (4, 4, 4, N'0.30')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (5, 1, 2, N'0.30')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (6, 2, 7, N'0.30')
-INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (7, 2, 5, N'0.40')
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (1, 1, 2, 0.30)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (2, 2, 4, 0.40)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (3, 3, 3, 0.45)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (4, 4, 4, 0.30)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (5, 1, 2, 0.30)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (6, 2, 7, 0.30)
+INSERT INTO [dbo].[Inventory] ([InventoryID], [FarmID], [RoseSizeID], [Price_per_stem]) VALUES (7, 2, 5, 0.40)
 SET IDENTITY_INSERT [dbo].[Inventory] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Purchase] ON
-INSERT INTO [dbo].[Purchase] ([PurchaseID], [FarmID], [RoseSizeID], [Price_per_stem],[InvoiceID], [WarehouseID]) VALUES (1, 2, 3, N'0.25', 1233, 1)
-INSERT INTO [dbo].[Purchase] ([PurchaseID], [FarmID], [RoseSizeID], [Price_per_stem],[InvoiceID], [WarehouseID]) VALUES (2, 1, 4, N'0.28', 1234, 2)
-INSERT INTO [dbo].[Purchase] ([PurchaseID], [FarmID], [RoseSizeID], [Price_per_stem],[InvoiceID], [WarehouseID]) VALUES (3, 2, 3, N'0.30', 3124, 3)
-INSERT INTO [dbo].[Purchase] ([PurchaseID], [FarmID], [RoseSizeID], [Price_per_stem],[InvoiceID], [WarehouseID]) VALUES (4, 2, 6, N'0.29', 4124, 4)
+INSERT INTO [dbo].[Purchase] ([PurchaseID], [FarmID], [RoseSizeID], [Price_per_stem],[InvoiceID], [WarehouseID]) VALUES (1, 2, 3, 0.25, 1233, 1)
+INSERT INTO [dbo].[Purchase] ([PurchaseID], [FarmID], [RoseSizeID], [Price_per_stem],[InvoiceID], [WarehouseID]) VALUES (2, 1, 4, 0.28, 1234, 2)
+INSERT INTO [dbo].[Purchase] ([PurchaseID], [FarmID], [RoseSizeID], [Price_per_stem],[InvoiceID], [WarehouseID]) VALUES (3, 2, 3, 0.30, 3124, 3)
+INSERT INTO [dbo].[Purchase] ([PurchaseID], [FarmID], [RoseSizeID], [Price_per_stem],[InvoiceID], [WarehouseID]) VALUES (4, 2, 6, 0.29, 4124, 4)
 SET IDENTITY_INSERT [dbo].[Purchase] OFF
 GO
 

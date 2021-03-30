@@ -29,7 +29,9 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
-            dispalyPurchase();
+            var dis = Controller<RosePurchaseManagementEntities, Purchase>.GetEntities().ToList();
+            dataGridViewPurchase.DataSource = dis;
+            // dispalyPurchase();
         }
 
         /// <summary>
@@ -64,6 +66,7 @@ namespace ProjectTeam05RosePurchaseManagement
         {
 
             InitializeDataGridView<Order>(dataGridViewOrder);
+            
             var rose = Controller<RosePurchaseManagementEntities, Rose>.GetEntities().ToList();
             var roselist = rose.Select(x => x.RoseName).ToList();
             listBoxRoses.DataSource = roselist;
@@ -122,6 +125,7 @@ namespace ProjectTeam05RosePurchaseManagement
                  var purchaseList = context.Purchases.Include("Farm").Include("RoseSize").Include("Rose").Select(x=> x).FirstOrDefault();
                  label1.Text = purchaseList.RoseSize.Rose.RoseName;
              }*/
+            var list = 
             label4.Text = s.Select(x => x.RoseSizeID).FirstOrDefault().ToString();
         }
 
@@ -137,7 +141,18 @@ namespace ProjectTeam05RosePurchaseManagement
             public String roseName;
             public int numberOfBunches;
 
+
+        }
+        public class purchase
+        {
+            public int purchaseId;
+            public String roseName;
+            public int numberOfBunches;
+            public decimal pricePerStem;
+            public DateTime dateOfPurchase;
+           
             
+
         }
 
        

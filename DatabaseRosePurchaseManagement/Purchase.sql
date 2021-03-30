@@ -3,7 +3,7 @@
 	[PurchaseID] INT NOT NULL IDENTITY,
 	[FarmID] INT NOT NULL,
 	[RoseSizeID] INT NOT NULL,
-	[Price_per_stem] DECIMAL NOT NULL,
+	[Price_per_stem] FLOAT NOT NULL,
 	[InvoiceID] INT,
 	[WarehouseID] INT,
 	 PRIMARY KEY ([PurchaseID]),
