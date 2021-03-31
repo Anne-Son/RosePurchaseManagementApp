@@ -22,8 +22,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
         public string SizeName { get; set; }
 
         [Required]
-        [StringLength(20)]
-        public string Freight { get; set; }
+        public float Freight { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoseSize> RoseSizes { get; set; }
