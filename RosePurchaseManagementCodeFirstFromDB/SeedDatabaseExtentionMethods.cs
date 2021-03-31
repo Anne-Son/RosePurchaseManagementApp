@@ -51,8 +51,8 @@ namespace SeedDatabaseExtensions
 				new Box { BoxID=3,BoxName="Full Box"},
 				
 			};
-			Dictionary<int, Box> box = boxList.ToDictionary(x => x.BoxID, x => x);
-			context.Boxes.AddRange(box.Values);
+			Dictionary<int, Box> boxes = boxList.ToDictionary(x => x.BoxID, x => x);
+			context.Boxes.AddRange(boxes.Values);
 
 			//Loading Group data to the database
 			List<Group> groupList = new List<Group>  {
@@ -107,11 +107,11 @@ namespace SeedDatabaseExtensions
 
 			//Loading BoxPurchase data to the database
 			List<BoxPurchase> boxPurchaseList = new List<BoxPurchase>()  {
-				new  BoxPurchase {PurchaseID=1,BoxID=3,Quantity=2 },
-				new  BoxPurchase { PurchaseID=2,BoxID=2,Quantity=10 },
-				new  BoxPurchase { PurchaseID=3,BoxID=1,Quantity=4 },
-				new  BoxPurchase {  PurchaseID=4,BoxID=3,Quantity=5  },
-
+				new  BoxPurchase { PurchaseID=1,Box=boxes[3],Quantity=2 },
+				new  BoxPurchase { PurchaseID=2,Box=boxes[2],Quantity=10 },
+				new  BoxPurchase { PurchaseID=3,Box=boxes[1],Quantity=4 },
+				new  BoxPurchase { PurchaseID=4,Box=boxes[3],Quantity=5 },
+				
 			};
 
 			var boxPurchase = boxPurchaseList.ToDictionary(x => Tuple.Create(x.PurchaseID,x.BoxID), x => x);
@@ -156,7 +156,7 @@ namespace SeedDatabaseExtensions
 			List<RoseSize> RoseSizeList = new List<RoseSize>()  {
 				new  RoseSize { RoseSizeID=1,RoseID=1,SizeID=1 },
 				new  RoseSize { RoseSizeID=2,RoseID=2,SizeID=2 },
-				new  RoseSize { RoseSizeID=3,RoseID=3,SizeID=3},
+				new  RoseSize { RoseSizeID=3,RoseID=3,SizeID=3 },
 			    new  RoseSize { RoseSizeID=4,RoseID=4,SizeID=2 },
 				new  RoseSize { RoseSizeID=5,RoseID=5,SizeID=2 },
 				new  RoseSize { RoseSizeID=6,RoseID=7,SizeID=4 },
