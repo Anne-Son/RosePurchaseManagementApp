@@ -106,6 +106,18 @@ namespace SeedDatabaseExtensions
 			Dictionary<int, Farm> farms = FarmList.ToDictionary(x => x.FarmID, x => x);
 			context.Farms.AddRange(farms.Values);
 
+			//Loading BoxPurchase data to the database
+			List<BoxPurchase> boxPurchaseList = new List<BoxPurchase>()  {
+				new  BoxPurchase {PurchaseID=1,BoxID=3,Quantity=2 },
+				new  BoxPurchase { PurchaseID=2,BoxID=2,Quantity=10 },
+				new  BoxPurchase { PurchaseID=3,BoxID=1,Quantity=4 },
+				new  BoxPurchase {  PurchaseID=4,BoxID=3,Quantity=5  },
+
+			};
+
+			var boxPurchase = boxPurchaseList.ToDictionary(x => Tuple.Create(x.PurchaseID,x.BoxID), x => x);
+			context.BoxPurchases.AddRange(boxPurchase.Values);
+
 
 			//Loading Rose data to the database
 			List<Rose> RoseList = new List<Rose>()  {
