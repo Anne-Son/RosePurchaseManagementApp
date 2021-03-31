@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace SeedDatabaseExtensions
 {
-
 	public static class SeedDatabaseExtensionMethods
 	{
 		/// <summary>
@@ -47,9 +46,9 @@ namespace SeedDatabaseExtensions
 
 			//Loading Box data to the database
 			List<Box> boxList = new List<Box>()  {
-				new  Box { BoxID=1,BoxName="Quarter Box" },
-				new Box {BoxID=2,BoxName="Half Box"},
-				new  Box{BoxID=3,BoxName="Full Box"},
+				new Box { BoxID=1,BoxName="Quarter Box"},
+				new Box { BoxID=2,BoxName="Half Box"},
+				new Box { BoxID=3,BoxName="Full Box"},
 				
 			};
 			Dictionary<int, Box> box = boxList.ToDictionary(x => x.BoxID, x => x);
@@ -60,11 +59,11 @@ namespace SeedDatabaseExtensions
 				new  Group { GroupName ="Cream", GroupCode ="CR"},
 				new  Group { GroupName ="Green", GroupCode ="GR"},
 			    new  Group { GroupName ="Mixture", GroupCode ="MIX"},
-			   new  Group { GroupName ="Orange", GroupCode ="OR"},
-			   new  Group { GroupName ="PINK", GroupCode ="PI"},
-			  new  Group { GroupName ="RED", GroupCode ="RE"},
-			  new  Group { GroupName ="White", GroupCode ="WH"},
-			  new  Group { GroupName ="Two Colors", GroupCode ="TT"},
+				new  Group { GroupName ="Orange", GroupCode ="OR"},
+			    new  Group { GroupName ="PINK", GroupCode ="PI"},
+			    new  Group { GroupName ="RED", GroupCode ="RE"},
+			    new  Group { GroupName ="White", GroupCode ="WH"},
+			    new  Group { GroupName ="Two Colors", GroupCode ="TT"},
 			};
 
 			Dictionary<String, Group> group = groupList.ToDictionary(x => x.GroupCode, x => x);
@@ -79,8 +78,8 @@ namespace SeedDatabaseExtensions
 			    new  Warehouse { WarehouseID=5,WarehouseName="MATS"},
 			    new  Warehouse { WarehouseID=6,WarehouseName="ORCHI"},
 			    new  Warehouse { WarehouseID=7,WarehouseName="SHINE"},
-			   new  Warehouse { WarehouseID=8,WarehouseName="KARE9"},
-			   new  Warehouse { WarehouseID=9,WarehouseName="TWIG3"},
+			    new  Warehouse { WarehouseID=8,WarehouseName="KARE9"},
+			    new  Warehouse { WarehouseID=9,WarehouseName="TWIG3"},
 				new  Warehouse { WarehouseID=10,WarehouseName="MISCMA"},
 		        new  Warehouse { WarehouseID=11,WarehouseName="SOUT9"},
 				new  Warehouse { WarehouseID=12,WarehouseName="ROLL"},
@@ -140,14 +139,12 @@ namespace SeedDatabaseExtensions
 
 			//Loading size data to the database
 			List<Size> sizeList = new List<Size>()  {
-				new  Size { SizeID=1,SizeName="40",Freight="0.16" },
-				new  Size { SizeID=2,SizeName="50",Freight="0.18" },
-				new  Size { SizeID=3,SizeName="40/50",Freight="0.17" },
-				new  Size { SizeID=4,SizeName="60",Freight="0.20" },
-				new  Size { SizeID=5,SizeName="50/60",Freight="0.19" },
-				new  Size { SizeID=6,SizeName="70",Freight="0.22" },
-				
-
+				new  Size { SizeID=1,SizeName="40",Freight=0.16f },
+				new  Size { SizeID=2,SizeName="50",Freight=0.18f },
+				new  Size { SizeID=3,SizeName="40/50",Freight=0.17f },
+				new  Size { SizeID=4,SizeName="60",Freight=0.20f },
+				new  Size { SizeID=5,SizeName="50/60",Freight=0.19f },
+				new  Size { SizeID=6,SizeName="70",Freight=0.22f },
 			};
 		
 
@@ -217,16 +214,11 @@ namespace SeedDatabaseExtensions
 				new  Inventory { InventoryID=5,FarmID=1,RoseSizeID=2,Price_per_stem=0.30f },
 				new  Inventory { InventoryID=6,FarmID=2,RoseSizeID=7,Price_per_stem=0.30f },
 				new  Inventory { InventoryID=7,FarmID=2,RoseSizeID=5,Price_per_stem=0.40f },
-
-
 			};
-
-
 
 
 			Dictionary<int, Inventory> inventory = inventoryList.ToDictionary(x => x.InventoryID, x => x);
 			context.Inventories.AddRange(inventory.Values);
-
 
 
 			//Loading purchase data to the database
@@ -251,21 +243,10 @@ namespace SeedDatabaseExtensions
 			    new  BoxInventory {InventoryID=6,BoxID=1,Quantity=3 },
 				new  BoxInventory {InventoryID=7,BoxID=2,Quantity=2 },
 
-
 			};
-
 
 			Dictionary<int, BoxInventory> boxInventory = boxInventoryList.ToDictionary(x => x.InventoryID, x => x);
 			context.BoxInventories.AddRange(boxInventory.Values);
-
-
-
-
-
-
-
-
-
 
 			context.SaveChanges();
 		}
