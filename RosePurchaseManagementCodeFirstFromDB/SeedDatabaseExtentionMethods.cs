@@ -198,13 +198,13 @@ namespace SeedDatabaseExtensions
 
 			//Loading Inventory data to the database
 			List<Inventory> inventoryList = new List<Inventory>()  {
-				new  Inventory { InventoryID=1,FarmID=1,RoseSizeID=2,Price_per_stem=0.30m },
-				new  Inventory { InventoryID=2,FarmID=2,RoseSizeID=4,Price_per_stem=0.40m },
-				new  Inventory { InventoryID=3,FarmID=3,RoseSizeID=3,Price_per_stem=0.45m },
-				new  Inventory { InventoryID=4,FarmID=4,RoseSizeID=4,Price_per_stem=0.30m },
-				new  Inventory { InventoryID=5,FarmID=1,RoseSizeID=2,Price_per_stem=0.30m },
-				new  Inventory { InventoryID=6,FarmID=2,RoseSizeID=7,Price_per_stem=0.30m },
-				new  Inventory { InventoryID=7,FarmID=2,RoseSizeID=5,Price_per_stem=0.40m },
+				new  Inventory { InventoryID=1,FarmID=1,RoseSizeID=2,Price_per_stem=0.30f },
+				new  Inventory { InventoryID=2,FarmID=2,RoseSizeID=4,Price_per_stem=0.40f },
+				new  Inventory { InventoryID=3,FarmID=3,RoseSizeID=3,Price_per_stem=0.45f },
+				new  Inventory { InventoryID=4,FarmID=4,RoseSizeID=4,Price_per_stem=0.30f },
+				new  Inventory { InventoryID=5,FarmID=1,RoseSizeID=2,Price_per_stem=0.30f },
+				new  Inventory { InventoryID=6,FarmID=2,RoseSizeID=7,Price_per_stem=0.30f },
+				new  Inventory { InventoryID=7,FarmID=2,RoseSizeID=5,Price_per_stem=0.40f },
 
 
 			};
@@ -219,10 +219,10 @@ namespace SeedDatabaseExtensions
 
 			//Loading purchase data to the database
 			List<Purchase> purchaseList = new List<Purchase>()  {
-				new Purchase {PurchaseID =1 , FarmID = 2, RoseSizeID =3,Price_per_stem=0.25m,InvoiceID=1233,WarehouseID=1 },
-				new Purchase {PurchaseID =2 , FarmID = 1, RoseSizeID =4,Price_per_stem=0.28m,InvoiceID=1234,WarehouseID=2 },
-				new Purchase {PurchaseID =3 , FarmID = 2, RoseSizeID =3,Price_per_stem=0.30m,InvoiceID=3124,WarehouseID=3 },
-				new Purchase {PurchaseID =4 , FarmID = 2, RoseSizeID =6,Price_per_stem=0.29m,InvoiceID=4124,WarehouseID=4 },
+				new Purchase {PurchaseID =1 , FarmID = 2, RoseSizeID =3,Price_per_stem=0.25f,InvoiceID=1233,WarehouseID=1 },
+				new Purchase {PurchaseID =2 , FarmID = 1, RoseSizeID =4,Price_per_stem=0.28f,InvoiceID=1234,WarehouseID=2 },
+				new Purchase {PurchaseID =3 , FarmID = 2, RoseSizeID =3,Price_per_stem=0.30f,InvoiceID=3124,WarehouseID=3 },
+				new Purchase {PurchaseID =4 , FarmID = 2, RoseSizeID =6,Price_per_stem=0.29f,InvoiceID=4124,WarehouseID=4 },
 
 			};
 

@@ -21,7 +21,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 
         public int RoseSizeID { get; set; }
 
-        public decimal Price_per_stem { get; set; }
+        public float Price_per_stem { get; set; }
 
         public int? InvoiceID { get; set; }
 

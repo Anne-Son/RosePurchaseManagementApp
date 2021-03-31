@@ -60,7 +60,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 
             modelBuilder.Entity<Inventory>()
                 .Property(e => e.Price_per_stem)
-                .HasPrecision(18, 0);
+                ;
 
             modelBuilder.Entity<Inventory>()
                 .HasMany(e => e.BoxInventories)
@@ -73,7 +73,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 
             modelBuilder.Entity<Purchase>()
                 .Property(e => e.Price_per_stem)
-                .HasPrecision(18, 0);
+                ;
 
             modelBuilder.Entity<Purchase>()
                 .HasMany(e => e.BoxPurchases)
