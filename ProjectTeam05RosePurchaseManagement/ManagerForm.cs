@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,9 +30,8 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
-            var dis = Controller<RosePurchaseManagementEntities, Purchase>.GetEntities().ToList();
-            dataGridViewPurchase.DataSource = dis;
-            // dispalyPurchase();
+          
+            dispalyPurchase();
         }
 
         /// <summary>
@@ -66,7 +66,8 @@ namespace ProjectTeam05RosePurchaseManagement
         {
 
             InitializeDataGridView<Order>(dataGridViewOrder);
-            
+            InitializeDataGridView<Purchase>(dataGridViewPurchase);
+
             var rose = Controller<RosePurchaseManagementEntities, Rose>.GetEntities().ToList();
             var roselist = rose.Select(x => x.RoseName).ToList();
             listBoxRoses.DataSource = roselist;
@@ -75,6 +76,7 @@ namespace ProjectTeam05RosePurchaseManagement
             listBoxRoses.SelectedIndex = -1;
 
             textBoxNumberOfBunches.ResetText();
+            displayOder();
 
 
         }
@@ -86,13 +88,16 @@ namespace ProjectTeam05RosePurchaseManagement
             dataGridView.AllowUserToDeleteRows = true;
             dataGridView.ReadOnly = true;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.DataError += (s, e) => HandleDataError<T>(s as DataGridView, e);
 
-
-            var s = Controller<RosePurchaseManagementEntities, T>.GetEntitiesWithIncluded("RoseSize");
-
-            displayOder();
+            
                 foreach (string column in columnsToHide)
                     dataGridView.Columns[column].Visible = false;
+        }
+        private void HandleDataError<T>(DataGridView gridView, DataGridViewDataErrorEventArgs e)
+        {
+            Debug.WriteLine("DataError " + typeof(T) + " " + gridView.Name + " row " + e.RowIndex + " col " + e.ColumnIndex + " Context: " + e.Context.ToString());
+            e.Cancel = true;
         }
 
         public void displayOder()
@@ -125,7 +130,7 @@ namespace ProjectTeam05RosePurchaseManagement
                  var purchaseList = context.Purchases.Include("Farm").Include("RoseSize").Include("Rose").Select(x=> x).FirstOrDefault();
                  label1.Text = purchaseList.RoseSize.Rose.RoseName;
              }*/
-            var list = 
+            dataGridViewOrder.DataSource = s;
             label4.Text = s.Select(x => x.RoseSizeID).FirstOrDefault().ToString();
         }
 
@@ -137,21 +142,21 @@ namespace ProjectTeam05RosePurchaseManagement
 
         public class order
         {
-            public int oderId;
-            public String roseName;
-            public int numberOfBunches;
+            public int oderId { get; set; }
+            public String roseName { get; set; }
+            public int numberOfBunches { get; set; }
 
 
         }
         public class purchase
         {
-            public int purchaseId;
-            public String roseName;
-            public int numberOfBunches;
-            public decimal pricePerStem;
-            public DateTime dateOfPurchase;
-           
-            
+            public int purchaseId { get; set; }
+            public String roseName { get; set; }
+            public int numberOfBunches { get; set; }
+            public decimal pricePerStem { get; set; }
+            public DateTime dateOfPurchase { get; set; }
+
+
 
         }
 

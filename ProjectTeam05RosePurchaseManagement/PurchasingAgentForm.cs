@@ -20,5 +20,10 @@ namespace ProjectTeam05RosePurchaseManagement
 
             this.Load += (s, e) => PurchasingAgentForm_Load();
         }
+
+        private void PurchasingAgentForm_Load()
+        {
+            
+        }
     }
 }
