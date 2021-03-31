@@ -21,7 +21,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
         [Column(TypeName = "date")]
         public DateTime Date { get; set; }
 
-        public decimal TotalAmount { get; set; }
+        public float TotalAmount { get; set; }
 
         public int FarmID { get; set; }
 
