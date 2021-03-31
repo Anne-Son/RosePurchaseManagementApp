@@ -29,11 +29,15 @@ namespace ProjectTeam05RosePurchaseManagement
             dataGridViewPurchase.ReadOnly = true;
             dataGridViewPurchase.AllowUserToAddRows = false;
             dataGridViewPurchase.DataSource = GetPurchaseBoxQuantities();
+            dataGridViewPurchase.Columns["Purchase"].Visible = false;
+            dataGridViewPurchase.Columns["BoxPurchase"].Visible = false;
         }
         List<PurchaseBoxQuantity> GetPurchaseBoxQuantities()
         {
             List<PurchaseBoxQuantity> purchaseBoxQuantities = new List<PurchaseBoxQuantity>();
             List<Purchase> purchases = (List<Purchase>)Controller<RosePurchaseManagementEntities, Purchase>.GetEntitiesWithIncluded("BoxPurchases");
+            List<Box> boxes = (List<Box>)Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases");
+
             foreach (Purchase purchase in purchases)
             {
                 foreach (BoxPurchase boxPurchase in purchase.BoxPurchases)
@@ -46,13 +50,13 @@ namespace ProjectTeam05RosePurchaseManagement
                         Price = purchase.Price_per_stem,
                         InvoiceNumber = purchase.InvoiceID,
                         WarehouseID = purchase.WarehouseID,
+                        BoxID = boxPurchase.BoxID,
                         BoxQuantity = boxPurchase.Quantity
                     };
                     purchaseBoxQuantities.Add(purchaseBoxQuantity);
                 }
             }
             return purchaseBoxQuantities;
-
         }
         private class PurchaseBoxQuantity
         {
@@ -74,8 +78,8 @@ namespace ProjectTeam05RosePurchaseManagement
             [DisplayName("WarehouseID")]
             public int WarehouseID { get; set; }
 
-            [DisplayName("BoxName")]
-            public string BoxName { get; set; }
+            [DisplayName("BoxID")]
+            public int BoxID { get; set; }
 
             [DisplayName("BoxQuantity")]
             public int BoxQuantity { get; set; }
@@ -83,6 +87,7 @@ namespace ProjectTeam05RosePurchaseManagement
             public Purchase Purchase { get; set; }
 
             public BoxPurchase BoxPurchase { get; set; }
+
         }
     }
 }
