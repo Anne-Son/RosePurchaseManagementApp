@@ -38,6 +38,10 @@ namespace ProjectTeam05RosePurchaseManagement
             this.listBoxRoses = new System.Windows.Forms.ListBox();
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
             this.tabPageReport = new System.Windows.Forms.TabPage();
+            this.labelAveragePrice = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.checkBoxSearch = new System.Windows.Forms.CheckBox();
             this.dataGridViewPurchase = new System.Windows.Forms.DataGridView();
             this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
@@ -45,10 +49,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageBackup = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.labelCount = new System.Windows.Forms.Label();
-            this.labelAveragePrice = new System.Windows.Forms.Label();
+            this.buttonDeleteOrder = new System.Windows.Forms.Button();
             this.tabControlManager.SuspendLayout();
             this.tabPageOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -70,6 +71,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageOrder
             // 
+            this.tabPageOrder.Controls.Add(this.buttonDeleteOrder);
             this.tabPageOrder.Controls.Add(this.label3);
             this.tabPageOrder.Controls.Add(this.buttonOrder);
             this.tabPageOrder.Controls.Add(this.label1);
@@ -158,6 +160,42 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageReport.UseVisualStyleBackColor = true;
             this.tabPageReport.Click += new System.EventHandler(this.tabPageReport_Click);
             // 
+            // labelAveragePrice
+            // 
+            this.labelAveragePrice.AutoSize = true;
+            this.labelAveragePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAveragePrice.Location = new System.Drawing.Point(323, 345);
+            this.labelAveragePrice.Name = "labelAveragePrice";
+            this.labelAveragePrice.Size = new System.Drawing.Size(0, 17);
+            this.labelAveragePrice.TabIndex = 10;
+            // 
+            // labelCount
+            // 
+            this.labelCount.AutoSize = true;
+            this.labelCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCount.Location = new System.Drawing.Point(161, 345);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(0, 17);
+            this.labelCount.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(97, 345);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Count";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(220, 345);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Average Price";
+            // 
             // checkBoxSearch
             // 
             this.checkBoxSearch.AutoSize = true;
@@ -219,41 +257,14 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageBackup.Text = "Backup";
             this.tabPageBackup.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // buttonDeleteOrder
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(220, 345);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 17);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Average Price";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(97, 345);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Count";
-            // 
-            // labelCount
-            // 
-            this.labelCount.AutoSize = true;
-            this.labelCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCount.Location = new System.Drawing.Point(161, 345);
-            this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(0, 17);
-            this.labelCount.TabIndex = 9;
-            // 
-            // labelAveragePrice
-            // 
-            this.labelAveragePrice.AutoSize = true;
-            this.labelAveragePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAveragePrice.Location = new System.Drawing.Point(323, 345);
-            this.labelAveragePrice.Name = "labelAveragePrice";
-            this.labelAveragePrice.Size = new System.Drawing.Size(0, 17);
-            this.labelAveragePrice.TabIndex = 10;
+            this.buttonDeleteOrder.Location = new System.Drawing.Point(882, 56);
+            this.buttonDeleteOrder.Name = "buttonDeleteOrder";
+            this.buttonDeleteOrder.Size = new System.Drawing.Size(128, 38);
+            this.buttonDeleteOrder.TabIndex = 7;
+            this.buttonDeleteOrder.Text = "Delete Order";
+            this.buttonDeleteOrder.UseVisualStyleBackColor = true;
             // 
             // ManagerForm
             // 
@@ -296,5 +307,6 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelAveragePrice;
+        private System.Windows.Forms.Button buttonDeleteOrder;
     }
 }

@@ -18,6 +18,8 @@ namespace ProjectTeam05RosePurchaseManagement
         public ManagerForm()
         {
             InitializeComponent();
+
+            //Load Manager Form 
             this.Load += (s, e) => ManagerForm_Load();
 
 
@@ -30,21 +32,65 @@ namespace ProjectTeam05RosePurchaseManagement
             //datepicker value change listner
             dateTimePickerStartDate.ValueChanged += DateTimePickerStartDate_ValueChanged;
             dateTimePickerEndDate.ValueChanged += DateTimePickerEndDate_ValueChanged;
+
+            //Click Listner for deleteOrder
+            buttonDeleteOrder.Click += ButtonDeleteOrder_Click;
            
 
 
         }
 
+        private void ButtonDeleteOrder_Click(object sender, EventArgs e)
+        {
+            //To get the selected row from the order table
+            var selectedOrder = dataGridViewOrder.SelectedRows
+                 .OfType<DataGridViewRow>()
+                 .ToArray();
+
+            foreach (var row in selectedOrder)
+            {
+                using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                {
+                    var ord = (OrderDisplay)row.DataBoundItem;
+                  
+
+                    Order order = context.Orders.Where(x => x.OrderID == ord.OderId).FirstOrDefault();
+                    context.Orders.Remove(order);
+                    context.SaveChanges();
+
+
+
+                }
+
+            }
+            displayOder();
+
+
+        }
+
+        /// <summary>
+        /// on change listner for enddate picker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DateTimePickerEndDate_ValueChanged(object sender, EventArgs e)
         {
             dispalyPurchase();
         }
-
+        /// <summary>
+        /// on change listner for startdate picker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DateTimePickerStartDate_ValueChanged(object sender, EventArgs e)
         {
             dispalyPurchase();
         }
-
+        /// <summary>
+        /// event listner for checkbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckBoxSearch_CheckedChanged(object sender, EventArgs e)
         {
             dispalyPurchase();
@@ -60,12 +106,16 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private void ButtonOrder_Click(object sender, EventArgs e)
         {
+            //create an oder
             Order order = new Order();
 
-            //create an oder
+           
             using ( RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
             {
+                //select the item from the listbox
                 String selectedRoses = listBoxRoses.SelectedItem.ToString();
+
+                //get the roseId for the selected roses
                 var roseSizeId = context.RoseSizes.Include("Rose").Where(r => r.Rose.RoseName == selectedRoses).FirstOrDefault();
                 order.RoseSizeID = roseSizeId.RoseSizeID;
                 order.Number_of_bunches = int.Parse(textBoxNumberOfBunches.Text);
@@ -76,13 +126,16 @@ namespace ProjectTeam05RosePurchaseManagement
                 MessageBox.Show("Cannot add student to database");
                 return;
             }
+            //display orderDatagridView
             displayOder();
 
         }
-
+        /// <summary>
+        /// Loading function for Form
+        /// </summary>
         private void ManagerForm_Load()
         {
-
+            //
             InitializeDataGridView<Order>(dataGridViewOrder);
             InitializeDataGridView<Purchase>(dataGridViewPurchase);
 
@@ -107,7 +160,6 @@ namespace ProjectTeam05RosePurchaseManagement
             dataGridView.ReadOnly = true;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.DataError += (s, e) => HandleDataError<T>(s as DataGridView, e);
-
             
                 foreach (string column in columnsToHide)
                     dataGridView.Columns[column].Visible = false;
@@ -120,6 +172,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
         public void displayOder()
         {
+            //open the RosePurchaseEntities context
             using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
             {
                 List<OrderDisplay> orderDisplayList = new List<OrderDisplay>();
