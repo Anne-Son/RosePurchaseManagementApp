@@ -23,16 +23,34 @@ namespace ProjectTeam05RosePurchaseManagement
 
             //click listner for oderbutton
             buttonOrder.Click += ButtonOrder_Click;
-            buttonSearch.Click += ButtonSearch_Click;
+
+            //Search Checkbox listner
+            checkBoxSearch.CheckedChanged += CheckBoxSearch_CheckedChanged;
+
+            //datepicker value change listner
+            dateTimePickerStartDate.ValueChanged += DateTimePickerStartDate_ValueChanged;
+            dateTimePickerEndDate.ValueChanged += DateTimePickerEndDate_ValueChanged;
+           
 
 
         }
 
-        private void ButtonSearch_Click(object sender, EventArgs e)
+        private void DateTimePickerEndDate_ValueChanged(object sender, EventArgs e)
         {
-          
             dispalyPurchase();
         }
+
+        private void DateTimePickerStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            dispalyPurchase();
+        }
+
+        private void CheckBoxSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            dispalyPurchase();
+        }
+
+
 
         /// <summary>
         /// listner for oder button
@@ -77,7 +95,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
             textBoxNumberOfBunches.ResetText();
             displayOder();
-
+            dispalyPurchase();
 
         }
 
@@ -104,19 +122,33 @@ namespace ProjectTeam05RosePurchaseManagement
         {
             using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
             {
-
+                List<OrderDisplay> orderDisplayList = new List<OrderDisplay>();
+                
                 var orderList = (from rose in context.Roses
                           from size in rose.RoseSizes
                           from order in size.Orders
                           select new
                           {
+                              
                               oderid = order.OrderID,
                               name = rose.RoseName,
                               bunches = order.Number_of_bunches,
 
                           }).ToList();
 
-                dataGridViewOrder.DataSource = orderList;
+                foreach(var order in orderList)
+                {
+                    OrderDisplay orderDisplay = new OrderDisplay()
+                    {
+                        OderId = order.oderid,
+                        NumberOfBunches = order.bunches,
+                        RoseName = order.name
+                    };
+                    orderDisplayList.Add(orderDisplay);
+                    
+                }
+
+                dataGridViewOrder.DataSource = orderDisplayList;
 
 
 
@@ -124,42 +156,111 @@ namespace ProjectTeam05RosePurchaseManagement
         }
        public void dispalyPurchase()
         {
-            var s = Controller<RosePurchaseManagementEntities, Purchase>.GetEntitiesWithIncluded("Farm","RoseSize","Invoice","Warehouse").ToList();
-            /* using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
-             {
-                 var purchaseList = context.Purchases.Include("Farm").Include("RoseSize").Include("Rose").Select(x=> x).FirstOrDefault();
-                 label1.Text = purchaseList.RoseSize.Rose.RoseName;
-             }*/
-            dataGridViewOrder.DataSource = s;
-            label4.Text = s.Select(x => x.RoseSizeID).FirstOrDefault().ToString();
+            List<PurchaseBoxQuantity> purchaseBoxQuantities = new List<PurchaseBoxQuantity>();
+            var purchases = Controller<RosePurchaseManagementEntities, Purchase>.GetEntitiesWithIncluded("BoxPurchases", "RoseSize", "Farm", "Invoice", "Warehouse");
+            List<Box> boxes = (List<Box>)Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases");
+
+            if (checkBoxSearch.Checked){
+
+                purchases = purchases.Where(x => x.Invoice.Date >= dateTimePickerStartDate.Value).Where(x => x.Invoice.Date <= dateTimePickerEndDate.Value);
+            }
+
+            foreach (Purchase purchase in purchases)
+            {
+                foreach (BoxPurchase boxPurchase in purchase.BoxPurchases)
+                {
+                    PurchaseBoxQuantity purchaseBoxQuantity = new PurchaseBoxQuantity()
+                    {
+                        PurchaseID = purchase.PurchaseID,
+                        FarmName = purchase.Farm.FarmName,
+                        Price = purchase.Price_per_stem,
+                        InvoiceNumber = purchase.InvoiceID,
+                        WarehouseName = purchase.Warehouse.WarehouseName,
+                        Total = purchase.Invoice.TotalAmount,
+                        Date = purchase.Invoice.Date,
+                        BoxQuantity = boxPurchase.Quantity
+                    };
+                    using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                    {
+                        var roseName = context.RoseSizes.Include("Rose").Where(x => x.RoseSizeID == purchase.RoseSizeID).Select(r => r.Rose.RoseName).FirstOrDefault();
+                        purchaseBoxQuantity.RoseName = roseName;
+
+                        var boxType = context.BoxPurchases.Include("Box").Where(x => x.BoxID == boxPurchase.BoxID).Select(t => t.Box.BoxName).FirstOrDefault();
+                        purchaseBoxQuantity.BoxName = boxType;
+                    }
+
+                    purchaseBoxQuantities.Add(purchaseBoxQuantity);
+                }
+            }
+            var count = purchaseBoxQuantities.Count();
+            labelCount.Text = count.ToString();
+            if(count != 0)
+            {
+                var sum = purchaseBoxQuantities.Select(x => x.Total).Average();
+                labelAveragePrice.Text = sum.ToString();
+            }
+            else
+            {
+                labelAveragePrice.Text = "";
+            }
+            
+              dataGridViewPurchase.DataSource = purchaseBoxQuantities;
+
+            
+           
         }
 
+       
         private void tabPageReport_Click(object sender, EventArgs e)
         {
 
         }
 
 
-        public class order
+        public class OrderDisplay
         {
-            public int oderId { get; set; }
-            public String roseName { get; set; }
-            public int numberOfBunches { get; set; }
+            public int OderId { get; set; }
+            public String RoseName { get; set; }
+            public int NumberOfBunches { get; set; }
 
 
         }
-        public class purchase
+        private class PurchaseBoxQuantity
         {
-            public int purchaseId { get; set; }
-            public String roseName { get; set; }
-            public int numberOfBunches { get; set; }
-            public decimal pricePerStem { get; set; }
-            public DateTime dateOfPurchase { get; set; }
+            [DisplayName("PurchaseID")]
+            public int PurchaseID { get; set; }
+
+            [DisplayName("Farm Name")]
+            public String FarmName { get; set; }
+
+            [DisplayName("Rose Name")]
+            public String RoseName { get; set; }
 
 
+            [DisplayName("Price Per Stem")]
+            public float Price { get; set; }
+
+            [DisplayName("InvoiceNumber")]
+            public int? InvoiceNumber { get; set; }
+
+            [DisplayName("Date")]
+            public DateTime Date { get; set; }
+
+            [DisplayName("Total")]
+            public float Total { get; set; }
+
+            [DisplayName("Warehouse Name")]
+            public String WarehouseName { get; set; }
+
+            [DisplayName("BoxType")]
+            public String BoxName { get; set; }
+
+            [DisplayName("BoxQuantity")]
+            public int BoxQuantity { get; set; }
+
+        
 
         }
 
-       
     }
 }

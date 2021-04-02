@@ -38,13 +38,17 @@ namespace ProjectTeam05RosePurchaseManagement
             this.listBoxRoses = new System.Windows.Forms.ListBox();
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
             this.tabPageReport = new System.Windows.Forms.TabPage();
+            this.checkBoxSearch = new System.Windows.Forms.CheckBox();
             this.dataGridViewPurchase = new System.Windows.Forms.DataGridView();
-            this.buttonSearch = new System.Windows.Forms.Button();
             this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageBackup = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelCount = new System.Windows.Forms.Label();
+            this.labelAveragePrice = new System.Windows.Forms.Label();
             this.tabControlManager.SuspendLayout();
             this.tabPageOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -135,8 +139,12 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageReport
             // 
+            this.tabPageReport.Controls.Add(this.labelAveragePrice);
+            this.tabPageReport.Controls.Add(this.labelCount);
+            this.tabPageReport.Controls.Add(this.label6);
+            this.tabPageReport.Controls.Add(this.label5);
+            this.tabPageReport.Controls.Add(this.checkBoxSearch);
             this.tabPageReport.Controls.Add(this.dataGridViewPurchase);
-            this.tabPageReport.Controls.Add(this.buttonSearch);
             this.tabPageReport.Controls.Add(this.dateTimePickerEndDate);
             this.tabPageReport.Controls.Add(this.dateTimePickerStartDate);
             this.tabPageReport.Controls.Add(this.label4);
@@ -150,6 +158,16 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageReport.UseVisualStyleBackColor = true;
             this.tabPageReport.Click += new System.EventHandler(this.tabPageReport_Click);
             // 
+            // checkBoxSearch
+            // 
+            this.checkBoxSearch.AutoSize = true;
+            this.checkBoxSearch.Location = new System.Drawing.Point(771, 40);
+            this.checkBoxSearch.Name = "checkBoxSearch";
+            this.checkBoxSearch.Size = new System.Drawing.Size(75, 21);
+            this.checkBoxSearch.TabIndex = 6;
+            this.checkBoxSearch.Text = "Search";
+            this.checkBoxSearch.UseVisualStyleBackColor = true;
+            // 
             // dataGridViewPurchase
             // 
             this.dataGridViewPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -159,15 +177,6 @@ namespace ProjectTeam05RosePurchaseManagement
             this.dataGridViewPurchase.RowTemplate.Height = 24;
             this.dataGridViewPurchase.Size = new System.Drawing.Size(850, 189);
             this.dataGridViewPurchase.TabIndex = 5;
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(794, 30);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(98, 32);
-            this.buttonSearch.TabIndex = 4;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
             // 
             // dateTimePickerEndDate
             // 
@@ -210,6 +219,42 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageBackup.Text = "Backup";
             this.tabPageBackup.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(220, 345);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(97, 17);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Average Price";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(97, 345);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Count";
+            // 
+            // labelCount
+            // 
+            this.labelCount.AutoSize = true;
+            this.labelCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCount.Location = new System.Drawing.Point(161, 345);
+            this.labelCount.Name = "labelCount";
+            this.labelCount.Size = new System.Drawing.Size(0, 17);
+            this.labelCount.TabIndex = 9;
+            // 
+            // labelAveragePrice
+            // 
+            this.labelAveragePrice.AutoSize = true;
+            this.labelAveragePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAveragePrice.Location = new System.Drawing.Point(323, 345);
+            this.labelAveragePrice.Name = "labelAveragePrice";
+            this.labelAveragePrice.Size = new System.Drawing.Size(0, 17);
+            this.labelAveragePrice.TabIndex = 10;
+            // 
             // ManagerForm
             // 
             this.ClientSize = new System.Drawing.Size(1145, 699);
@@ -246,6 +291,10 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridViewPurchase;
-        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.CheckBox checkBoxSearch;
+        private System.Windows.Forms.Label labelCount;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelAveragePrice;
     }
 }
