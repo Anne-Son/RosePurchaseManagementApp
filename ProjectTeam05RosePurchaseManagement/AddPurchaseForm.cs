@@ -69,17 +69,20 @@ namespace ProjectTeam05RosePurchaseManagement
         private void AddPurchase_Load(object sender, EventArgs e)
         {
             
-            var inventory = Controller<RosePurchaseManagementEntities, Inventory>.SetBindingList();
+            var inventory = Controller<RosePurchaseManagementEntities, Inventory>.GetEntitiesWithIncluded("BoxInventories").ToList();
+            var inventoryList = inventory.Select(x => new { x.InventoryID, x.FarmID, x.RoseSizeID, x.Price_per_stem }).ToList();
 
-            var box = Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases");
+            var box = Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases").ToList();
+            var boxList = box.Select(x => x.BoxName).ToList();
 
-            var warehouse = Controller<RosePurchaseManagementEntities, Warehouse>.GetEntitiesWithIncluded("Purchases");
+            var warehouse = Controller<RosePurchaseManagementEntities, Warehouse>.GetEntitiesWithIncluded("Purchases").ToList();
+            var warehouseList = warehouse.Select(x => x.WarehouseName).ToList();
 
             //bind the listbox to the relevant table
 
-            listBoxSuppliersInventory.DataSource = inventory;
-            listBoxBox.DataSource = box;
-            listBoxWarehouse.DataSource = warehouse;
+            listBoxSuppliersInventory.DataSource = inventoryList;
+            listBoxBox.DataSource = boxList;
+            listBoxWarehouse.DataSource = warehouseList;
 
             //nothing is selected to start, and only one of each can be selected. 
             listBoxSuppliersInventory.SelectionMode = SelectionMode.One;
