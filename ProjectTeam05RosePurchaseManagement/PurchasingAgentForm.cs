@@ -21,6 +21,43 @@ namespace ProjectTeam05RosePurchaseManagement
             //set up database and controls when form loads
 
             this.Load += (s, e) => PurchasingAgentForm_Load();
+
+            AddPurchaseForm addPurchaseForm = new AddPurchaseForm();
+            
+        }
+
+        private void AddOrUpdateForm<T>(DataGridView dataGridView, Form form) where T : class
+        {
+            var result = form.ShowDialog();
+
+            // form has closed
+
+            if (result == DialogResult.OK)
+            {
+                // reload the db and update the gridview
+
+                dataGridView.DataSource = Controller<RosePurchaseManagementEntities, T>.SetBindingList();
+
+                // update the customer orders report
+
+                dataGridViewPurchase.DataSource = Controller<RosePurchaseManagementEntities, Purchase>.SetBindingList();
+                dataGridViewPurchase.Refresh();
+            }
+
+            // do not close, as the form object will be disposed, 
+            // just hide the form (make it invisible). 
+            // 
+            // when the inputForm is opened again (ShowDialog()), the Load event will fire
+            //  and the form will be reinitialized
+
+            form.Hide();
+        }
+        public void UpdatePurchase()
+        {
+            //set gridview datasource to the query result
+            dataGridViewPurchase.DataSource = GetPurchaseBoxQuantities();
+            dataGridViewPurchase.Columns["Purchase"].Visible = false;
+            dataGridViewPurchase.Columns["BoxPurchase"].Visible = false;
         }
 
         private void PurchasingAgentForm_Load()
