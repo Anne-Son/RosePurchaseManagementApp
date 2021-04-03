@@ -23,6 +23,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.Load += (s, e) => PurchasingAgentForm_Load();
 
             AddPurchaseForm addPurchaseForm = new AddPurchaseForm();
+            buttonAddUpdate.Click += (s,e) => AddOrUpdateForm<Purchase>(dataGridViewPurchase, addPurchaseForm);
             
         }
 
@@ -40,8 +41,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
                 // update the customer orders report
 
-                dataGridViewPurchase.DataSource = Controller<RosePurchaseManagementEntities, Purchase>.SetBindingList();
-                dataGridViewPurchase.Refresh();
+                UpdatePurchase();
             }
 
             // do not close, as the form object will be disposed, 

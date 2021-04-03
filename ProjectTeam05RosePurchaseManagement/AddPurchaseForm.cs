@@ -68,6 +68,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private void AddPurchase_Load(object sender, EventArgs e)
         {
+            
             var inventory = Controller<RosePurchaseManagementEntities, Inventory>.SetBindingList();
 
             var box = Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases");
@@ -87,6 +88,8 @@ namespace ProjectTeam05RosePurchaseManagement
             listBoxBox.SelectedIndex = -1;
             listBoxWarehouse.SelectionMode = SelectionMode.One;
             listBoxWarehouse.SelectedIndex = -1;
+
+            textBoxQuantity.ResetText();
 
         }
     }
