@@ -35,8 +35,24 @@ namespace ProjectTeam05RosePurchaseManagement
 
             //Click Listner for deleteOrder
             buttonDeleteOrder.Click += ButtonDeleteOrder_Click;
+
+            dataGridViewOrder.SelectionChanged += DataGridViewOrder_SelectionChanged;
            
 
+
+        }
+
+        private void DataGridViewOrder_SelectionChanged(object sender, EventArgs e)
+        {
+            var selectedOrder = dataGridViewOrder.SelectedRows
+                 .OfType<DataGridViewRow>()
+                 .ToArray();
+            if(selectedOrder.Count() != 0)
+            {
+                
+                
+            }
+            
 
         }
 
@@ -160,6 +176,7 @@ namespace ProjectTeam05RosePurchaseManagement
             dataGridView.ReadOnly = true;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.DataError += (s, e) => HandleDataError<T>(s as DataGridView, e);
+            
             
                 foreach (string column in columnsToHide)
                     dataGridView.Columns[column].Visible = false;
