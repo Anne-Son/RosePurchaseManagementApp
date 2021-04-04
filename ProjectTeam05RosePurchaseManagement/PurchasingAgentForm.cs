@@ -72,7 +72,7 @@ namespace ProjectTeam05RosePurchaseManagement
         List<PurchaseBoxQuantity> GetPurchaseBoxQuantities()
         {
             List<PurchaseBoxQuantity> purchaseBoxQuantities = new List<PurchaseBoxQuantity>();
-            List<Purchase> purchases = (List<Purchase>)Controller<RosePurchaseManagementEntities, Purchase>.GetEntitiesWithIncluded("BoxPurchases");
+            List<Purchase> purchases = (List<Purchase>)Controller<RosePurchaseManagementEntities, Purchase>.GetEntitiesWithIncluded("BoxPurchases", "RoseSize", "Farm", "Invoice", "Warehouse");
             List<Box> boxes = (List<Box>)Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases");
 
             foreach (Purchase purchase in purchases)
@@ -82,14 +82,21 @@ namespace ProjectTeam05RosePurchaseManagement
                     PurchaseBoxQuantity purchaseBoxQuantity = new PurchaseBoxQuantity()
                     {
                         PurchaseID = purchase.PurchaseID,
-                        FarmID = purchase.FarmID,
-                        RoseID = purchase.RoseSizeID,
+                        FarmName = purchase.Farm.FarmName,
                         Price = purchase.Price_per_stem,
                         InvoiceNumber = purchase.InvoiceID,
-                        WarehouseID = purchase.WarehouseID,
-                        BoxID = boxPurchase.BoxID,
+                        WarehouseName = purchase.Warehouse.WarehouseName,
                         BoxQuantity = boxPurchase.Quantity
                     };
+                    using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                    {
+                        var roseName = context.RoseSizes.Include("Rose").Where(x => x.RoseSizeID == purchase.RoseSizeID).Select(r => r.Rose.RoseName).FirstOrDefault();
+                        purchaseBoxQuantity.RoseName = roseName;
+
+                        var boxType = context.BoxPurchases.Include("Box").Where(x => x.BoxID == boxPurchase.BoxID).Select(t => t.Box.BoxName).FirstOrDefault();
+                        purchaseBoxQuantity.BoxName = boxType;
+                    }
+
                     purchaseBoxQuantities.Add(purchaseBoxQuantity);
                 }
             }
@@ -100,23 +107,23 @@ namespace ProjectTeam05RosePurchaseManagement
             [DisplayName("PurchaseID")]
             public int PurchaseID { get; set; }
 
-            [DisplayName("FarmID")]
-            public int FarmID { get; set; }
+            [DisplayName("Farm Name")]
+            public string FarmName { get; set; }
 
-            [DisplayName("RoseID")]
-            public int RoseID { get; set; }
+            [DisplayName("Rose Name")]
+            public string RoseName { get; set; }
 
-            [DisplayName("Price")]
+            [DisplayName("Price Per Stem")]
             public float Price { get; set; }
 
             [DisplayName("InvoiceNumber")]
             public int? InvoiceNumber { get; set; }
 
-            [DisplayName("WarehouseID")]
-            public int WarehouseID { get; set; }
+            [DisplayName("Warehouse Name")]
+            public string WarehouseName { get; set; }
 
-            [DisplayName("BoxID")]
-            public int BoxID { get; set; }
+            [DisplayName("BoxType")]
+            public string BoxName { get; set; }
 
             [DisplayName("BoxQuantity")]
             public int BoxQuantity { get; set; }
@@ -124,6 +131,7 @@ namespace ProjectTeam05RosePurchaseManagement
             public Purchase Purchase { get; set; }
 
             public BoxPurchase BoxPurchase { get; set; }
+
 
         }
     }

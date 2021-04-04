@@ -24,7 +24,20 @@ namespace ProjectTeam05RosePurchaseManagement
             this.Load += AddPurchase_Load;
 
             buttonAddPurchase.Click += ButtonAddPurchase_Click;
+
+            listBoxSuppliersInventory.SelectedIndexChanged += (s, e) => GetInventories();
         }
+
+        private void GetInventories()
+        {
+            if (!(listBoxSuppliersInventory.SelectedItem is Inventory inventory))
+                return;
+            textBoxFarmName.Text = inventory.Farm.FarmName.ToString();
+            textBoxRoseSizeID.Text = inventory.RoseSizeID.ToString();
+            textBoxPricePerStem.Text = inventory.Price_per_stem.ToString();
+
+        }
+
         /// <summary>
         /// Add an order from Supliers Inventory, Quantity of boxes and Warehouse that user selects.
         /// </summary>
@@ -32,32 +45,37 @@ namespace ProjectTeam05RosePurchaseManagement
         /// <param name="e"></param>
         private void ButtonAddPurchase_Click(object sender, EventArgs e)
         {
-            if(listBoxSuppliersInventory.SelectedIndex < 0 || listBoxBox.SelectedIndex < 0 || textBoxQuantity.Text == "" || listBoxWarehouse.SelectedIndex < 0)
+
+            if (listBoxSuppliersInventory.SelectedIndex < 0 || listBoxBox.SelectedIndex < 0 || textBoxQuantity.Text == "" || listBoxWarehouse.SelectedIndex < 0)
             {
                 MessageBox.Show("Inventory, Box and Warehouse must be selected. Quantity must be inserted");
                 return;
             }
-            Inventory inventory = listBoxSuppliersInventory.SelectedItem as Inventory;
-            Box box = listBoxBox.SelectedItem as Box;
-            Warehouse warehouse = listBoxWarehouse.SelectedItem as Warehouse;
-
-            Purchase purchase = new Purchase()
+            using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
             {
-                PurchaseID = inventory.InventoryID,
-                FarmID = inventory.FarmID,
-                RoseSizeID = inventory.RoseSizeID,
-                Price_per_stem = inventory.Price_per_stem,
-                WarehouseID = warehouse.WarehouseID,
-            };
+                Purchase purchase = new Purchase();
+                string selectedFarm = textBoxFarmName.Text.Trim();
+                string selectedWarehouse = listBoxWarehouse.SelectedItem.ToString();
+
+                var farmID = context.Inventories.Include("Farm").Where(f => f.Farm.FarmName == selectedFarm).FirstOrDefault();
+
+                var warehouseID = context.Warehouses.Where(w => w.WarehouseName == selectedWarehouse).FirstOrDefault();
+
+              
+                purchase.FarmID = farmID.FarmID;
+                purchase.RoseSizeID = int.Parse(textBoxRoseSizeID.Text);
+                purchase.Price_per_stem = float.Parse(textBoxPricePerStem.Text);
+                purchase.InvoiceID = int.Parse(textBoxInvoiceID.Text);
+                purchase.WarehouseID = warehouseID.WarehouseID;
+                
+            }
 
             BoxPurchase boxPurchase = new BoxPurchase()
             {
-                PurchaseID = inventory.InventoryID,
-                BoxID = box.BoxID,
                 Quantity = Int32.Parse(textBoxQuantity.Text),
             };
 
-            Controller<RosePurchaseManagementEntities, Purchase>.AddEntity(purchase);
+           // Controller<RosePurchaseManagementEntities, Purchase>.AddEntity(purchase);
             Controller<RosePurchaseManagementEntities, BoxPurchase>.AddEntity(boxPurchase);
 
             this.DialogResult = DialogResult.OK;
@@ -69,7 +87,7 @@ namespace ProjectTeam05RosePurchaseManagement
         private void AddPurchase_Load(object sender, EventArgs e)
         {
             
-            var inventory = Controller<RosePurchaseManagementEntities, Inventory>.GetEntitiesWithIncluded("BoxInventories").ToList();
+            var inventory = Controller<RosePurchaseManagementEntities, Inventory>.SetBindingList().ToList();
             var inventoryList = inventory.Select(x => new { x.InventoryID, x.FarmID, x.RoseSizeID, x.Price_per_stem }).ToList();
 
             var box = Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases").ToList();
