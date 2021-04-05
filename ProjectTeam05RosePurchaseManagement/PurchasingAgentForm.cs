@@ -67,12 +67,14 @@ namespace ProjectTeam05RosePurchaseManagement
                 purchase.Price_per_stem = float.Parse(textBoxPricePerStem.Text);
                 purchase.WarehouseID = listBoxWarehouse.SelectedIndex + 1;
 
-               // boxPurchase.PurchaseID = purchase.PurchaseID;
-                //boxPurchase.BoxID = listBoxBox.SelectedIndex + 1;
-              //  boxPurchase.Quantity = int.Parse(textBoxQuantity.Text);
+               
 
-               // Controller<RosePurchaseManagementEntities, Purchase>.AddEntity(purchase);
-               // Controller<RosePurchaseManagementEntities, BoxPurchase>.AddEntity(boxPurchase);
+               var purch = Controller<RosePurchaseManagementEntities, Purchase>.AddEntity(purchase);
+
+                boxPurchase.PurchaseID = purch.PurchaseID;
+                boxPurchase.BoxID = listBoxBox.SelectedIndex + 1;
+                boxPurchase.Quantity = int.Parse(textBoxQuantity.Text);
+                Controller<RosePurchaseManagementEntities, BoxPurchase>.AddEntity(boxPurchase);
             }
             //add purchase to the list using controller
             if (Controller<RosePurchaseManagementEntities, Purchase>.AddEntity(purchase) == null)
