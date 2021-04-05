@@ -22,9 +22,22 @@ namespace ProjectTeam05RosePurchaseManagement
 
             this.Load += (s, e) => PurchasingAgentForm_Load();
 
-            AddPurchaseForm addPurchaseForm = new AddPurchaseForm();
-            buttonAddUpdate.Click += (s,e) => AddOrUpdateForm<Purchase>(dataGridViewPurchase, addPurchaseForm);
+            buttonPurchase.Click += ButtonPurchase_Click;
+           // AddPurchaseForm addPurchaseForm = new AddPurchaseForm();
+          
+            //buttonAddUpdate.Click += (s,e) => AddOrUpdateForm<Purchase>(dataGridViewPurchase, addPurchaseForm);
             
+        }
+
+        private void ButtonPurchase_Click(object sender, EventArgs e)
+        {
+            //create a purchase 
+            Purchase purchase = new Purchase();
+
+            using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+            {
+
+            }
         }
 
         private void AddOrUpdateForm<T>(DataGridView dataGridView, Form form) where T : class
@@ -68,6 +81,32 @@ namespace ProjectTeam05RosePurchaseManagement
             dataGridViewPurchase.DataSource = GetPurchaseBoxQuantities();
             dataGridViewPurchase.Columns["Purchase"].Visible = false;
             dataGridViewPurchase.Columns["BoxPurchase"].Visible = false;
+
+            //var Farm= Controller<RosePurchaseManagementEntities, Farm>.GetEntities();
+            //var FarmList = Farm.Select(x => x.FarmName).ToList();
+            //listBoxFarm.DataSource = FarmList;
+            listBoxFarm.DataSource = Controller<RosePurchaseManagementEntities, Farm>.GetEntities();
+
+            //var rose = Controller<RosePurchaseManagementEntities, Rose>.GetEntities();
+            //var roselist = rose.Select(x => x.RoseName).ToList();
+            //listBoxRoseName.DataSource = roselist;
+            listBoxRoseName.DataSource = Controller<RosePurchaseManagementEntities, Rose>.GetEntities();
+
+            //var size = Controller<RosePurchaseManagementEntities, RosePurchaseManagementCodeFirstFromDB.Size>.GetEntitiesWithIncluded("RoseSizes");
+            //var roseSizelist = size.Select(x => x.SizeName).ToList();
+            //listBoxRoseSize.DataSource = roseSizelist;
+            listBoxRoseSize.DataSource = Controller<RosePurchaseManagementEntities, RosePurchaseManagementCodeFirstFromDB.Size>.GetEntitiesWithIncluded("RoseSizes");
+
+            listBoxInvoice.DataSource = Controller<RosePurchaseManagementEntities, Invoice>.GetEntities();
+
+            listBoxWarehouse.DataSource = Controller<RosePurchaseManagementEntities, Warehouse>.GetEntities();
+
+            listBoxRoseName.SelectedIndex = -1;
+            listBoxRoseSize.SelectedIndex = -1;
+            listBoxFarm.SelectedIndex = -1;
+            listBoxRoseSize.SelectedIndex = -1;
+
+            textBoxPricePerStem.ResetText();
         }
         List<PurchaseBoxQuantity> GetPurchaseBoxQuantities()
         {
@@ -134,5 +173,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
 
         }
+
+
     }
 }
