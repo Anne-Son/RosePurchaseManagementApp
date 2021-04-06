@@ -68,7 +68,8 @@ namespace RosePurchaseManagementCodeFirstFromDB
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Invoice>()
-                .Property(e => e.TotalAmount);
+                .Property(e => e.TotalAmount)
+                ;
 
             modelBuilder.Entity<Purchase>()
                 .Property(e => e.Price_per_stem)

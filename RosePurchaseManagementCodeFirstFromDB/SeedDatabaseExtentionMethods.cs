@@ -111,7 +111,9 @@ namespace SeedDatabaseExtensions
 				new  BoxPurchase { PurchaseID=2,Box=boxes[2],Quantity=10 },
 				new  BoxPurchase { PurchaseID=3,Box=boxes[1],Quantity=4 },
 				new  BoxPurchase { PurchaseID=4,Box=boxes[3],Quantity=5 },
-				
+				new  BoxPurchase { PurchaseID=5,Box=boxes[1],Quantity=8 },
+				new  BoxPurchase { PurchaseID=6,Box=boxes[2],Quantity=6 },
+
 			};
 
 			var boxPurchase = boxPurchaseList.ToDictionary(x => Tuple.Create(x.PurchaseID,x.BoxID), x => x);
@@ -177,8 +179,8 @@ namespace SeedDatabaseExtensions
 			    new  Invoice {InvoiceID= 1234, Date = DateTime.ParseExact("01-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=1  },
 				new  Invoice {InvoiceID= 2244, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=2 },
 			    new  Invoice {InvoiceID= 3124, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=3 },
-				new  Invoice {InvoiceID= 4124, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, FarmID=4 },
-			  
+				new  Invoice {InvoiceID= 4124, Date = DateTime.ParseExact("06-03-2021","dd-MM-yyyy",null),TotalAmount=90, FarmID=4 },
+				new  Invoice {InvoiceID= 5124, Date = DateTime.ParseExact("20-03-2021","dd-MM-yyyy",null),TotalAmount=65, FarmID=2 },
 
 			};
 
@@ -223,11 +225,12 @@ namespace SeedDatabaseExtensions
 
 			//Loading purchase data to the database
 			List<Purchase> purchaseList = new List<Purchase>()  {
-				new Purchase {PurchaseID =1 , FarmID = 2, RoseSizeID =3,Price_per_stem=0.25f,InvoiceID=1233,WarehouseID=1 },
+				new Purchase {PurchaseID =1 , FarmID = 1, RoseSizeID =3,Price_per_stem=0.25f,InvoiceID=1233,WarehouseID=1 },
 				new Purchase {PurchaseID =2 , FarmID = 1, RoseSizeID =4,Price_per_stem=0.28f,InvoiceID=1234,WarehouseID=2 },
-				new Purchase {PurchaseID =3 , FarmID = 2, RoseSizeID =3,Price_per_stem=0.30f,InvoiceID=3124,WarehouseID=3 },
-				new Purchase {PurchaseID =4 , FarmID = 2, RoseSizeID =6,Price_per_stem=0.29f,InvoiceID=4124,WarehouseID=4 },
-
+				new Purchase {PurchaseID =3 , FarmID = 3, RoseSizeID =3,Price_per_stem=0.30f,InvoiceID=3124,WarehouseID=3 },
+				new Purchase {PurchaseID =4 , FarmID = 4, RoseSizeID =6,Price_per_stem=0.29f,InvoiceID=4124,WarehouseID=4 },
+				new Purchase {PurchaseID =5 , FarmID = 2, RoseSizeID =1,Price_per_stem=0.30f,InvoiceID=2244,WarehouseID=1 },
+				new Purchase {PurchaseID =6 , FarmID = 2, RoseSizeID =2,Price_per_stem=0.39f,InvoiceID=5124,WarehouseID=1 },
 			};
 
 			Dictionary<int, Purchase> purchase = purchaseList.ToDictionary(x => x.PurchaseID, x => x);
