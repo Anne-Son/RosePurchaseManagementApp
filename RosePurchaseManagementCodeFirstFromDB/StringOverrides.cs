@@ -27,7 +27,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 	{
 		public override string ToString()
 		{
-			return $"{OrderID} {RoseSize.Rose.RoseName}	{RoseSize.Size.SizeName}";
+			return $"{OrderID} {RoseSizeID}	{Number_of_bunches}";
 		}
 	}
 	public partial class Farm
