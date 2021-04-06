@@ -130,20 +130,24 @@ namespace ProjectTeam05RosePurchaseManagement
             {
                 //select the item from the listbox
                 String selectedRoses = listBoxRoses.SelectedItem.ToString();
-
+               
                 //get the roseId for the selected roses
-                var roseSizeId = context.RoseSizes.Include("Rose").Where(r => r.Rose.RoseName == selectedRoses).FirstOrDefault();
-                order.RoseSizeID = roseSizeId.RoseSizeID;
-                order.Number_of_bunches = int.Parse(textBoxNumberOfBunches.Text);
+               var roseSizeId = context.RoseSizes.Include("Rose").Where(r => r.Rose.RoseName == selectedRoses).FirstOrDefault();
+               // MessageBox.Show(roseSizeId.RoseSizeID.ToString());
+                    order.RoseSizeID = roseSizeId.RoseSizeID;
+                   order.Number_of_bunches = int.Parse(textBoxNumberOfBunches.Text);
             }
             // add oder to the list using controller
             if (Controller<RosePurchaseManagementEntities, Order>.AddEntity(order) == null)
             {
-                MessageBox.Show("Cannot add student to database");
+                MessageBox.Show("Cannot  order to database");
                 return;
             }
             //display orderDatagridView
-            DisplayOder();
+          DisplayOder();
+            listBoxRoses.ClearSelected();
+            textBoxNumberOfBunches.Text = "";
+        
 
         }
         /// <summary>
@@ -204,7 +208,7 @@ namespace ProjectTeam05RosePurchaseManagement
                               name = rose.RoseName,
                               bunches = order.Number_of_bunches,
 
-                          }).ToList();
+                          }).OrderBy(i => i.oderid).ToList();
 
                 foreach(var order in orderList)
                 {
