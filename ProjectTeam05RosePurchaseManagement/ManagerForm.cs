@@ -79,7 +79,7 @@ namespace ProjectTeam05RosePurchaseManagement
                 }
 
             }
-            displayOder();
+            DisplayOder();
 
 
         }
@@ -91,7 +91,7 @@ namespace ProjectTeam05RosePurchaseManagement
         /// <param name="e"></param>
         private void DateTimePickerEndDate_ValueChanged(object sender, EventArgs e)
         {
-            dispalyPurchase();
+            DispalyPurchase();
         }
         /// <summary>
         /// on change listner for startdate picker
@@ -100,7 +100,7 @@ namespace ProjectTeam05RosePurchaseManagement
         /// <param name="e"></param>
         private void DateTimePickerStartDate_ValueChanged(object sender, EventArgs e)
         {
-            dispalyPurchase();
+            DispalyPurchase();
         }
         /// <summary>
         /// event listner for checkbox
@@ -109,7 +109,7 @@ namespace ProjectTeam05RosePurchaseManagement
         /// <param name="e"></param>
         private void CheckBoxSearch_CheckedChanged(object sender, EventArgs e)
         {
-            dispalyPurchase();
+            DispalyPurchase();
         }
 
 
@@ -143,7 +143,7 @@ namespace ProjectTeam05RosePurchaseManagement
                 return;
             }
             //display orderDatagridView
-            displayOder();
+            DisplayOder();
 
         }
         /// <summary>
@@ -163,8 +163,8 @@ namespace ProjectTeam05RosePurchaseManagement
             listBoxRoses.SelectedIndex = -1;
 
             textBoxNumberOfBunches.ResetText();
-            displayOder();
-            dispalyPurchase();
+            DisplayOder();
+            DispalyPurchase();
 
         }
 
@@ -187,7 +187,7 @@ namespace ProjectTeam05RosePurchaseManagement
             e.Cancel = true;
         }
 
-        public void displayOder()
+        public void DisplayOder()
         {
             //open the RosePurchaseEntities context
             using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
@@ -224,7 +224,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
             }
         }
-       public void dispalyPurchase()
+       public void DispalyPurchase()
         {
             List<PurchaseBoxQuantity> purchaseBoxQuantities = new List<PurchaseBoxQuantity>();
             var purchases = Controller<RosePurchaseManagementEntities, Purchase>.GetEntitiesWithIncluded("BoxPurchases", "RoseSize", "Farm", "Invoice", "Warehouse");
