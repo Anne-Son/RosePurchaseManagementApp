@@ -107,8 +107,6 @@ namespace SeedDatabaseExtensions
 			context.SaveChanges();
 
 
-
-
 			//Loading Rose data to the database
 			List<Rose> RoseList = new List<Rose>()  {
 				new  Rose { RoseID=1,RoseName="Creme de la Creme",GroupCode="CR" },
@@ -164,13 +162,12 @@ namespace SeedDatabaseExtensions
 
 			//Loading size data to the database
 			List<Invoice> invoicesList = new List<Invoice>()  {
+
 				new  Invoice {InvoiceID= 1233, Date = DateTime.ParseExact("01-02-2021","dd-MM-yyyy",null),TotalAmount=70, Farm=farms[1]  },
 				new  Invoice {InvoiceID= 1234, Date = DateTime.ParseExact("01-02-2021","dd-MM-yyyy",null),TotalAmount=70, Farm=farms[1]  },
 				new  Invoice {InvoiceID= 2244, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, Farm=farms[2] },
 				new  Invoice {InvoiceID= 3124, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, Farm=farms[3] },
 				new  Invoice {InvoiceID= 4124, Date = DateTime.ParseExact("02-02-2021","dd-MM-yyyy",null),TotalAmount=70, Farm=farms[4] },
-
-
 			};
 
 			Dictionary<int, Invoice> invoices = invoicesList.ToDictionary(x => x.InvoiceID, x => x);
@@ -214,6 +211,7 @@ namespace SeedDatabaseExtensions
 
 			//Loading purchase data to the database
 			List<Purchase> purchaseList = new List<Purchase>()  {
+
 				new Purchase {PurchaseID =1 , Farm = farms[2], RoseSize =roseSizes[3],Price_per_stem=0.25f,InvoiceID=1233,Warehouse=warehouses[1] },
 				new Purchase {PurchaseID =2 , Farm = farms[1], RoseSize =roseSizes[4],Price_per_stem=0.28f,InvoiceID=1234,Warehouse=warehouses[2] },
 				new Purchase {PurchaseID =3 , Farm = farms[2], RoseSize =roseSizes[3],Price_per_stem=0.30f,InvoiceID=3124,Warehouse=warehouses[3] },
@@ -230,6 +228,8 @@ namespace SeedDatabaseExtensions
 				new  BoxPurchase { Purchase=purchases[2],Box=boxes[2],Quantity=10 },
 				new  BoxPurchase { Purchase=purchases[3],Box=boxes[1],Quantity=4 },
 				new  BoxPurchase { Purchase=purchases[4],Box=boxes[3],Quantity=5 },
+
+
 			};
 
 			//var boxPurchase = boxPurchaseList.ToDictionary(x => Tuple.Create(x.PurchaseID, x.BoxID), x => x);
