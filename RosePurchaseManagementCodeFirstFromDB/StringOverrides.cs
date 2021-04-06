@@ -23,6 +23,13 @@ namespace RosePurchaseManagementCodeFirstFromDB
 
 
 	//    }
+	public partial class Order
+	{
+		public override string ToString()
+		{
+			return $"{OrderID} {RoseSize.Rose.RoseName}	{RoseSize.Size.SizeName}";
+		}
+	}
 	public partial class Farm
 	{
 		public override string ToString()
@@ -41,7 +48,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 	{
 		public override string ToString()
 		{
-			return $"{RoseSizeID} {RoseID}		{SizeID}";
+			return $"{RoseSizeID} {RoseID} {SizeID}";
 		}
 	}
 
@@ -57,7 +64,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 	{
 		public override string ToString()
 		{
-			return $"{InvoiceID}  {Date}	{TotalAmount}  {FarmID}";
+			return $"{InvoiceID}  {Date}  {TotalAmount}  {FarmID}  ";
 		}
 	}
 

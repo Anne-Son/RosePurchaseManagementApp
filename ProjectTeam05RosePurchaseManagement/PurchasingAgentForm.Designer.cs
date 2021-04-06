@@ -31,8 +31,14 @@ namespace ProjectTeam05RosePurchaseManagement
         {
             this.tabControlManager = new System.Windows.Forms.TabControl();
             this.tabPagePurchase = new System.Windows.Forms.TabPage();
+            this.textBoxInvoiceID = new System.Windows.Forms.TextBox();
+            this.buttonSelect = new System.Windows.Forms.Button();
+            this.textBoxQuantity = new System.Windows.Forms.TextBox();
+            this.labelQuantity = new System.Windows.Forms.Label();
+            this.listBoxBox = new System.Windows.Forms.ListBox();
+            this.listBoxWarehouse = new System.Windows.Forms.ListBox();
+            this.listBoxInvoice = new System.Windows.Forms.ListBox();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonAddUpdate = new System.Windows.Forms.Button();
             this.labelSearch = new System.Windows.Forms.Label();
             this.labelOrderToBeFulfilled = new System.Windows.Forms.Label();
             this.dataGridViewOrder = new System.Windows.Forms.DataGridView();
@@ -47,24 +53,33 @@ namespace ProjectTeam05RosePurchaseManagement
             this.labelSuppliersInventory = new System.Windows.Forms.Label();
             this.dataGridViewPurchase = new System.Windows.Forms.DataGridView();
             this.dataGridViewSuppliersInventory = new System.Windows.Forms.DataGridView();
-            this.tabViewInventory = new System.Windows.Forms.TabPage();
-            this.listBoxInvoice = new System.Windows.Forms.ListBox();
-            this.listBoxWarehouse = new System.Windows.Forms.ListBox();
-            this.listBoxBox = new System.Windows.Forms.ListBox();
-            this.textBoxQuantity = new System.Windows.Forms.TextBox();
-            this.labelQuantity = new System.Windows.Forms.Label();
-            this.buttonSelect = new System.Windows.Forms.Button();
+            this.tabViewInvoice = new System.Windows.Forms.TabPage();
+            this.textBoxInvoiceNumber = new System.Windows.Forms.TextBox();
+            this.labelInvoiceNumber = new System.Windows.Forms.Label();
+            this.buttonInvoiceDelete = new System.Windows.Forms.Button();
+            this.buttonInvoiceUpdate = new System.Windows.Forms.Button();
+            this.buttonInvoiceAdd = new System.Windows.Forms.Button();
+            this.labelFarms = new System.Windows.Forms.Label();
+            this.labelTotalAmount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
+            this.dateTimePickerInvoice = new System.Windows.Forms.DateTimePicker();
+            this.listBoxFarms = new System.Windows.Forms.ListBox();
+            this.labelInvoice = new System.Windows.Forms.Label();
+            this.dataGridViewInvoice = new System.Windows.Forms.DataGridView();
             this.tabControlManager.SuspendLayout();
             this.tabPagePurchase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuppliersInventory)).BeginInit();
+            this.tabViewInvoice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInvoice)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlManager
             // 
             this.tabControlManager.Controls.Add(this.tabPagePurchase);
-            this.tabControlManager.Controls.Add(this.tabViewInventory);
+            this.tabControlManager.Controls.Add(this.tabViewInvoice);
             this.tabControlManager.Location = new System.Drawing.Point(-12, 12);
             this.tabControlManager.Name = "tabControlManager";
             this.tabControlManager.SelectedIndex = 0;
@@ -74,6 +89,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPagePurchase
             // 
+            this.tabPagePurchase.Controls.Add(this.textBoxInvoiceID);
             this.tabPagePurchase.Controls.Add(this.buttonSelect);
             this.tabPagePurchase.Controls.Add(this.textBoxQuantity);
             this.tabPagePurchase.Controls.Add(this.labelQuantity);
@@ -81,7 +97,6 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPagePurchase.Controls.Add(this.listBoxWarehouse);
             this.tabPagePurchase.Controls.Add(this.listBoxInvoice);
             this.tabPagePurchase.Controls.Add(this.buttonDelete);
-            this.tabPagePurchase.Controls.Add(this.buttonAddUpdate);
             this.tabPagePurchase.Controls.Add(this.labelSearch);
             this.tabPagePurchase.Controls.Add(this.labelOrderToBeFulfilled);
             this.tabPagePurchase.Controls.Add(this.dataGridViewOrder);
@@ -104,6 +119,65 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPagePurchase.Text = "Purchase";
             this.tabPagePurchase.UseVisualStyleBackColor = true;
             // 
+            // textBoxInvoiceID
+            // 
+            this.textBoxInvoiceID.Location = new System.Drawing.Point(395, 465);
+            this.textBoxInvoiceID.Name = "textBoxInvoiceID";
+            this.textBoxInvoiceID.Size = new System.Drawing.Size(136, 22);
+            this.textBoxInvoiceID.TabIndex = 24;
+            // 
+            // buttonSelect
+            // 
+            this.buttonSelect.Location = new System.Drawing.Point(1087, 150);
+            this.buttonSelect.Name = "buttonSelect";
+            this.buttonSelect.Size = new System.Drawing.Size(122, 39);
+            this.buttonSelect.TabIndex = 23;
+            this.buttonSelect.Text = "Select";
+            this.buttonSelect.UseVisualStyleBackColor = true;
+            // 
+            // textBoxQuantity
+            // 
+            this.textBoxQuantity.Location = new System.Drawing.Point(201, 447);
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(136, 22);
+            this.textBoxQuantity.TabIndex = 22;
+            // 
+            // labelQuantity
+            // 
+            this.labelQuantity.AutoSize = true;
+            this.labelQuantity.Location = new System.Drawing.Point(71, 450);
+            this.labelQuantity.Name = "labelQuantity";
+            this.labelQuantity.Size = new System.Drawing.Size(61, 17);
+            this.labelQuantity.TabIndex = 21;
+            this.labelQuantity.Text = "Quantity";
+            // 
+            // listBoxBox
+            // 
+            this.listBoxBox.FormattingEnabled = true;
+            this.listBoxBox.ItemHeight = 16;
+            this.listBoxBox.Location = new System.Drawing.Point(993, 332);
+            this.listBoxBox.Name = "listBoxBox";
+            this.listBoxBox.Size = new System.Drawing.Size(153, 116);
+            this.listBoxBox.TabIndex = 20;
+            // 
+            // listBoxWarehouse
+            // 
+            this.listBoxWarehouse.FormattingEnabled = true;
+            this.listBoxWarehouse.ItemHeight = 16;
+            this.listBoxWarehouse.Location = new System.Drawing.Point(777, 332);
+            this.listBoxWarehouse.Name = "listBoxWarehouse";
+            this.listBoxWarehouse.Size = new System.Drawing.Size(182, 116);
+            this.listBoxWarehouse.TabIndex = 19;
+            // 
+            // listBoxInvoice
+            // 
+            this.listBoxInvoice.FormattingEnabled = true;
+            this.listBoxInvoice.ItemHeight = 16;
+            this.listBoxInvoice.Location = new System.Drawing.Point(395, 332);
+            this.listBoxInvoice.Name = "listBoxInvoice";
+            this.listBoxInvoice.Size = new System.Drawing.Size(343, 116);
+            this.listBoxInvoice.TabIndex = 18;
+            // 
             // buttonDelete
             // 
             this.buttonDelete.Location = new System.Drawing.Point(1178, 677);
@@ -112,15 +186,6 @@ namespace ProjectTeam05RosePurchaseManagement
             this.buttonDelete.TabIndex = 17;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddUpdate
-            // 
-            this.buttonAddUpdate.Location = new System.Drawing.Point(1178, 536);
-            this.buttonAddUpdate.Name = "buttonAddUpdate";
-            this.buttonAddUpdate.Size = new System.Drawing.Size(122, 39);
-            this.buttonAddUpdate.TabIndex = 15;
-            this.buttonAddUpdate.Text = "Add Update";
-            this.buttonAddUpdate.UseVisualStyleBackColor = true;
             // 
             // labelSearch
             // 
@@ -250,67 +315,140 @@ namespace ProjectTeam05RosePurchaseManagement
             this.dataGridViewSuppliersInventory.Size = new System.Drawing.Size(473, 228);
             this.dataGridViewSuppliersInventory.TabIndex = 0;
             // 
-            // tabViewInventory
+            // tabViewInvoice
             // 
-            this.tabViewInventory.Location = new System.Drawing.Point(4, 25);
-            this.tabViewInventory.Name = "tabViewInventory";
-            this.tabViewInventory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabViewInventory.Size = new System.Drawing.Size(1365, 632);
-            this.tabViewInventory.TabIndex = 1;
-            this.tabViewInventory.Text = "Inventory";
-            this.tabViewInventory.UseVisualStyleBackColor = true;
+            this.tabViewInvoice.Controls.Add(this.textBoxInvoiceNumber);
+            this.tabViewInvoice.Controls.Add(this.labelInvoiceNumber);
+            this.tabViewInvoice.Controls.Add(this.buttonInvoiceDelete);
+            this.tabViewInvoice.Controls.Add(this.buttonInvoiceUpdate);
+            this.tabViewInvoice.Controls.Add(this.buttonInvoiceAdd);
+            this.tabViewInvoice.Controls.Add(this.labelFarms);
+            this.tabViewInvoice.Controls.Add(this.labelTotalAmount);
+            this.tabViewInvoice.Controls.Add(this.label1);
+            this.tabViewInvoice.Controls.Add(this.textBoxTotalAmount);
+            this.tabViewInvoice.Controls.Add(this.dateTimePickerInvoice);
+            this.tabViewInvoice.Controls.Add(this.listBoxFarms);
+            this.tabViewInvoice.Controls.Add(this.labelInvoice);
+            this.tabViewInvoice.Controls.Add(this.dataGridViewInvoice);
+            this.tabViewInvoice.Location = new System.Drawing.Point(4, 25);
+            this.tabViewInvoice.Name = "tabViewInvoice";
+            this.tabViewInvoice.Padding = new System.Windows.Forms.Padding(3);
+            this.tabViewInvoice.Size = new System.Drawing.Size(1389, 832);
+            this.tabViewInvoice.TabIndex = 1;
+            this.tabViewInvoice.Text = "Invoice";
+            this.tabViewInvoice.UseVisualStyleBackColor = true;
             // 
-            // listBoxInvoice
+            // textBoxInvoiceNumber
             // 
-            this.listBoxInvoice.FormattingEnabled = true;
-            this.listBoxInvoice.ItemHeight = 16;
-            this.listBoxInvoice.Location = new System.Drawing.Point(395, 332);
-            this.listBoxInvoice.Name = "listBoxInvoice";
-            this.listBoxInvoice.Size = new System.Drawing.Size(343, 116);
-            this.listBoxInvoice.TabIndex = 18;
+            this.textBoxInvoiceNumber.Location = new System.Drawing.Point(233, 384);
+            this.textBoxInvoiceNumber.Name = "textBoxInvoiceNumber";
+            this.textBoxInvoiceNumber.Size = new System.Drawing.Size(100, 22);
+            this.textBoxInvoiceNumber.TabIndex = 12;
             // 
-            // listBoxWarehouse
+            // labelInvoiceNumber
             // 
-            this.listBoxWarehouse.FormattingEnabled = true;
-            this.listBoxWarehouse.ItemHeight = 16;
-            this.listBoxWarehouse.Location = new System.Drawing.Point(777, 332);
-            this.listBoxWarehouse.Name = "listBoxWarehouse";
-            this.listBoxWarehouse.Size = new System.Drawing.Size(182, 116);
-            this.listBoxWarehouse.TabIndex = 19;
+            this.labelInvoiceNumber.AutoSize = true;
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(102, 389);
+            this.labelInvoiceNumber.Name = "labelInvoiceNumber";
+            this.labelInvoiceNumber.Size = new System.Drawing.Size(106, 17);
+            this.labelInvoiceNumber.TabIndex = 11;
+            this.labelInvoiceNumber.Text = "Invoice Number";
             // 
-            // listBoxBox
+            // buttonInvoiceDelete
             // 
-            this.listBoxBox.FormattingEnabled = true;
-            this.listBoxBox.ItemHeight = 16;
-            this.listBoxBox.Location = new System.Drawing.Point(993, 332);
-            this.listBoxBox.Name = "listBoxBox";
-            this.listBoxBox.Size = new System.Drawing.Size(153, 116);
-            this.listBoxBox.TabIndex = 20;
+            this.buttonInvoiceDelete.Location = new System.Drawing.Point(561, 558);
+            this.buttonInvoiceDelete.Name = "buttonInvoiceDelete";
+            this.buttonInvoiceDelete.Size = new System.Drawing.Size(118, 48);
+            this.buttonInvoiceDelete.TabIndex = 10;
+            this.buttonInvoiceDelete.Text = "Delete";
+            this.buttonInvoiceDelete.UseVisualStyleBackColor = true;
             // 
-            // textBoxQuantity
+            // buttonInvoiceUpdate
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(201, 447);
-            this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(136, 22);
-            this.textBoxQuantity.TabIndex = 22;
+            this.buttonInvoiceUpdate.Location = new System.Drawing.Point(342, 558);
+            this.buttonInvoiceUpdate.Name = "buttonInvoiceUpdate";
+            this.buttonInvoiceUpdate.Size = new System.Drawing.Size(118, 48);
+            this.buttonInvoiceUpdate.TabIndex = 9;
+            this.buttonInvoiceUpdate.Text = "Update";
+            this.buttonInvoiceUpdate.UseVisualStyleBackColor = true;
             // 
-            // labelQuantity
+            // buttonInvoiceAdd
             // 
-            this.labelQuantity.AutoSize = true;
-            this.labelQuantity.Location = new System.Drawing.Point(71, 450);
-            this.labelQuantity.Name = "labelQuantity";
-            this.labelQuantity.Size = new System.Drawing.Size(61, 17);
-            this.labelQuantity.TabIndex = 21;
-            this.labelQuantity.Text = "Quantity";
+            this.buttonInvoiceAdd.Location = new System.Drawing.Point(105, 558);
+            this.buttonInvoiceAdd.Name = "buttonInvoiceAdd";
+            this.buttonInvoiceAdd.Size = new System.Drawing.Size(118, 48);
+            this.buttonInvoiceAdd.TabIndex = 8;
+            this.buttonInvoiceAdd.Text = "Add";
+            this.buttonInvoiceAdd.UseVisualStyleBackColor = true;
             // 
-            // buttonSelect
+            // labelFarms
             // 
-            this.buttonSelect.Location = new System.Drawing.Point(1087, 150);
-            this.buttonSelect.Name = "buttonSelect";
-            this.buttonSelect.Size = new System.Drawing.Size(122, 39);
-            this.buttonSelect.TabIndex = 23;
-            this.buttonSelect.Text = "Select";
-            this.buttonSelect.UseVisualStyleBackColor = true;
+            this.labelFarms.AutoSize = true;
+            this.labelFarms.Location = new System.Drawing.Point(560, 358);
+            this.labelFarms.Name = "labelFarms";
+            this.labelFarms.Size = new System.Drawing.Size(47, 17);
+            this.labelFarms.TabIndex = 7;
+            this.labelFarms.Text = "Farms";
+            // 
+            // labelTotalAmount
+            // 
+            this.labelTotalAmount.AutoSize = true;
+            this.labelTotalAmount.Location = new System.Drawing.Point(102, 488);
+            this.labelTotalAmount.Name = "labelTotalAmount";
+            this.labelTotalAmount.Size = new System.Drawing.Size(92, 17);
+            this.labelTotalAmount.TabIndex = 6;
+            this.labelTotalAmount.Text = "Total Amount";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(102, 435);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 17);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Date";
+            // 
+            // textBoxTotalAmount
+            // 
+            this.textBoxTotalAmount.Location = new System.Drawing.Point(233, 488);
+            this.textBoxTotalAmount.Name = "textBoxTotalAmount";
+            this.textBoxTotalAmount.Size = new System.Drawing.Size(100, 22);
+            this.textBoxTotalAmount.TabIndex = 4;
+            // 
+            // dateTimePickerInvoice
+            // 
+            this.dateTimePickerInvoice.Location = new System.Drawing.Point(233, 435);
+            this.dateTimePickerInvoice.Name = "dateTimePickerInvoice";
+            this.dateTimePickerInvoice.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerInvoice.TabIndex = 3;
+            // 
+            // listBoxFarms
+            // 
+            this.listBoxFarms.FormattingEnabled = true;
+            this.listBoxFarms.ItemHeight = 16;
+            this.listBoxFarms.Location = new System.Drawing.Point(563, 389);
+            this.listBoxFarms.Name = "listBoxFarms";
+            this.listBoxFarms.Size = new System.Drawing.Size(142, 116);
+            this.listBoxFarms.TabIndex = 2;
+            // 
+            // labelInvoice
+            // 
+            this.labelInvoice.AutoSize = true;
+            this.labelInvoice.Location = new System.Drawing.Point(85, 42);
+            this.labelInvoice.Name = "labelInvoice";
+            this.labelInvoice.Size = new System.Drawing.Size(52, 17);
+            this.labelInvoice.TabIndex = 1;
+            this.labelInvoice.Text = "Invoice";
+            // 
+            // dataGridViewInvoice
+            // 
+            this.dataGridViewInvoice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewInvoice.Location = new System.Drawing.Point(88, 80);
+            this.dataGridViewInvoice.Name = "dataGridViewInvoice";
+            this.dataGridViewInvoice.RowHeadersWidth = 51;
+            this.dataGridViewInvoice.RowTemplate.Height = 24;
+            this.dataGridViewInvoice.Size = new System.Drawing.Size(617, 256);
+            this.dataGridViewInvoice.TabIndex = 0;
             // 
             // PurchasingAgentForm
             // 
@@ -326,6 +464,9 @@ namespace ProjectTeam05RosePurchaseManagement
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuppliersInventory)).EndInit();
+            this.tabViewInvoice.ResumeLayout(false);
+            this.tabViewInvoice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInvoice)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -334,7 +475,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private System.Windows.Forms.TabControl tabControlManager;
         private System.Windows.Forms.TabPage tabPagePurchase;
-        private System.Windows.Forms.TabPage tabViewInventory;
+        private System.Windows.Forms.TabPage tabViewInvoice;
         private System.Windows.Forms.DataGridView dataGridViewSuppliersInventory;
         private System.Windows.Forms.DataGridView dataGridViewPurchase;
         private System.Windows.Forms.TextBox textBoxPricePerStem;
@@ -346,7 +487,6 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.Label labelPurchaseData;
         private System.Windows.Forms.Label labelSuppliersInventory;
         private System.Windows.Forms.Button buttonPurchase;
-        private System.Windows.Forms.Button buttonAddUpdate;
         private System.Windows.Forms.Label labelSearch;
         private System.Windows.Forms.Label labelOrderToBeFulfilled;
         private System.Windows.Forms.DataGridView dataGridViewOrder;
@@ -357,5 +497,19 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.ListBox listBoxWarehouse;
         private System.Windows.Forms.ListBox listBoxInvoice;
         private System.Windows.Forms.Button buttonSelect;
+        private System.Windows.Forms.Label labelInvoice;
+        private System.Windows.Forms.DataGridView dataGridViewInvoice;
+        private System.Windows.Forms.Button buttonInvoiceUpdate;
+        private System.Windows.Forms.Button buttonInvoiceAdd;
+        private System.Windows.Forms.Label labelFarms;
+        private System.Windows.Forms.Label labelTotalAmount;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxTotalAmount;
+        private System.Windows.Forms.DateTimePicker dateTimePickerInvoice;
+        private System.Windows.Forms.ListBox listBoxFarms;
+        private System.Windows.Forms.Button buttonInvoiceDelete;
+        private System.Windows.Forms.TextBox textBoxInvoiceNumber;
+        private System.Windows.Forms.Label labelInvoiceNumber;
+        private System.Windows.Forms.TextBox textBoxInvoiceID;
     }
 }
