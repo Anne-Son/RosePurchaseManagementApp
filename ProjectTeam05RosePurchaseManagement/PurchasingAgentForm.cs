@@ -23,20 +23,96 @@ namespace ProjectTeam05RosePurchaseManagement
 
             this.Load += (s, e) => PurchasingAgentForm_Load();
 
+            //event handlers for buttons, listbox and datagridview
+            //purchasingAgentForm
             buttonPurchase.Click += ButtonPurchase_Click;
             buttonSelect.Click += ButtonSelect_Click;
             buttonDelete.Click += ButtonDelete_Click;
+            buttonUpdatePurchase.Click += ButtonUpdatePurchase_Click;
 
+            dataGridViewPurchase.SelectionChanged += (s, e) => GetPurchaseBoxQuantitiesData();
+
+            //Invoice form
             buttonInvoiceAdd.Click += ButtonInvoiceAdd_Click;
             buttonInvoiceUpdate.Click += ButtonInvoiceUpdate_Click;
             buttonInvoiceDelete.Click += ButtonInvoiceDelete_Click;
 
             listBoxInvoice.SelectedIndexChanged += (s,e) => GetInvoiceID();
+
+        }
+
+        private void ButtonUpdatePurchase_Click(object sender, EventArgs e)
+        {
+            var selectedPurchase = dataGridViewPurchase.SelectedRows
+                .OfType<DataGridViewRow>()
+                .ToArray();
+
+            foreach (var row in selectedPurchase)
+            {
+                using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                {
+                    var purch = (PurchaseBoxQuantity)row.DataBoundItem;
+                    Purchase purchase = context.Purchases.Where(x => x.PurchaseID == purch.PurchaseID).FirstOrDefault();
+
+                    string selectedFarm = textBoxFarmName.Text.Trim();
+                    int selectedInvoice = int.Parse(textBoxInvoiceID.Text);
+                    string selectedRoseName = textBoxRoseSizeID.Text.Trim();
+
+                    var roseSizeID = context.Roses.Where(r => r.RoseName == selectedRoseName).FirstOrDefault();
+
+                    //get the farmId for the selected farm
+                    var farmID = context.Farms.Where(f => f.FarmName == selectedFarm).FirstOrDefault();
+
+                    purchase.FarmID = farmID.FarmID;
+                    purchase.RoseSizeID = roseSizeID.RoseID;
+                    purchase.Price_per_stem = float.Parse(textBoxPricePerStem.Text);
+                    purchase.InvoiceID = int.Parse(textBoxInvoiceID.Text);
+                    purchase.WarehouseID = listBoxWarehouse.SelectedIndex + 1;
+                    
+                    Controller<RosePurchaseManagementEntities, Purchase>.UpdateEntity(purchase);
+
+                    BoxPurchase boxPurchase = context.BoxPurchases.Where(b => b.PurchaseID == purch.PurchaseID).FirstOrDefault();
+                    boxPurchase.PurchaseID = purchase.PurchaseID;
+                    boxPurchase.BoxID = listBoxBox.SelectedIndex + 1;
+                    boxPurchase.Quantity = int.Parse(textBoxQuantity.Text);
+                    Controller<RosePurchaseManagementEntities, BoxPurchase>.UpdateEntity(boxPurchase);
+                }
+            }
+            UpdatePurchase();
+        }
+
+        private void GetPurchaseBoxQuantitiesData()
+        {
+            PurchaseBoxQuantity purchaseBoxQuantity = (PurchaseBoxQuantity)dataGridViewPurchase.CurrentRow.DataBoundItem;
+
+            textBoxFarmName.Text = purchaseBoxQuantity.FarmName.ToString();
+            textBoxRoseSizeID.Text = purchaseBoxQuantity.RoseName.ToString();
+            textBoxPricePerStem.Text = purchaseBoxQuantity.Price.ToString();
+            textBoxInvoiceID.Text = purchaseBoxQuantity.InvoiceNumber.ToString();
+            textBoxQuantity.Text = purchaseBoxQuantity.BoxQuantity.ToString();
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
-           
+            //To get the selected row from the purchase table
+            var selectedPurchase = dataGridViewPurchase.SelectedRows
+                 .OfType<DataGridViewRow>()
+                 .ToArray();
+
+            foreach (var row in selectedPurchase)
+            {
+                using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                {
+                    var purch = (PurchaseBoxQuantity)row.DataBoundItem;
+                    Purchase purchase = context.Purchases.Where(x => x.PurchaseID == purch.PurchaseID).FirstOrDefault();
+
+                    BoxPurchase boxPurchase = context.BoxPurchases.Where(b => b.PurchaseID == purch.PurchaseID).FirstOrDefault();
+                    context.Purchases.Remove(purchase);
+                    context.BoxPurchases.Remove(boxPurchase);
+                    context.SaveChanges();
+                }
+            }
+            UpdatePurchase();
         }
 
         private void GetInvoiceID()
@@ -48,31 +124,45 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private void ButtonInvoiceDelete_Click(object sender, EventArgs e)
         {
-            
+            //To get the selected row from the invoice table
+            var selectedInvoice = dataGridViewInvoice.SelectedRows
+                 .OfType<DataGridViewRow>()
+                 .ToArray();
+
+            foreach (var row in selectedInvoice)
+            {
+                using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                {
+                    var inv = (Invoice)row.DataBoundItem;
+                    Invoice invoice = context.Invoices.Where(x => x.InvoiceID == inv.InvoiceID).FirstOrDefault();
+                    context.Invoices.Remove(invoice);
+                    context.SaveChanges();
+                }
+            }
+            UpdateInvoice();
         }
 
         private void ButtonInvoiceUpdate_Click(object sender, EventArgs e)
         {
-            using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+            //To get the selected row from the invoice table
+            var selectedInvoice = dataGridViewInvoice.SelectedRows
+                 .OfType<DataGridViewRow>()
+                 .ToArray();
+            foreach (var row in selectedInvoice)
             {
-                string selectedFarm = listBoxFarms.SelectedItem.ToString();
-                var farmID = context.Farms.Where(f => f.FarmName == selectedFarm).FirstOrDefault();
-
-                if (!(listBoxInvoice.SelectedItem is Invoice invoice))
+                using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
                 {
-                    MessageBox.Show("Invoice must be selected");
-                    return;
-                }
+                    var inv = (Invoice)row.DataBoundItem;
+                    Invoice invoice = context.Invoices.Where(x => x.InvoiceID == inv.InvoiceID).FirstOrDefault();
+                    string selectedFarm = listBoxFarms.SelectedItem.ToString();
+                    var farmID = context.Farms.Where(f => f.FarmName == selectedFarm).FirstOrDefault();
 
-                invoice.InvoiceID = int.Parse(textBoxInvoiceNumber.Text);
-                invoice.Date = dateTimePickerInvoice.Value;
-                invoice.TotalAmount = float.Parse(textBoxTotalAmount.Text.Trim());
-                invoice.FarmID = farmID.FarmID;
-                
-                if (Controller<RosePurchaseManagementEntities, Invoice>.AddEntity(invoice) == null)
-                {
-                    MessageBox.Show("cannot update invoice to database");
-                    return;
+                    // invoice.InvoiceID = int.Parse(textBoxInvoiceNumber.Text);
+                    invoice.Date = dateTimePickerInvoice.Value;
+                    invoice.TotalAmount = float.Parse(textBoxTotalAmount.Text.Trim());
+                    invoice.FarmID = farmID.FarmID;
+
+                    Controller<RosePurchaseManagementEntities, Invoice>.UpdateEntity(invoice);
                 }
             }
             UpdateInvoice();
@@ -190,10 +280,9 @@ namespace ProjectTeam05RosePurchaseManagement
             dataGridViewSuppliersInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewSuppliersInventory.ReadOnly = true;
             dataGridViewSuppliersInventory.AllowUserToAddRows = false;
-            dataGridViewSuppliersInventory.DataError += (s, e) => HandleDataError<Inventory>(s as DataGridView, e);
-            dataGridViewSuppliersInventory.DataSource = Controller<RosePurchaseManagementEntities, Inventory>.GetEntitiesWithIncluded("BoxInventories","Farm");
-            dataGridViewSuppliersInventory.Columns["BoxInventories"].Visible = false;
-            dataGridViewSuppliersInventory.Columns["RoseSize"].Visible = false;
+            dataGridViewSuppliersInventory.DataSource = GetSupplierInventory();
+            dataGridViewSuppliersInventory.Columns["Inventory"].Visible = false;
+            dataGridViewSuppliersInventory.Columns["BoxInventory"].Visible = false;
 
             //load invoice data 
             dataGridViewInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -228,6 +317,7 @@ namespace ProjectTeam05RosePurchaseManagement
             listBoxWarehouse.SelectedIndex = -1;
             listBoxFarms.SelectionMode = SelectionMode.One;
             listBoxFarms.SelectedIndex = -1;
+            dataGridViewPurchase.ClearSelection();
 
             textBoxQuantity.ResetText();
             textBoxFarmName.ResetText();
@@ -327,6 +417,68 @@ namespace ProjectTeam05RosePurchaseManagement
             }
             return purchaseBoxQuantities;
         }
+        List<SupplierInventory> GetSupplierInventory()
+        {
+            List<SupplierInventory> supplierInventories = new List<SupplierInventory>();
+            List<Inventory> inventory = (List<Inventory>)Controller<RosePurchaseManagementEntities, Inventory>.GetEntitiesWithIncluded("BoxInventories", "Farm");
+            List<Box> box = (List<Box>)Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxInventories");
+
+            foreach (Inventory inventories in inventory)
+            {
+                foreach (BoxInventory boxes in inventories.BoxInventories)
+                {
+                    SupplierInventory supplierInventory = new SupplierInventory()
+                    {
+                        InventoryID = inventories.InventoryID,
+                        FarmID = inventories.FarmID,
+                        FarmName = inventories.Farm.FarmName,
+                        RoseSizeID = inventories.RoseSizeID,
+                        Price = inventories.Price_per_stem,
+                        BoxID = boxes.BoxID,
+                        Quantity = boxes.Quantity,
+
+                    };
+                    using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                    {
+                        var roseName = context.RoseSizes.Include("Rose").Where(x => x.RoseSizeID == inventories.RoseSizeID).Select(r => r.Rose.RoseName).FirstOrDefault();
+                        supplierInventory.RoseName = roseName;
+                    }
+                    supplierInventories.Add(supplierInventory);
+                }
+            }
+            return supplierInventories;
+        }
+        private class SupplierInventory
+        {
+            [DisplayName("Inventory ID")]
+            public int InventoryID { get; set; }
+
+            [DisplayName("Farm ID")]
+            public int FarmID { get; set; }
+
+            [DisplayName("Farm Name")]
+            public string FarmName { get; set; }
+
+            [DisplayName("Rose Size ID")]
+            public int RoseSizeID { get; set; }
+
+            [DisplayName("Rose Name")]
+            public string RoseName { get; set; }
+
+            [DisplayName("Price per stem")]
+            public float Price { get; set; }
+
+            [DisplayName("Box ID")]
+            public int BoxID { get; set; }
+
+            [DisplayName("Quantity")]
+            public int Quantity { get; set; }
+
+            public Inventory Inventory { get; set; }
+
+            public BoxInventory BoxInventory { get; set; }
+
+        }
         private class PurchaseBoxQuantity
         {
             [DisplayName("PurchaseID")]
@@ -364,10 +516,8 @@ namespace ProjectTeam05RosePurchaseManagement
         public class OrderDisplay
         {
             public int OderId { get; set; }
-            public String RoseName { get; set; }
+            public string RoseName { get; set; }
             public int NumberOfBunches { get; set; }
-
-
         }
     }
 }

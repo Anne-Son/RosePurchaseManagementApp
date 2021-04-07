@@ -67,6 +67,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.listBoxFarms = new System.Windows.Forms.ListBox();
             this.labelInvoice = new System.Windows.Forms.Label();
             this.dataGridViewInvoice = new System.Windows.Forms.DataGridView();
+            this.buttonUpdatePurchase = new System.Windows.Forms.Button();
             this.tabControlManager.SuspendLayout();
             this.tabPagePurchase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -89,6 +90,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPagePurchase
             // 
+            this.tabPagePurchase.Controls.Add(this.buttonUpdatePurchase);
             this.tabPagePurchase.Controls.Add(this.textBoxInvoiceID);
             this.tabPagePurchase.Controls.Add(this.buttonSelect);
             this.tabPagePurchase.Controls.Add(this.textBoxQuantity);
@@ -128,7 +130,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonSelect
             // 
-            this.buttonSelect.Location = new System.Drawing.Point(1087, 150);
+            this.buttonSelect.Location = new System.Drawing.Point(1202, 152);
             this.buttonSelect.Name = "buttonSelect";
             this.buttonSelect.Size = new System.Drawing.Size(122, 39);
             this.buttonSelect.TabIndex = 23;
@@ -180,7 +182,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(1178, 677);
+            this.buttonDelete.Location = new System.Drawing.Point(1178, 705);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(122, 39);
             this.buttonDelete.TabIndex = 17;
@@ -219,7 +221,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonPurchase
             // 
-            this.buttonPurchase.Location = new System.Drawing.Point(1178, 604);
+            this.buttonPurchase.Location = new System.Drawing.Point(1178, 576);
             this.buttonPurchase.Name = "buttonPurchase";
             this.buttonPurchase.Size = new System.Drawing.Size(122, 39);
             this.buttonPurchase.TabIndex = 10;
@@ -312,7 +314,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.dataGridViewSuppliersInventory.ReadOnly = true;
             this.dataGridViewSuppliersInventory.RowHeadersWidth = 51;
             this.dataGridViewSuppliersInventory.RowTemplate.Height = 24;
-            this.dataGridViewSuppliersInventory.Size = new System.Drawing.Size(473, 228);
+            this.dataGridViewSuppliersInventory.Size = new System.Drawing.Size(603, 228);
             this.dataGridViewSuppliersInventory.TabIndex = 0;
             // 
             // tabViewInvoice
@@ -450,6 +452,15 @@ namespace ProjectTeam05RosePurchaseManagement
             this.dataGridViewInvoice.Size = new System.Drawing.Size(617, 256);
             this.dataGridViewInvoice.TabIndex = 0;
             // 
+            // buttonUpdatePurchase
+            // 
+            this.buttonUpdatePurchase.Location = new System.Drawing.Point(1178, 638);
+            this.buttonUpdatePurchase.Name = "buttonUpdatePurchase";
+            this.buttonUpdatePurchase.Size = new System.Drawing.Size(122, 39);
+            this.buttonUpdatePurchase.TabIndex = 25;
+            this.buttonUpdatePurchase.Text = "Update";
+            this.buttonUpdatePurchase.UseVisualStyleBackColor = true;
+            // 
             // PurchasingAgentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -511,5 +522,6 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.TextBox textBoxInvoiceNumber;
         private System.Windows.Forms.Label labelInvoiceNumber;
         private System.Windows.Forms.TextBox textBoxInvoiceID;
+        private System.Windows.Forms.Button buttonUpdatePurchase;
     }
 }
