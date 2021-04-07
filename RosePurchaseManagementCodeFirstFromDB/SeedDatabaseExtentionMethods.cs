@@ -148,11 +148,11 @@ namespace SeedDatabaseExtensions
 				new  RoseSize { RoseSizeID=3,Rose=roses[3],Size=sizes[3] },
 				new  RoseSize { RoseSizeID=4,Rose=roses[4],Size=sizes[2] },
 				new  RoseSize { RoseSizeID=5,Rose=roses[5],Size=sizes[2] },
-				new  RoseSize { RoseSizeID=6,Rose=roses[7],Size=sizes[4] },
-				new  RoseSize { RoseSizeID=7,Rose=roses[8],Size=sizes[2] },
-				new  RoseSize { RoseSizeID=8,Rose=roses[9],Size=sizes[2] },
-				new  RoseSize { RoseSizeID=9,Rose=roses[10],Size=sizes[2] },
-				new  RoseSize { RoseSizeID=10,Rose=roses[11],Size=sizes[1] },
+				new  RoseSize { RoseSizeID=6,Rose=roses[6],Size=sizes[4] },
+				new  RoseSize { RoseSizeID=7,Rose=roses[7],Size=sizes[2] },
+				new  RoseSize { RoseSizeID=8,Rose=roses[8],Size=sizes[2] },
+				new  RoseSize { RoseSizeID=9,Rose=roses[9],Size=sizes[2] },
+				new  RoseSize { RoseSizeID=10,Rose=roses[10],Size=sizes[1] },
 
 			};
 

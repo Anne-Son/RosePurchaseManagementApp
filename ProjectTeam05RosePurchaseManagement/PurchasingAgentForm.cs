@@ -32,7 +32,12 @@ namespace ProjectTeam05RosePurchaseManagement
             buttonInvoiceDelete.Click += ButtonInvoiceDelete_Click;
 
             listBoxInvoice.SelectedIndexChanged += (s,e) => GetInvoiceID();
+
+            
+
         }
+
+       
 
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
@@ -107,6 +112,13 @@ namespace ProjectTeam05RosePurchaseManagement
             textBoxFarmName.Text = inventory.Farm.FarmName.ToString();
             textBoxRoseSizeID.Text = inventory.RoseSizeID.ToString();
             textBoxPricePerStem.Text = inventory.Price_per_stem.ToString();
+
+            using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+            {
+                var invoiceList = context.Invoices.Include("Farm").Where(x => x.FarmID == inventory.FarmID);
+                listBoxInvoice.DataSource = invoiceList.ToList();
+            }
+
         }
 
         private void ButtonPurchase_Click(object sender, EventArgs e)

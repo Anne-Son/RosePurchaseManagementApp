@@ -36,23 +36,92 @@ namespace ProjectTeam05RosePurchaseManagement
             //Click Listner for deleteOrder
             buttonDeleteOrder.Click += ButtonDeleteOrder_Click;
 
+            //Click Listner for updateOrder
+            buttonUpdateOrder.Click += ButtonUpdateOrder_Click;
+
+
             dataGridViewOrder.SelectionChanged += DataGridViewOrder_SelectionChanged;
            
 
 
         }
 
+        private void ButtonUpdateOrder_Click(object sender, EventArgs e)
+        {
+            //making sure a student is selected
+            if (dataGridViewOrder.SelectedRows.Count < 0)
+            {
+                MessageBox.Show("Order to be updated must be selected");
+                return;
+            }
+            else
+            {
+                if (int.TryParse(textBoxNumberOfBunches.Text, out int numberOfBunches) && (listBoxRoses.SelectedItems.Count > 0))
+                {
+                    //create an oder
+                    var selectedOrder = dataGridViewOrder.SelectedRows
+                               .OfType<DataGridViewRow>()
+                               .ToList();
+                    var ord = (OrderDisplay)selectedOrder.Select(x => x).FirstOrDefault().DataBoundItem;
+
+                    MessageBox.Show(ord.OderId.ToString());
+
+                    Order order = new Order();
+                    using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                    {
+                         order = context.Orders.Where(i => i.OrderID == ord.OderId).FirstOrDefault();
+                        //select the item from the listbox
+                        String selectedRoses = listBoxRoses.SelectedItem.ToString();
+
+                        //get the roseId for the selected roses
+                        var roseSizeId = context.RoseSizes.Include("Rose").Where(r => r.Rose.RoseName == selectedRoses).FirstOrDefault();
+                        order.RoseSizeID = roseSizeId.RoseSizeID;
+                        order.Number_of_bunches = numberOfBunches;
+                        
+                    }
+
+                    Controller<RosePurchaseManagementEntities, Order>.UpdateEntity(order);
+                   
+                    // add oder to the list using controller
+
+                    //display orderDatagridView
+                    DisplayOder();
+
+                    //clear selected roses
+                    listBoxRoses.ClearSelected();
+                    //empty string
+                    textBoxNumberOfBunches.Text = "";
+
+                }
+                else
+                {
+                    MessageBox.Show("Enter the valid data");
+                }
+
+
+            }
+
+         
+        }
+
         private void DataGridViewOrder_SelectionChanged(object sender, EventArgs e)
         {
-            var selectedOrder = dataGridViewOrder.SelectedRows
+            var or = new List<OrderDisplay>(dataGridViewOrder.SelectedRows.Count);
+           var selectedOrder = dataGridViewOrder.SelectedRows
                  .OfType<DataGridViewRow>()
-                 .ToArray();
-            if(selectedOrder.Count() != 0)
+                 .ToList();
+            if(dataGridViewOrder.SelectedRows.Count != 0)
             {
-                
-                
+                var ord = (OrderDisplay)selectedOrder.Select(x => x).FirstOrDefault().DataBoundItem;
+                textBoxNumberOfBunches.Text = ord.NumberOfBunches.ToString();
+                int index = listBoxRoses.Items.IndexOf(ord.RoseName);
+                listBoxRoses.SelectedIndex = index;
             }
             
+
+
+         
+        
 
         }
 
@@ -122,28 +191,45 @@ namespace ProjectTeam05RosePurchaseManagement
 
         private void ButtonOrder_Click(object sender, EventArgs e)
         {
-            //create an oder
-            Order order = new Order();
 
-           
-            using ( RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+            if(int.TryParse(textBoxNumberOfBunches.Text, out int numberOfBunches)&&(listBoxRoses.SelectedItems.Count >0))
             {
-                //select the item from the listbox
-                String selectedRoses = listBoxRoses.SelectedItem.ToString();
+                //create an oder
+                Order order = new Order();
 
-                //get the roseId for the selected roses
-                var roseSizeId = context.RoseSizes.Include("Rose").Where(r => r.Rose.RoseName == selectedRoses).FirstOrDefault();
-                order.RoseSizeID = roseSizeId.RoseSizeID;
-                order.Number_of_bunches = int.Parse(textBoxNumberOfBunches.Text);
+
+                using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                {
+                    //select the item from the listbox
+                    String selectedRoses = listBoxRoses.SelectedItem.ToString();
+
+                    //get the roseId for the selected roses
+                    var roseSizeId = context.RoseSizes.Include("Rose").Where(r => r.Rose.RoseName == selectedRoses).FirstOrDefault();
+                    order.RoseSizeID = roseSizeId.RoseSizeID;
+                    order.Number_of_bunches = numberOfBunches;
+                }
+                // add oder to the list using controller
+                if (Controller<RosePurchaseManagementEntities, Order>.AddEntity(order) == null)
+                {
+                    MessageBox.Show("Cannot add order to database");
+                    return;
+                }
+                //display orderDatagridView
+                DisplayOder();
+
+                //clear selected roses
+                listBoxRoses.ClearSelected();
+                //empty string
+                textBoxNumberOfBunches.Text = "";
+
             }
-            // add oder to the list using controller
-            if (Controller<RosePurchaseManagementEntities, Order>.AddEntity(order) == null)
+            else
             {
-                MessageBox.Show("Cannot add student to database");
-                return;
+                MessageBox.Show("Enter the valid data");
             }
-            //display orderDatagridView
-            DisplayOder();
+            
+
+
 
         }
         /// <summary>
@@ -176,7 +262,7 @@ namespace ProjectTeam05RosePurchaseManagement
             dataGridView.ReadOnly = true;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.DataError += (s, e) => HandleDataError<T>(s as DataGridView, e);
-            
+            dataGridView.MultiSelect = false;
             
                 foreach (string column in columnsToHide)
                     dataGridView.Columns[column].Visible = false;
@@ -188,6 +274,7 @@ namespace ProjectTeam05RosePurchaseManagement
         }
 
         public void DisplayOder()
+
         {
             //open the RosePurchaseEntities context
             using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())

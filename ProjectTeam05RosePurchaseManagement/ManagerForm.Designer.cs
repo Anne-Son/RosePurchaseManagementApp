@@ -31,6 +31,7 @@ namespace ProjectTeam05RosePurchaseManagement
         {
             this.tabControlManager = new System.Windows.Forms.TabControl();
             this.tabPageOrder = new System.Windows.Forms.TabPage();
+            this.buttonDeleteOrder = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonOrder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,7 +50,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageBackup = new System.Windows.Forms.TabPage();
-            this.buttonDeleteOrder = new System.Windows.Forms.Button();
+            this.buttonUpdateOrder = new System.Windows.Forms.Button();
             this.tabControlManager.SuspendLayout();
             this.tabPageOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
@@ -71,6 +72,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageOrder
             // 
+            this.tabPageOrder.Controls.Add(this.buttonUpdateOrder);
             this.tabPageOrder.Controls.Add(this.buttonDeleteOrder);
             this.tabPageOrder.Controls.Add(this.label3);
             this.tabPageOrder.Controls.Add(this.buttonOrder);
@@ -85,6 +87,15 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageOrder.TabIndex = 0;
             this.tabPageOrder.Text = "Order";
             this.tabPageOrder.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteOrder
+            // 
+            this.buttonDeleteOrder.Location = new System.Drawing.Point(882, 56);
+            this.buttonDeleteOrder.Name = "buttonDeleteOrder";
+            this.buttonDeleteOrder.Size = new System.Drawing.Size(128, 38);
+            this.buttonDeleteOrder.TabIndex = 7;
+            this.buttonDeleteOrder.Text = "Delete Order";
+            this.buttonDeleteOrder.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -101,7 +112,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.buttonOrder.Name = "buttonOrder";
             this.buttonOrder.Size = new System.Drawing.Size(163, 49);
             this.buttonOrder.TabIndex = 4;
-            this.buttonOrder.Text = "Order";
+            this.buttonOrder.Text = "New Order";
             this.buttonOrder.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -257,14 +268,14 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageBackup.Text = "Backup";
             this.tabPageBackup.UseVisualStyleBackColor = true;
             // 
-            // buttonDeleteOrder
+            // buttonUpdateOrder
             // 
-            this.buttonDeleteOrder.Location = new System.Drawing.Point(882, 56);
-            this.buttonDeleteOrder.Name = "buttonDeleteOrder";
-            this.buttonDeleteOrder.Size = new System.Drawing.Size(128, 38);
-            this.buttonDeleteOrder.TabIndex = 7;
-            this.buttonDeleteOrder.Text = "Delete Order";
-            this.buttonDeleteOrder.UseVisualStyleBackColor = true;
+            this.buttonUpdateOrder.Location = new System.Drawing.Point(552, 318);
+            this.buttonUpdateOrder.Name = "buttonUpdateOrder";
+            this.buttonUpdateOrder.Size = new System.Drawing.Size(163, 49);
+            this.buttonUpdateOrder.TabIndex = 8;
+            this.buttonUpdateOrder.Text = "Update Order";
+            this.buttonUpdateOrder.UseVisualStyleBackColor = true;
             // 
             // ManagerForm
             // 
@@ -308,5 +319,6 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelAveragePrice;
         private System.Windows.Forms.Button buttonDeleteOrder;
+        private System.Windows.Forms.Button buttonUpdateOrder;
     }
 }
