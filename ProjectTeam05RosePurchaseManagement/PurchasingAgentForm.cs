@@ -15,6 +15,7 @@ namespace ProjectTeam05RosePurchaseManagement
 {
     public partial class PurchasingAgentForm : Form
     {
+        int boxId;
         public PurchasingAgentForm()
         {
             InitializeComponent();
@@ -24,31 +25,217 @@ namespace ProjectTeam05RosePurchaseManagement
             this.Load += (s, e) => PurchasingAgentForm_Load();
 
             buttonPurchase.Click += ButtonPurchase_Click;
-            buttonSelect.Click += ButtonSelect_Click;
+            buttonDelete.Click += ButtonDelete_Click1;
             buttonDelete.Click += ButtonDelete_Click;
 
             buttonInvoiceAdd.Click += ButtonInvoiceAdd_Click;
             buttonInvoiceUpdate.Click += ButtonInvoiceUpdate_Click;
             buttonInvoiceDelete.Click += ButtonInvoiceDelete_Click;
+            buttonUpdatePurchase.Click += ButtonUpdatePurchase_Click;
 
             listBoxInvoice.SelectedIndexChanged += (s,e) => GetInvoiceID();
+
+            dataGridViewPurchase.SelectionChanged += DataGridViewPurchase_SelectionChanged;
+
+            dataGridViewSuppliersInventory.SelectionChanged += DataGridViewSuppliersInventory_SelectionChanged;
 
             
 
         }
 
-       
+        private void ButtonDelete_Click1(object sender, EventArgs e)
+        {
+           
+            if(!(dataGridViewPurchase.SelectedRows.Count <= 0))
+            {
+                MessageBox.Show("Please select the purchase to delete");
+                return;
+            }
+            var selectedPurchase = dataGridViewPurchase.SelectedRows
+                .OfType<DataGridViewRow>()
+                .ToList();
+            var pur = (PurchaseBoxQuantity)selectedPurchase.Select(x => x).FirstOrDefault().DataBoundItem;
+            Purchase purchase = new Purchase();
+            BoxPurchase boxPurchase = new BoxPurchase();
+
+
+
+
+
+        }
+
+        private void ButtonUpdatePurchase_Click(object sender, EventArgs e)
+        {
+            
+            
+            if ((listBoxWarehouse.SelectedItems.Count <0))
+            {
+                MessageBox.Show("Warehouse to be selected");
+                return;
+            }
+            if ((listBoxBox.SelectedItems.Count < 0))
+            {
+                MessageBox.Show("Box to be selected");
+                return;
+            }
+
+            var selectedPurchase = dataGridViewPurchase.SelectedRows
+                  .OfType<DataGridViewRow>()
+                  .ToList();
+            if (dataGridViewPurchase.SelectedRows.Count != 0)
+            {
+
+                var pur = (PurchaseBoxQuantity)selectedPurchase.Select(x => x).FirstOrDefault().DataBoundItem;
+                Purchase purchase = new Purchase();
+                BoxPurchase boxPurchase = new BoxPurchase();
+
+                using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                {
+
+
+                    purchase = context.Purchases.Where(x => x.PurchaseID == pur.PurchaseID).FirstOrDefault();
+                    boxPurchase = context.BoxPurchases.Where(x => x.PurchaseID == pur.PurchaseID).FirstOrDefault();
+
+                    MessageBox.Show(pur.PurchaseID.ToString());
+
+                    //select the item from the listbox
+                    string selectedFarm = textBoxFarmName.Text.Trim();
+                    int selectedInvoice = int.Parse(textBoxInvoiceID.Text);
+
+                    //get the farmId for the selected farm
+                    //var farmID = context.Farms.Where(f => f.FarmName == selectedFarm).FirstOrDefault();
+
+                    //purchase.FarmID = farmID.FarmID;
+                    purchase.RoseSizeID = int.Parse(textBoxRoseSizeID.Text);
+                    purchase.Price_per_stem = float.Parse(textBoxPricePerStem.Text);
+                    purchase.InvoiceID = int.Parse(textBoxInvoiceID.Text);
+                    purchase.WarehouseID = listBoxWarehouse.SelectedIndex + 1;
+                    context.SaveChanges();
+
+                    if (context.BoxPurchases.Where(x => (x.PurchaseID == purchase.PurchaseID) && (x.BoxID == listBoxBox.SelectedIndex + 1)).Count() > 0)
+                    {
+                       
+                        boxPurchase.PurchaseID = purchase.PurchaseID;
+                        boxPurchase.BoxID = listBoxBox.SelectedIndex + 1;
+                        boxPurchase.Quantity = int.Parse(textBoxQuantity.Text);
+                        context.SaveChanges();
+
+                    }
+                    else
+                    {
+                        var boxSel = context.BoxPurchases.Where(x => (x.PurchaseID == purchase.PurchaseID) && (x.BoxID == boxId)).FirstOrDefault();
+                        context.BoxPurchases.Remove(boxSel);
+                        boxPurchase = new BoxPurchase();
+                        boxPurchase.PurchaseID = purchase.PurchaseID;
+                        boxPurchase.BoxID = listBoxBox.SelectedIndex + 1;
+                        boxPurchase.Quantity = int.Parse(textBoxQuantity.Text);
+                        context.BoxPurchases.Add(boxPurchase);
+                        context.SaveChanges();
+                    }
+
+
+                }
+                var m = (Controller<RosePurchaseManagementEntities, Purchase>.UpdateEntity(purchase));
+                MessageBox.Show(m.ToString());
+
+                UpdatePurchase();
+                Clear();
+            }
+            else
+            {
+                MessageBox.Show("Please select the purchase");
+            }
+
+        }
+
+        private void DataGridViewSuppliersInventory_SelectionChanged(object sender, EventArgs e)
+        {
+
+            listBoxInvoice.DataSource = null;
+           Inventory inventory = (Inventory)dataGridViewSuppliersInventory.CurrentRow.DataBoundItem;
+
+            listBoxBox.ClearSelected();
+            listBoxWarehouse.ClearSelected();
+            textBoxQuantity.Text = null;
+            textBoxFarmName.Text = inventory.Farm.FarmName.ToString();
+            textBoxRoseSizeID.Text = inventory.RoseSizeID.ToString();
+            textBoxPricePerStem.Text = inventory.Price_per_stem.ToString();
+
+            using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+            {
+                var invoiceList = context.Invoices.Include("Farm").Where(x => x.FarmID == inventory.FarmID).Select(x => x.InvoiceID);
+                listBoxInvoice.DataSource = invoiceList.ToList();
+            }
+        }
+
+        private void DataGridViewPurchase_SelectionChanged(object sender, EventArgs e)
+        {
+
+           
+            dataGridViewSuppliersInventory.ClearSelection();
+          
+            
+            
+            var selectedPurchase = dataGridViewPurchase.SelectedRows
+                  .OfType<DataGridViewRow>()
+                  .ToList();
+            if (dataGridViewPurchase.SelectedRows.Count != 0)
+            {
+
+                var pur = (PurchaseBoxQuantity)selectedPurchase.Select(x => x).FirstOrDefault().DataBoundItem;
+                textBoxFarmName.Text = pur.FarmName;
+                textBoxPricePerStem.Text = pur.Price.ToString();
+                textBoxQuantity.Text = pur.BoxQuantity.ToString();
+              
+                textBoxInvoiceID.Text = pur.InvoiceNumber.ToString();
+
+
+                using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+                {
+                   
+                    var purch = context.Purchases.Where(p => p.PurchaseID == pur.PurchaseID).FirstOrDefault();
+                    var farmId = context.Farms.Where(x => x.FarmName == pur.FarmName).Select(i => i.FarmID).FirstOrDefault();
+
+                    var inventoryId = context.Inventories.Where(x => (x.FarmID == purch.FarmID) && (x.RoseSizeID == purch.RoseSizeID)).Select(x => x.InventoryID).FirstOrDefault();
+                    var invoiceList = context.Invoices.Include("Farm").Where(x => x.FarmID == farmId).Select(x => x.InvoiceID);
+                    
+
+                    listBoxInvoice.DataSource = null;
+                    listBoxInvoice.DataSource = invoiceList.ToList();
+                    textBoxRoseSizeID.Text = purch.RoseSizeID.ToString() ;
+                    dataGridViewSuppliersInventory.SelectionChanged -= DataGridViewSuppliersInventory_SelectionChanged;
+                    MessageBox.Show(inventoryId.ToString());
+                     dataGridViewSuppliersInventory.Rows[inventoryId-1].Selected = true;
+                    dataGridViewSuppliersInventory.SelectionChanged += DataGridViewSuppliersInventory_SelectionChanged;
+                }
+               
+
+                listBoxInvoice.SelectedIndex = listBoxInvoice.Items.IndexOf(pur.InvoiceNumber);
+                listBoxWarehouse.SelectedIndex = listBoxWarehouse.Items.IndexOf(pur.WarehouseName);
+                listBoxBox.SelectedIndex = listBoxBox.Items.IndexOf(pur.BoxName);
+                boxId = listBoxBox.SelectedIndex+1;
+                MessageBox.Show(boxId.ToString());
+            }
+           
+
+        }
 
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
            
         }
 
+
+
+
+
         private void GetInvoiceID()
         {
-            if (!(listBoxInvoice.SelectedItem is Invoice invoice))
-                return;
-            textBoxInvoiceID.Text = invoice.InvoiceID.ToString();
+            if (!(listBoxInvoice.SelectedItems.Count ==0))
+            {
+                textBoxInvoiceID.Text = listBoxInvoice.SelectedItem.ToString();
+            }
+            
         }
 
         private void ButtonInvoiceDelete_Click(object sender, EventArgs e)
@@ -115,7 +302,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
             using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
             {
-                var invoiceList = context.Invoices.Include("Farm").Where(x => x.FarmID == inventory.FarmID);
+                var invoiceList = context.Invoices.Include("Farm").Where(x => x.FarmID == inventory.FarmID).Select(x => x.InvoiceID);
                 listBoxInvoice.DataSource = invoiceList.ToList();
             }
 
@@ -126,12 +313,12 @@ namespace ProjectTeam05RosePurchaseManagement
             Purchase purchase = new Purchase();
             BoxPurchase boxPurchase = new BoxPurchase();
 
-            if (!(listBoxWarehouse.SelectedItem is Warehouse warehouse))
+            if ((listBoxWarehouse.SelectedItems.Count <0))
             {
                 MessageBox.Show("Warehouse to be selected");
                 return;
             }
-            if (!(listBoxBox.SelectedItem is Box box))
+            if ((listBoxBox.SelectedItems.Count < 0))
             {
                 MessageBox.Show("Box to be selected");
                 return;
@@ -159,12 +346,7 @@ namespace ProjectTeam05RosePurchaseManagement
                 boxPurchase.Quantity = int.Parse(textBoxQuantity.Text);
                 Controller<RosePurchaseManagementEntities, BoxPurchase>.AddEntity(boxPurchase);
             }
-            //add purchase to the list using controller
-            if (Controller<RosePurchaseManagementEntities, Purchase>.AddEntity(purchase) == null)
-            {
-                MessageBox.Show("cannot add purchase to database");
-                return;
-            }
+          
       
             UpdatePurchase();
             Clear();
@@ -226,9 +408,11 @@ namespace ProjectTeam05RosePurchaseManagement
 
             //bind the listbox to the relevant table
 
-            listBoxInvoice.DataSource = Controller<RosePurchaseManagementEntities, Invoice>.GetEntitiesWithIncluded("Farm");
-            listBoxBox.DataSource = Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases");
-            listBoxWarehouse.DataSource = Controller<RosePurchaseManagementEntities, Warehouse>.GetEntitiesWithIncluded("Purchases");
+            
+            
+            listBoxInvoice.DataSource = Controller<RosePurchaseManagementEntities, Invoice>.GetEntitiesWithIncluded("Farm").Select(i => i.InvoiceID).ToList();
+            listBoxBox.DataSource = Controller<RosePurchaseManagementEntities, Box>.GetEntitiesWithIncluded("BoxPurchases").Select(b => b.BoxName).ToList();
+            listBoxWarehouse.DataSource = Controller<RosePurchaseManagementEntities, Warehouse>.GetEntitiesWithIncluded("Purchases").Select(w => w.WarehouseName).ToList();
             listBoxFarms.DataSource = Controller<RosePurchaseManagementEntities, Farm>.SetBindingList();
 
             //nothing is selected to start, and only one of each can be selected. 

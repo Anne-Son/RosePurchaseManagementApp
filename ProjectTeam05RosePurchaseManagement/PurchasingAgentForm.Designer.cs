@@ -31,8 +31,8 @@ namespace ProjectTeam05RosePurchaseManagement
         {
             this.tabControlManager = new System.Windows.Forms.TabControl();
             this.tabPagePurchase = new System.Windows.Forms.TabPage();
+            this.buttonUpdatePurchase = new System.Windows.Forms.Button();
             this.textBoxInvoiceID = new System.Windows.Forms.TextBox();
-            this.buttonSelect = new System.Windows.Forms.Button();
             this.textBoxQuantity = new System.Windows.Forms.TextBox();
             this.labelQuantity = new System.Windows.Forms.Label();
             this.listBoxBox = new System.Windows.Forms.ListBox();
@@ -89,8 +89,8 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPagePurchase
             // 
+            this.tabPagePurchase.Controls.Add(this.buttonUpdatePurchase);
             this.tabPagePurchase.Controls.Add(this.textBoxInvoiceID);
-            this.tabPagePurchase.Controls.Add(this.buttonSelect);
             this.tabPagePurchase.Controls.Add(this.textBoxQuantity);
             this.tabPagePurchase.Controls.Add(this.labelQuantity);
             this.tabPagePurchase.Controls.Add(this.listBoxBox);
@@ -119,21 +119,21 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPagePurchase.Text = "Purchase";
             this.tabPagePurchase.UseVisualStyleBackColor = true;
             // 
+            // buttonUpdatePurchase
+            // 
+            this.buttonUpdatePurchase.Location = new System.Drawing.Point(1178, 544);
+            this.buttonUpdatePurchase.Name = "buttonUpdatePurchase";
+            this.buttonUpdatePurchase.Size = new System.Drawing.Size(122, 54);
+            this.buttonUpdatePurchase.TabIndex = 25;
+            this.buttonUpdatePurchase.Text = "Update Purchase";
+            this.buttonUpdatePurchase.UseVisualStyleBackColor = true;
+            // 
             // textBoxInvoiceID
             // 
             this.textBoxInvoiceID.Location = new System.Drawing.Point(395, 465);
             this.textBoxInvoiceID.Name = "textBoxInvoiceID";
             this.textBoxInvoiceID.Size = new System.Drawing.Size(136, 22);
             this.textBoxInvoiceID.TabIndex = 24;
-            // 
-            // buttonSelect
-            // 
-            this.buttonSelect.Location = new System.Drawing.Point(1087, 150);
-            this.buttonSelect.Name = "buttonSelect";
-            this.buttonSelect.Size = new System.Drawing.Size(122, 39);
-            this.buttonSelect.TabIndex = 23;
-            this.buttonSelect.Text = "Select";
-            this.buttonSelect.UseVisualStyleBackColor = true;
             // 
             // textBoxQuantity
             // 
@@ -182,7 +182,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             this.buttonDelete.Location = new System.Drawing.Point(1178, 677);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(122, 39);
+            this.buttonDelete.Size = new System.Drawing.Size(122, 48);
             this.buttonDelete.TabIndex = 17;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -221,7 +221,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             this.buttonPurchase.Location = new System.Drawing.Point(1178, 604);
             this.buttonPurchase.Name = "buttonPurchase";
-            this.buttonPurchase.Size = new System.Drawing.Size(122, 39);
+            this.buttonPurchase.Size = new System.Drawing.Size(122, 50);
             this.buttonPurchase.TabIndex = 10;
             this.buttonPurchase.Text = "Purchase";
             this.buttonPurchase.UseVisualStyleBackColor = true;
@@ -496,7 +496,6 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.ListBox listBoxBox;
         private System.Windows.Forms.ListBox listBoxWarehouse;
         private System.Windows.Forms.ListBox listBoxInvoice;
-        private System.Windows.Forms.Button buttonSelect;
         private System.Windows.Forms.Label labelInvoice;
         private System.Windows.Forms.DataGridView dataGridViewInvoice;
         private System.Windows.Forms.Button buttonInvoiceUpdate;
@@ -511,5 +510,6 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.TextBox textBoxInvoiceNumber;
         private System.Windows.Forms.Label labelInvoiceNumber;
         private System.Windows.Forms.TextBox textBoxInvoiceID;
+        private System.Windows.Forms.Button buttonUpdatePurchase;
     }
 }

@@ -114,8 +114,7 @@ namespace ProjectTeam05RosePurchaseManagement
             {
                 var ord = (OrderDisplay)selectedOrder.Select(x => x).FirstOrDefault().DataBoundItem;
                 textBoxNumberOfBunches.Text = ord.NumberOfBunches.ToString();
-                int index = listBoxRoses.Items.IndexOf(ord.RoseName);
-                listBoxRoses.SelectedIndex = index;
+                
             }
             
 
