@@ -16,13 +16,11 @@ namespace ProjectTeam05RosePurchaseManagement
 {
     public partial class ManagerForm : Form
     {
-
         // field to keep the access layer field
         private SqlDataTableAccessLayer purchaseDB;
        
         // dataset will hold all tables being used
         private DataSet purchaseDataSet;
-
 
         public ManagerForm()
         {
@@ -38,12 +36,8 @@ namespace ProjectTeam05RosePurchaseManagement
                 DataSetName = "PurchaseDataSet",
             };
 
-          
-
-
             //Load Manager Form 
             this.Load += (s, e) => ManagerForm_Load();
-
 
             //click listner for oderbutton
             buttonOrder.Click += ButtonOrder_Click;
@@ -64,13 +58,9 @@ namespace ProjectTeam05RosePurchaseManagement
             buttonBackUp.Click += ButtonBackUp_Click;
             buttonRestore.Click += ButtonRestore_Click;
 
-
             listBoxWarehouse.SelectedIndexChanged += ListBoxWarehouse_SelectedIndexChanged;
 
             dataGridViewOrder.SelectionChanged += DataGridViewOrder_SelectionChanged;
-            
-           
-
         }
         /// <summary>
         /// Listbox change listner for Warehouse
@@ -95,7 +85,6 @@ namespace ProjectTeam05RosePurchaseManagement
             purchaseDB.RestoreDataSetFromBackup(purchaseDataSet);
             purchaseDB.CloseConnection();
             MessageBox.Show("Database is sucessfully restored");
-
         }
         /// <summary>
         /// 
@@ -111,11 +100,10 @@ namespace ProjectTeam05RosePurchaseManagement
             purchaseDB.BackupDataSetToXML(purchaseDataSet);
             purchaseDB.CloseConnection();
             MessageBox.Show("Database is sucessfully backuped");
-
         }
 
         /// <summary>
-        /// Update listner of Order
+        /// Update listener of Order
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -153,13 +141,10 @@ namespace ProjectTeam05RosePurchaseManagement
 
                         //set properties ororder 
                         order.RoseSizeID = roseSizeId.RoseSizeID;
-                        order.Number_of_bunches = numberOfBunches;
-                        
+                        order.Number_of_bunches = numberOfBunches; 
                     }
                     // Update order to the list using controller
                     Controller<RosePurchaseManagementEntities, Order>.UpdateEntity(order);
-                   
-                  
 
                     //display orderDatagridView
                     DisplayOder();
@@ -168,25 +153,19 @@ namespace ProjectTeam05RosePurchaseManagement
                     listBoxRoses.ClearSelected();
                     //empty string
                     textBoxNumberOfBunches.Text = "";
-
                 }
                 else
                 {
                     //display if data is not valid
                     MessageBox.Show("Enter the valid data");
                 }
-
-
             }
-
-         
         }
         /// <summary>
         /// Datagrudview change listner
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void DataGridViewOrder_SelectionChanged(object sender, EventArgs e)
         {
             //Select the order dispaly from the datagridview
@@ -203,21 +182,13 @@ namespace ProjectTeam05RosePurchaseManagement
 
                 //setting the selected one in listBoxRoses
                 listBoxRoses.SelectedIndex = listBoxRoses.Items.IndexOf(orderDisplay.RoseName);
-
             }
-            
-
-
-         
-        
-
         }
         /// <summary>
         /// DElete order listner
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void ButtonDeleteOrder_Click(object sender, EventArgs e)
         {
             //To get the selected row from the order table
@@ -230,20 +201,13 @@ namespace ProjectTeam05RosePurchaseManagement
                 using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
                 {
                     var ord = (OrderDisplay)row.DataBoundItem;
-                  
 
                     Order order = context.Orders.Where(x => x.OrderID == ord.OderId).FirstOrDefault();
                     context.Orders.Remove(order);
                     context.SaveChanges();
-
-
-
                 }
-
             }
             DisplayOder();
-
-
         }
 
         /// <summary>
@@ -253,7 +217,7 @@ namespace ProjectTeam05RosePurchaseManagement
         /// <param name="e"></param>
         private void DateTimePickerEndDate_ValueChanged(object sender, EventArgs e)
         {
-            DispalyPurchase();
+            DisplayPurchase();
         }
         /// <summary>
         /// on change listner for startdate picker
@@ -262,7 +226,7 @@ namespace ProjectTeam05RosePurchaseManagement
         /// <param name="e"></param>
         private void DateTimePickerStartDate_ValueChanged(object sender, EventArgs e)
         {
-            DispalyPurchase();
+            DisplayPurchase();
         }
         /// <summary>
         /// event listner for checkbox
@@ -271,17 +235,14 @@ namespace ProjectTeam05RosePurchaseManagement
         /// <param name="e"></param>
         private void CheckBoxSearch_CheckedChanged(object sender, EventArgs e)
         {
-            DispalyPurchase();
+            DisplayPurchase();
         }
-
-
 
         /// <summary>
         /// listner for oder button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void ButtonOrder_Click(object sender, EventArgs e)
         {
 
@@ -289,7 +250,6 @@ namespace ProjectTeam05RosePurchaseManagement
             {
                 //create an oder
                 Order order = new Order();
-
 
                 using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
                 {
@@ -314,15 +274,11 @@ namespace ProjectTeam05RosePurchaseManagement
                 listBoxRoses.ClearSelected();
                 //empty string
                 textBoxNumberOfBunches.Text = "";
-
             }
             else
             {
                 MessageBox.Show("Enter the valid data");
             }
-            
-
-
 
         }
         /// <summary>
@@ -350,7 +306,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
             textBoxNumberOfBunches.ResetText();
             DisplayOder();
-            DispalyPurchase();
+            DisplayPurchase();
 
         }
         public void ResetDefaults()
@@ -358,7 +314,6 @@ namespace ProjectTeam05RosePurchaseManagement
             //Reseting warehouseListbox
             for (int i = 0; i < listBoxWarehouse.Items.Count; i++)
                 listBoxWarehouse.SetSelected(i, true);
-
         }
         /// <summary>
         /// Display Listbox roses
@@ -382,7 +337,6 @@ namespace ProjectTeam05RosePurchaseManagement
                 }
                 listBoxRosesIn.DataSource = list;
             }
-            
         }
 
         private void InitializeDataGridView<T>(DataGridView dataGridView, params string[] columnsToHide) where T : class
@@ -415,7 +369,6 @@ namespace ProjectTeam05RosePurchaseManagement
         /// Display datagridviewOrder
         /// </summary>
         public void DisplayOder()
-
         {
             //open the RosePurchaseEntities context
             using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
@@ -429,7 +382,6 @@ namespace ProjectTeam05RosePurchaseManagement
                           from order in size.Orders
                           select new
                           {
-                              
                               oderid = order.OrderID,
                               name = rose.RoseName,
                               bunches = order.Number_of_bunches,
@@ -447,18 +399,14 @@ namespace ProjectTeam05RosePurchaseManagement
                     orderDisplayList.Add(orderDisplay);
                     
                 }
-
                 //set up datasource for dataGridViewOrder
                 dataGridViewOrder.DataSource = orderDisplayList;
-
-
-
             }
         }
         /// <summary>
         /// Display PurchaseDatgridview
         /// </summary>
-       public void DispalyPurchase()
+       public void DisplayPurchase()
         {
             //Create lsit of box Purchase Quatity
             List<PurchaseBoxQuantity> purchaseBoxQuantities = new List<PurchaseBoxQuantity>();
@@ -519,8 +467,6 @@ namespace ProjectTeam05RosePurchaseManagement
             //set up datasource of dataGridViewPurchase 
             dataGridViewPurchase.DataSource = purchaseBoxQuantities;
 
-            
-           
         }
 
        
@@ -530,18 +476,16 @@ namespace ProjectTeam05RosePurchaseManagement
         }
 
        /// <summary>
-       /// Object to display Order 
+       /// Class to display Order 
        /// </summary>
         public class OrderDisplay
         {
             public int OderId { get; set; }
             public String RoseName { get; set; }
             public int NumberOfBunches { get; set; }
-
-
         }
         /// <summary>
-        /// Object to display PurchaseBoxQuantity
+        /// Class to display PurchaseBoxQuantity
         /// </summary>
         private class PurchaseBoxQuantity
         {
@@ -575,9 +519,6 @@ namespace ProjectTeam05RosePurchaseManagement
 
             [DisplayName("BoxQuantity")]
             public int BoxQuantity { get; set; }
-
-        
-
         }
 
     }

@@ -34,7 +34,6 @@ namespace ProjectTeam05RosePurchaseManagement
 
             //event handlers for Invoice
             buttonInvoiceAdd.Click += ButtonInvoiceAdd_Click;
-            buttonInvoiceUpdate.Click += ButtonInvoiceUpdate_Click;
             buttonInvoiceDelete.Click += ButtonInvoiceDelete_Click;
             listBoxInvoice.SelectedIndexChanged += (s,e) => GetInvoiceID();
 
@@ -81,6 +80,7 @@ namespace ProjectTeam05RosePurchaseManagement
         /// <param name="e"></param>
         private void ButtonUpdatePurchase_Click(object sender, EventArgs e)
         {
+            //if no row is selected show a message
             if ((listBoxWarehouse.SelectedItems.Count <0))
             {
                 MessageBox.Show("Warehouse to be selected");
@@ -92,6 +92,7 @@ namespace ProjectTeam05RosePurchaseManagement
                 return;
             }
 
+            //select the row in datagridview
             var selectedPurchase = dataGridViewPurchase.SelectedRows
                   .OfType<DataGridViewRow>()
                   .ToList();
@@ -112,9 +113,6 @@ namespace ProjectTeam05RosePurchaseManagement
                     int selectedInvoice = int.Parse(textBoxInvoiceID.Text);
 
                     //get the farmId for the selected farm
-                    //var farmID = context.Farms.Where(f => f.FarmName == selectedFarm).FirstOrDefault();
-
-                    //purchase.FarmID = farmID.FarmID;
                     purchase.RoseSizeID = int.Parse(textBoxRoseSizeID.Text);
                     purchase.Price_per_stem = float.Parse(textBoxPricePerStem.Text);
                     purchase.InvoiceID = int.Parse(textBoxInvoiceID.Text);
@@ -139,8 +137,6 @@ namespace ProjectTeam05RosePurchaseManagement
                         context.BoxPurchases.Add(boxPurchase);
                         context.SaveChanges();
                     }
-
-
                 }
                 UpdatePurchase();
                 Clear();
@@ -258,30 +254,6 @@ namespace ProjectTeam05RosePurchaseManagement
 
             UpdateInvoice();
         }
-
-        private void ButtonInvoiceUpdate_Click(object sender, EventArgs e)
-        {
-            using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
-            {
-                string selectedFarm = listBoxFarms.SelectedItem.ToString();
-                var farmID = context.Farms.Where(f => f.FarmName == selectedFarm).FirstOrDefault();
-
-                if (!(listBoxInvoice.SelectedItem is Invoice invoice))
-                {
-                    MessageBox.Show("Invoice must be selected");
-                    return;
-                }
-
-                invoice.InvoiceID = int.Parse(textBoxInvoiceNumber.Text);
-                invoice.Date = dateTimePickerInvoice.Value;
-                invoice.TotalAmount = float.Parse(textBoxTotalAmount.Text.Trim());
-                invoice.FarmID = farmID.FarmID;
-
-                Controller<RosePurchaseManagementEntities, Invoice>.UpdateEntity(invoice);
-         
-            }
-            UpdateInvoice();
-        }
         /// <summary>
         /// Adds a new Invoice entity to Invoice 
         /// </summary>
@@ -365,7 +337,7 @@ namespace ProjectTeam05RosePurchaseManagement
             dataGridViewPurchase.Columns["BoxPurchase"].Visible = false;
         }
         /// <summary>
-        /// Updates invoice datagridview 
+        /// Updates invoice datagridview and listview in Purchase tab
         /// </summary>
         public void UpdateInvoice()
         {
