@@ -148,11 +148,11 @@ namespace SeedDatabaseExtensions
 				new  RoseSize { RoseSizeID=3,Rose=roses[3],Size=sizes[3] },
 				new  RoseSize { RoseSizeID=4,Rose=roses[4],Size=sizes[2] },
 				new  RoseSize { RoseSizeID=5,Rose=roses[5],Size=sizes[2] },
-				new  RoseSize { RoseSizeID=6,Rose=roses[7],Size=sizes[4] },
-				new  RoseSize { RoseSizeID=7,Rose=roses[8],Size=sizes[2] },
-				new  RoseSize { RoseSizeID=8,Rose=roses[9],Size=sizes[2] },
-				new  RoseSize { RoseSizeID=9,Rose=roses[10],Size=sizes[2] },
-				new  RoseSize { RoseSizeID=10,Rose=roses[11],Size=sizes[1] },
+				new  RoseSize { RoseSizeID=6,Rose=roses[6],Size=sizes[4] },
+				new  RoseSize { RoseSizeID=7,Rose=roses[7],Size=sizes[2] },
+				new  RoseSize { RoseSizeID=8,Rose=roses[8],Size=sizes[2] },
+				new  RoseSize { RoseSizeID=9,Rose=roses[9],Size=sizes[2] },
+				new  RoseSize { RoseSizeID=10,Rose=roses[10],Size=sizes[1] },
 
 			};
 
@@ -196,12 +196,12 @@ namespace SeedDatabaseExtensions
 			//Loading Inventory data to the database
 			List<Inventory> inventoryList = new List<Inventory>()  {
 				new  Inventory { InventoryID=1,Farm=farms[1],RoseSize=roseSizes[2],Price_per_stem=0.30f },
-				new  Inventory { InventoryID=2,Farm=farms[2],RoseSize=roseSizes[4],Price_per_stem=0.40f },
-				new  Inventory { InventoryID=3,Farm=farms[3],RoseSize=roseSizes[3],Price_per_stem=0.45f },
+				new  Inventory { InventoryID=2,Farm=farms[2],RoseSize=roseSizes[4],Price_per_stem=0.25f },
+				new  Inventory { InventoryID=3,Farm=farms[3],RoseSize=roseSizes[3],Price_per_stem=0.30f },
 				new  Inventory { InventoryID=4,Farm=farms[4],RoseSize=roseSizes[4],Price_per_stem=0.30f },
-				new  Inventory { InventoryID=5,Farm=farms[1],RoseSize=roseSizes[2],Price_per_stem=0.30f },
-				new  Inventory { InventoryID=6,Farm=farms[2],RoseSize=roseSizes[7],Price_per_stem=0.30f },
-				new  Inventory { InventoryID=7,Farm=farms[2],RoseSize=roseSizes[5],Price_per_stem=0.40f },
+				new  Inventory { InventoryID=5,Farm = farms[1], RoseSize =roseSizes[4],Price_per_stem=0.28f },
+				new  Inventory { InventoryID=6,Farm = farms[2], RoseSize =roseSizes[3],Price_per_stem=0.30f },
+				new  Inventory { InventoryID=7,Farm = farms[2], RoseSize =roseSizes[6],Price_per_stem=0.29f },
 			};
 
 
@@ -212,10 +212,10 @@ namespace SeedDatabaseExtensions
 			//Loading purchase data to the database
 			List<Purchase> purchaseList = new List<Purchase>()  {
 
-				new Purchase {PurchaseID =1 , Farm = farms[2], RoseSize =roseSizes[3],Price_per_stem=0.25f,InvoiceID=1233,Warehouse=warehouses[1] },
-				new Purchase {PurchaseID =2 , Farm = farms[1], RoseSize =roseSizes[4],Price_per_stem=0.28f,InvoiceID=1234,Warehouse=warehouses[2] },
-				new Purchase {PurchaseID =3 , Farm = farms[2], RoseSize =roseSizes[3],Price_per_stem=0.30f,InvoiceID=3124,Warehouse=warehouses[3] },
-				new Purchase {PurchaseID =4 , Farm = farms[2], RoseSize =roseSizes[6],Price_per_stem=0.29f,InvoiceID=4124,Warehouse=warehouses[4] },
+				new Purchase {PurchaseID =1 , Farm = farms[2], RoseSize =roseSizes[4],Price_per_stem=0.25f,InvoiceID=2244,Warehouse=warehouses[1] },
+				new Purchase {PurchaseID =2 , Farm = farms[1], RoseSize =roseSizes[4],Price_per_stem=0.28f,InvoiceID=1233,Warehouse=warehouses[2] },
+				new Purchase {PurchaseID =3 , Farm = farms[3], RoseSize =roseSizes[3],Price_per_stem=0.30f,InvoiceID=3124,Warehouse=warehouses[3] },
+				new Purchase {PurchaseID =4 , Farm = farms[4], RoseSize =roseSizes[4],Price_per_stem=0.30f,InvoiceID=4124,Warehouse=warehouses[4] },
 
 			};
 

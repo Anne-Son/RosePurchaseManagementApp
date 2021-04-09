@@ -31,6 +31,8 @@ namespace ProjectTeam05RosePurchaseManagement
         {
             this.tabControlManager = new System.Windows.Forms.TabControl();
             this.tabPageOrder = new System.Windows.Forms.TabPage();
+            this.buttonUpdateOrder = new System.Windows.Forms.Button();
+            this.buttonDeleteOrder = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonOrder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,12 +51,19 @@ namespace ProjectTeam05RosePurchaseManagement
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageBackup = new System.Windows.Forms.TabPage();
-            this.buttonDeleteOrder = new System.Windows.Forms.Button();
+            this.buttonRestore = new System.Windows.Forms.Button();
+            this.buttonBackUp = new System.Windows.Forms.Button();
+            this.listBoxWarehouse = new System.Windows.Forms.ListBox();
+            this.listBoxRosesIn = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControlManager.SuspendLayout();
             this.tabPageOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             this.tabPageReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).BeginInit();
+            this.tabPageBackup.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlManager
@@ -71,6 +80,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageOrder
             // 
+            this.tabPageOrder.Controls.Add(this.buttonUpdateOrder);
             this.tabPageOrder.Controls.Add(this.buttonDeleteOrder);
             this.tabPageOrder.Controls.Add(this.label3);
             this.tabPageOrder.Controls.Add(this.buttonOrder);
@@ -85,6 +95,24 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageOrder.TabIndex = 0;
             this.tabPageOrder.Text = "Order";
             this.tabPageOrder.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdateOrder
+            // 
+            this.buttonUpdateOrder.Location = new System.Drawing.Point(552, 318);
+            this.buttonUpdateOrder.Name = "buttonUpdateOrder";
+            this.buttonUpdateOrder.Size = new System.Drawing.Size(163, 49);
+            this.buttonUpdateOrder.TabIndex = 8;
+            this.buttonUpdateOrder.Text = "Update Order";
+            this.buttonUpdateOrder.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteOrder
+            // 
+            this.buttonDeleteOrder.Location = new System.Drawing.Point(882, 56);
+            this.buttonDeleteOrder.Name = "buttonDeleteOrder";
+            this.buttonDeleteOrder.Size = new System.Drawing.Size(128, 38);
+            this.buttonDeleteOrder.TabIndex = 7;
+            this.buttonDeleteOrder.Text = "Delete Order";
+            this.buttonDeleteOrder.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -101,7 +129,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.buttonOrder.Name = "buttonOrder";
             this.buttonOrder.Size = new System.Drawing.Size(163, 49);
             this.buttonOrder.TabIndex = 4;
-            this.buttonOrder.Text = "Order";
+            this.buttonOrder.Text = "New Order";
             this.buttonOrder.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -141,6 +169,11 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageReport
             // 
+            this.tabPageReport.Controls.Add(this.label9);
+            this.tabPageReport.Controls.Add(this.label8);
+            this.tabPageReport.Controls.Add(this.label7);
+            this.tabPageReport.Controls.Add(this.listBoxRosesIn);
+            this.tabPageReport.Controls.Add(this.listBoxWarehouse);
             this.tabPageReport.Controls.Add(this.labelAveragePrice);
             this.tabPageReport.Controls.Add(this.labelCount);
             this.tabPageReport.Controls.Add(this.label6);
@@ -250,6 +283,8 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageBackup
             // 
+            this.tabPageBackup.Controls.Add(this.buttonRestore);
+            this.tabPageBackup.Controls.Add(this.buttonBackUp);
             this.tabPageBackup.Location = new System.Drawing.Point(4, 25);
             this.tabPageBackup.Name = "tabPageBackup";
             this.tabPageBackup.Size = new System.Drawing.Size(1121, 643);
@@ -257,14 +292,71 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageBackup.Text = "Backup";
             this.tabPageBackup.UseVisualStyleBackColor = true;
             // 
-            // buttonDeleteOrder
+            // buttonRestore
             // 
-            this.buttonDeleteOrder.Location = new System.Drawing.Point(882, 56);
-            this.buttonDeleteOrder.Name = "buttonDeleteOrder";
-            this.buttonDeleteOrder.Size = new System.Drawing.Size(128, 38);
-            this.buttonDeleteOrder.TabIndex = 7;
-            this.buttonDeleteOrder.Text = "Delete Order";
-            this.buttonDeleteOrder.UseVisualStyleBackColor = true;
+            this.buttonRestore.Location = new System.Drawing.Point(303, 252);
+            this.buttonRestore.Name = "buttonRestore";
+            this.buttonRestore.Size = new System.Drawing.Size(156, 76);
+            this.buttonRestore.TabIndex = 1;
+            this.buttonRestore.Text = "Restore";
+            this.buttonRestore.UseVisualStyleBackColor = true;
+            // 
+            // buttonBackUp
+            // 
+            this.buttonBackUp.Location = new System.Drawing.Point(303, 120);
+            this.buttonBackUp.Name = "buttonBackUp";
+            this.buttonBackUp.Size = new System.Drawing.Size(156, 76);
+            this.buttonBackUp.TabIndex = 0;
+            this.buttonBackUp.Text = "BackUp";
+            this.buttonBackUp.UseVisualStyleBackColor = true;
+            // 
+            // listBoxWarehouse
+            // 
+            this.listBoxWarehouse.FormattingEnabled = true;
+            this.listBoxWarehouse.ItemHeight = 16;
+            this.listBoxWarehouse.Location = new System.Drawing.Point(122, 413);
+            this.listBoxWarehouse.Name = "listBoxWarehouse";
+            this.listBoxWarehouse.Size = new System.Drawing.Size(133, 196);
+            this.listBoxWarehouse.TabIndex = 11;
+            // 
+            // listBoxRosesIn
+            // 
+            this.listBoxRosesIn.FormattingEnabled = true;
+            this.listBoxRosesIn.ItemHeight = 16;
+            this.listBoxRosesIn.Location = new System.Drawing.Point(467, 413);
+            this.listBoxRosesIn.Name = "listBoxRosesIn";
+            this.listBoxRosesIn.Size = new System.Drawing.Size(133, 196);
+            this.listBoxRosesIn.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(41, 382);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 17);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "WareHouse";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(375, 382);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 17);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Roses";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(41, 81);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 17);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Purchase";
             // 
             // ManagerForm
             // 
@@ -278,6 +370,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageReport.ResumeLayout(false);
             this.tabPageReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).EndInit();
+            this.tabPageBackup.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -308,5 +401,13 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelAveragePrice;
         private System.Windows.Forms.Button buttonDeleteOrder;
+        private System.Windows.Forms.Button buttonUpdateOrder;
+        private System.Windows.Forms.Button buttonRestore;
+        private System.Windows.Forms.Button buttonBackUp;
+        private System.Windows.Forms.ListBox listBoxRosesIn;
+        private System.Windows.Forms.ListBox listBoxWarehouse;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
