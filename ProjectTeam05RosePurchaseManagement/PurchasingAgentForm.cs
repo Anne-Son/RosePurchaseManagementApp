@@ -232,7 +232,7 @@ namespace ProjectTeam05RosePurchaseManagement
             }
         }
         /// <summary>
-        /// Deletes a selected Invoice 
+        /// Deletes a selected Invoice when the Invoice it is not added to a purchase. Otherwise first you have to delete the purchase, the boxPurchase and then the invoice
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -252,7 +252,6 @@ namespace ProjectTeam05RosePurchaseManagement
             {
                 var inv = (Invoice)selectedInvoice.Select(x => x).FirstOrDefault().DataBoundItem;
                 Invoice invoice = context.Invoices.Where(x => x.InvoiceID == inv.InvoiceID).FirstOrDefault();
-                //Invoice invoice = context.Invoices.Include("Purchases").Where(x => x.InvoiceID == inv.InvoiceID && x.PurchaseID == inv.PurchaseID).FirstOrDefault();
                 context.Invoices.Remove(invoice);
                 context.SaveChanges();
             }
