@@ -118,6 +118,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataTableAccessLayer\DataTableAccessLayer.csproj">
+      <Project>{1ba64e0c-5aeb-45a9-b739-100e49abe9be}</Project>
+      <Name>DataTableAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EFControllerUtilities\EFControllerUtilities.csproj">
       <Project>{f7b44d6d-563a-4d6d-9718-b554924b4d97}</Project>
       <Name>EFControllerUtilities</Name>

@@ -31,6 +31,7 @@ namespace ProjectTeam05RosePurchaseManagement
         {
             this.tabControlManager = new System.Windows.Forms.TabControl();
             this.tabPageOrder = new System.Windows.Forms.TabPage();
+            this.buttonUpdateOrder = new System.Windows.Forms.Button();
             this.buttonDeleteOrder = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonOrder = new System.Windows.Forms.Button();
@@ -50,12 +51,16 @@ namespace ProjectTeam05RosePurchaseManagement
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPageBackup = new System.Windows.Forms.TabPage();
-            this.buttonUpdateOrder = new System.Windows.Forms.Button();
+            this.buttonRestore = new System.Windows.Forms.Button();
+            this.buttonBackUp = new System.Windows.Forms.Button();
+            this.listBoxWarehouse = new System.Windows.Forms.ListBox();
+            this.listBoxRosesIn = new System.Windows.Forms.ListBox();
             this.tabControlManager.SuspendLayout();
             this.tabPageOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrder)).BeginInit();
             this.tabPageReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).BeginInit();
+            this.tabPageBackup.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlManager
@@ -87,6 +92,15 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageOrder.TabIndex = 0;
             this.tabPageOrder.Text = "Order";
             this.tabPageOrder.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdateOrder
+            // 
+            this.buttonUpdateOrder.Location = new System.Drawing.Point(552, 318);
+            this.buttonUpdateOrder.Name = "buttonUpdateOrder";
+            this.buttonUpdateOrder.Size = new System.Drawing.Size(163, 49);
+            this.buttonUpdateOrder.TabIndex = 8;
+            this.buttonUpdateOrder.Text = "Update Order";
+            this.buttonUpdateOrder.UseVisualStyleBackColor = true;
             // 
             // buttonDeleteOrder
             // 
@@ -152,6 +166,8 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageReport
             // 
+            this.tabPageReport.Controls.Add(this.listBoxRosesIn);
+            this.tabPageReport.Controls.Add(this.listBoxWarehouse);
             this.tabPageReport.Controls.Add(this.labelAveragePrice);
             this.tabPageReport.Controls.Add(this.labelCount);
             this.tabPageReport.Controls.Add(this.label6);
@@ -261,6 +277,8 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // tabPageBackup
             // 
+            this.tabPageBackup.Controls.Add(this.buttonRestore);
+            this.tabPageBackup.Controls.Add(this.buttonBackUp);
             this.tabPageBackup.Location = new System.Drawing.Point(4, 25);
             this.tabPageBackup.Name = "tabPageBackup";
             this.tabPageBackup.Size = new System.Drawing.Size(1121, 643);
@@ -268,14 +286,41 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageBackup.Text = "Backup";
             this.tabPageBackup.UseVisualStyleBackColor = true;
             // 
-            // buttonUpdateOrder
+            // buttonRestore
             // 
-            this.buttonUpdateOrder.Location = new System.Drawing.Point(552, 318);
-            this.buttonUpdateOrder.Name = "buttonUpdateOrder";
-            this.buttonUpdateOrder.Size = new System.Drawing.Size(163, 49);
-            this.buttonUpdateOrder.TabIndex = 8;
-            this.buttonUpdateOrder.Text = "Update Order";
-            this.buttonUpdateOrder.UseVisualStyleBackColor = true;
+            this.buttonRestore.Location = new System.Drawing.Point(303, 252);
+            this.buttonRestore.Name = "buttonRestore";
+            this.buttonRestore.Size = new System.Drawing.Size(156, 76);
+            this.buttonRestore.TabIndex = 1;
+            this.buttonRestore.Text = "Restore";
+            this.buttonRestore.UseVisualStyleBackColor = true;
+            // 
+            // buttonBackUp
+            // 
+            this.buttonBackUp.Location = new System.Drawing.Point(303, 120);
+            this.buttonBackUp.Name = "buttonBackUp";
+            this.buttonBackUp.Size = new System.Drawing.Size(156, 76);
+            this.buttonBackUp.TabIndex = 0;
+            this.buttonBackUp.Text = "BackUp";
+            this.buttonBackUp.UseVisualStyleBackColor = true;
+            // 
+            // listBoxWarehouse
+            // 
+            this.listBoxWarehouse.FormattingEnabled = true;
+            this.listBoxWarehouse.ItemHeight = 16;
+            this.listBoxWarehouse.Location = new System.Drawing.Point(122, 413);
+            this.listBoxWarehouse.Name = "listBoxWarehouse";
+            this.listBoxWarehouse.Size = new System.Drawing.Size(133, 196);
+            this.listBoxWarehouse.TabIndex = 11;
+            // 
+            // listBoxRosesIn
+            // 
+            this.listBoxRosesIn.FormattingEnabled = true;
+            this.listBoxRosesIn.ItemHeight = 16;
+            this.listBoxRosesIn.Location = new System.Drawing.Point(467, 413);
+            this.listBoxRosesIn.Name = "listBoxRosesIn";
+            this.listBoxRosesIn.Size = new System.Drawing.Size(133, 196);
+            this.listBoxRosesIn.TabIndex = 12;
             // 
             // ManagerForm
             // 
@@ -289,6 +334,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabPageReport.ResumeLayout(false);
             this.tabPageReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPurchase)).EndInit();
+            this.tabPageBackup.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -320,5 +366,9 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.Label labelAveragePrice;
         private System.Windows.Forms.Button buttonDeleteOrder;
         private System.Windows.Forms.Button buttonUpdateOrder;
+        private System.Windows.Forms.Button buttonRestore;
+        private System.Windows.Forms.Button buttonBackUp;
+        private System.Windows.Forms.ListBox listBoxRosesIn;
+        private System.Windows.Forms.ListBox listBoxWarehouse;
     }
 }
