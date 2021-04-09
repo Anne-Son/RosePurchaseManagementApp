@@ -35,7 +35,7 @@ namespace ProjectTeam05RosePurchaseManagement
 
             listBoxInvoice.SelectedIndexChanged += (s,e) => GetInvoiceID();
 
-            dataGridViewPurchase.SelectionChanged += DataGridViewPurchase_SelectionChanged;
+           dataGridViewPurchase.SelectionChanged += DataGridViewPurchase_SelectionChanged;
 
             dataGridViewSuppliersInventory.SelectionChanged += DataGridViewSuppliersInventory_SelectionChanged;
 
@@ -46,7 +46,7 @@ namespace ProjectTeam05RosePurchaseManagement
         private void ButtonDelete_Click1(object sender, EventArgs e)
         {
            
-            if(!(dataGridViewPurchase.SelectedRows.Count <= 0))
+            if((dataGridViewPurchase.SelectedRows.Count <= 0))
             {
                 MessageBox.Show("Please select the purchase to delete");
                 return;
@@ -54,9 +54,22 @@ namespace ProjectTeam05RosePurchaseManagement
             var selectedPurchase = dataGridViewPurchase.SelectedRows
                 .OfType<DataGridViewRow>()
                 .ToList();
-            var pur = (PurchaseBoxQuantity)selectedPurchase.Select(x => x).FirstOrDefault().DataBoundItem;
-            Purchase purchase = new Purchase();
-            BoxPurchase boxPurchase = new BoxPurchase();
+         
+            using (RosePurchaseManagementEntities context = new RosePurchaseManagementEntities())
+            {
+                var pur = (PurchaseBoxQuantity)selectedPurchase.Select(x => x).FirstOrDefault().DataBoundItem;
+                var selectedBoxId = context.Boxes.Where(b => b.BoxName == pur.BoxName).Select(i => i.BoxID).FirstOrDefault();
+                Purchase purchase = context.Purchases.Where(p => p.PurchaseID == pur.PurchaseID).FirstOrDefault();
+                BoxPurchase boxPurchase = context.BoxPurchases.Where(b => (b.BoxID == selectedBoxId)&&(b.PurchaseID == pur.PurchaseID)).FirstOrDefault();
+
+                context.BoxPurchases.Remove(boxPurchase);
+                context.SaveChanges();
+
+                context.Purchases.Remove(purchase);
+                context.SaveChanges();
+            }
+
+            UpdatePurchase();
 
 
 
@@ -96,7 +109,7 @@ namespace ProjectTeam05RosePurchaseManagement
                     purchase = context.Purchases.Where(x => x.PurchaseID == pur.PurchaseID).FirstOrDefault();
                     boxPurchase = context.BoxPurchases.Where(x => x.PurchaseID == pur.PurchaseID).FirstOrDefault();
 
-                    MessageBox.Show(pur.PurchaseID.ToString());
+                    
 
                     //select the item from the listbox
                     string selectedFarm = textBoxFarmName.Text.Trim();
@@ -135,8 +148,8 @@ namespace ProjectTeam05RosePurchaseManagement
 
 
                 }
-                var m = (Controller<RosePurchaseManagementEntities, Purchase>.UpdateEntity(purchase));
-                MessageBox.Show(m.ToString());
+                
+                
 
                 UpdatePurchase();
                 Clear();
@@ -204,7 +217,7 @@ namespace ProjectTeam05RosePurchaseManagement
                     listBoxInvoice.DataSource = invoiceList.ToList();
                     textBoxRoseSizeID.Text = purch.RoseSizeID.ToString() ;
                     dataGridViewSuppliersInventory.SelectionChanged -= DataGridViewSuppliersInventory_SelectionChanged;
-                    MessageBox.Show(inventoryId.ToString());
+                   
                      dataGridViewSuppliersInventory.Rows[inventoryId-1].Selected = true;
                     dataGridViewSuppliersInventory.SelectionChanged += DataGridViewSuppliersInventory_SelectionChanged;
                 }
@@ -214,7 +227,7 @@ namespace ProjectTeam05RosePurchaseManagement
                 listBoxWarehouse.SelectedIndex = listBoxWarehouse.Items.IndexOf(pur.WarehouseName);
                 listBoxBox.SelectedIndex = listBoxBox.Items.IndexOf(pur.BoxName);
                 boxId = listBoxBox.SelectedIndex+1;
-                MessageBox.Show(boxId.ToString());
+              
             }
            
 
