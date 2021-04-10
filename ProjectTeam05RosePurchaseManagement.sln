@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFControllerUtilities", "EF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTableAccessLayer", "DataTableAccessLayer\DataTableAccessLayer.csproj", "{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RosePurchaseManagementValidations", "RosePurchaseManagementValidations\RosePurchaseManagementValidations.csproj", "{EE7455AD-1ED1-4AFC-808F-30F811F9BFCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE7455AD-1ED1-4AFC-808F-30F811F9BFCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE7455AD-1ED1-4AFC-808F-30F811F9BFCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE7455AD-1ED1-4AFC-808F-30F811F9BFCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE7455AD-1ED1-4AFC-808F-30F811F9BFCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
