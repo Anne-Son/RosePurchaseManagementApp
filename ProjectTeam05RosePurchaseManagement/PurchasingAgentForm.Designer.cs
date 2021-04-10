@@ -57,7 +57,6 @@ namespace ProjectTeam05RosePurchaseManagement
             this.textBoxInvoiceNumber = new System.Windows.Forms.TextBox();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.buttonInvoiceDelete = new System.Windows.Forms.Button();
-            this.buttonInvoiceUpdate = new System.Windows.Forms.Button();
             this.buttonInvoiceAdd = new System.Windows.Forms.Button();
             this.labelFarms = new System.Windows.Forms.Label();
             this.labelTotalAmount = new System.Windows.Forms.Label();
@@ -121,11 +120,11 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonUpdatePurchase
             // 
-            this.buttonUpdatePurchase.Location = new System.Drawing.Point(1178, 544);
+            this.buttonUpdatePurchase.Location = new System.Drawing.Point(1178, 632);
             this.buttonUpdatePurchase.Name = "buttonUpdatePurchase";
             this.buttonUpdatePurchase.Size = new System.Drawing.Size(122, 54);
             this.buttonUpdatePurchase.TabIndex = 25;
-            this.buttonUpdatePurchase.Text = "Update Purchase";
+            this.buttonUpdatePurchase.Text = "Update";
             this.buttonUpdatePurchase.UseVisualStyleBackColor = true;
             // 
             // textBoxInvoiceID
@@ -180,7 +179,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(1178, 677);
+            this.buttonDelete.Location = new System.Drawing.Point(1178, 705);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(122, 48);
             this.buttonDelete.TabIndex = 17;
@@ -219,7 +218,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonPurchase
             // 
-            this.buttonPurchase.Location = new System.Drawing.Point(1178, 604);
+            this.buttonPurchase.Location = new System.Drawing.Point(1178, 564);
             this.buttonPurchase.Name = "buttonPurchase";
             this.buttonPurchase.Size = new System.Drawing.Size(122, 50);
             this.buttonPurchase.TabIndex = 10;
@@ -320,7 +319,6 @@ namespace ProjectTeam05RosePurchaseManagement
             this.tabViewInvoice.Controls.Add(this.textBoxInvoiceNumber);
             this.tabViewInvoice.Controls.Add(this.labelInvoiceNumber);
             this.tabViewInvoice.Controls.Add(this.buttonInvoiceDelete);
-            this.tabViewInvoice.Controls.Add(this.buttonInvoiceUpdate);
             this.tabViewInvoice.Controls.Add(this.buttonInvoiceAdd);
             this.tabViewInvoice.Controls.Add(this.labelFarms);
             this.tabViewInvoice.Controls.Add(this.labelTotalAmount);
@@ -356,25 +354,16 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonInvoiceDelete
             // 
-            this.buttonInvoiceDelete.Location = new System.Drawing.Point(561, 558);
+            this.buttonInvoiceDelete.Location = new System.Drawing.Point(443, 558);
             this.buttonInvoiceDelete.Name = "buttonInvoiceDelete";
             this.buttonInvoiceDelete.Size = new System.Drawing.Size(118, 48);
             this.buttonInvoiceDelete.TabIndex = 10;
             this.buttonInvoiceDelete.Text = "Delete";
             this.buttonInvoiceDelete.UseVisualStyleBackColor = true;
             // 
-            // buttonInvoiceUpdate
-            // 
-            this.buttonInvoiceUpdate.Location = new System.Drawing.Point(342, 558);
-            this.buttonInvoiceUpdate.Name = "buttonInvoiceUpdate";
-            this.buttonInvoiceUpdate.Size = new System.Drawing.Size(118, 48);
-            this.buttonInvoiceUpdate.TabIndex = 9;
-            this.buttonInvoiceUpdate.Text = "Update";
-            this.buttonInvoiceUpdate.UseVisualStyleBackColor = true;
-            // 
             // buttonInvoiceAdd
             // 
-            this.buttonInvoiceAdd.Location = new System.Drawing.Point(105, 558);
+            this.buttonInvoiceAdd.Location = new System.Drawing.Point(206, 558);
             this.buttonInvoiceAdd.Name = "buttonInvoiceAdd";
             this.buttonInvoiceAdd.Size = new System.Drawing.Size(118, 48);
             this.buttonInvoiceAdd.TabIndex = 8;
@@ -498,7 +487,6 @@ namespace ProjectTeam05RosePurchaseManagement
         private System.Windows.Forms.ListBox listBoxInvoice;
         private System.Windows.Forms.Label labelInvoice;
         private System.Windows.Forms.DataGridView dataGridViewInvoice;
-        private System.Windows.Forms.Button buttonInvoiceUpdate;
         private System.Windows.Forms.Button buttonInvoiceAdd;
         private System.Windows.Forms.Label labelFarms;
         private System.Windows.Forms.Label labelTotalAmount;

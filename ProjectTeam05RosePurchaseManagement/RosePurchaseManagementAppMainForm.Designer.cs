@@ -36,7 +36,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonManagerForm
             // 
-            this.buttonManagerForm.Location = new System.Drawing.Point(67, 80);
+            this.buttonManagerForm.Location = new System.Drawing.Point(97, 117);
             this.buttonManagerForm.Name = "buttonManagerForm";
             this.buttonManagerForm.Size = new System.Drawing.Size(143, 80);
             this.buttonManagerForm.TabIndex = 0;
@@ -45,7 +45,7 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonSupplierForm
             // 
-            this.buttonSupplierForm.Location = new System.Drawing.Point(228, 224);
+            this.buttonSupplierForm.Location = new System.Drawing.Point(253, 255);
             this.buttonSupplierForm.Name = "buttonSupplierForm";
             this.buttonSupplierForm.Size = new System.Drawing.Size(143, 80);
             this.buttonSupplierForm.TabIndex = 1;
@@ -54,11 +54,11 @@ namespace ProjectTeam05RosePurchaseManagement
             // 
             // buttonControllerForm
             // 
-            this.buttonControllerForm.Location = new System.Drawing.Point(405, 80);
+            this.buttonControllerForm.Location = new System.Drawing.Point(405, 117);
             this.buttonControllerForm.Name = "buttonControllerForm";
             this.buttonControllerForm.Size = new System.Drawing.Size(143, 80);
             this.buttonControllerForm.TabIndex = 2;
-            this.buttonControllerForm.Text = "Controller";
+            this.buttonControllerForm.Text = "Purchasing Agent";
             this.buttonControllerForm.UseVisualStyleBackColor = true;
             // 
             // RosePurchaseManagementAppMainForm
@@ -70,7 +70,7 @@ namespace ProjectTeam05RosePurchaseManagement
             this.Controls.Add(this.buttonSupplierForm);
             this.Controls.Add(this.buttonManagerForm);
             this.Name = "RosePurchaseManagementAppMainForm";
-            this.Text = "Main";
+            this.Text = "Rose Purchase Management";
             this.ResumeLayout(false);
 
         }

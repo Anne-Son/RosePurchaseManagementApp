@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFControllerUtilities", "EFControllerUtilities\EFControllerUtilities.csproj", "{F7B44D6D-563A-4D6D-9718-B554924B4D97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RosePurchaseManagementValidations", "RosePurchaseManagementValidations\RosePurchaseManagementValidations.csproj", "{EB61E499-D6F5-47E3-8299-AB5B72ABC323}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTableAccessLayer", "DataTableAccessLayer\DataTableAccessLayer.csproj", "{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,10 @@ Global
 		{F7B44D6D-563A-4D6D-9718-B554924B4D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7B44D6D-563A-4D6D-9718-B554924B4D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7B44D6D-563A-4D6D-9718-B554924B4D97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB61E499-D6F5-47E3-8299-AB5B72ABC323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB61E499-D6F5-47E3-8299-AB5B72ABC323}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB61E499-D6F5-47E3-8299-AB5B72ABC323}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB61E499-D6F5-47E3-8299-AB5B72ABC323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA64E0C-5AEB-45A9-B739-100E49ABE9BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
