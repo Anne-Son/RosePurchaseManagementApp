@@ -23,12 +23,18 @@ namespace RosePurchaseManagementCodeFirstFromDB
 
 
 	//    }
-
+	public partial class Order
+	{
+		public override string ToString()
+		{
+			return $"{OrderID} {RoseSizeID}	{Number_of_bunches}";
+		}
+	}
 	public partial class Farm
 	{
 		public override string ToString()
 		{
-			return $" {FarmID} {FarmName}";
+			return $"{FarmName}";
 		}
 	}
 	public partial class Rose
@@ -42,7 +48,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 	{
 		public override string ToString()
 		{
-			return $"{RoseSizeID} {RoseID}		{SizeID}";
+			return $"{RoseSizeID} {RoseID} {SizeID}";
 		}
 	}
 
@@ -50,7 +56,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 	{
 		public override string ToString()
 		{
-			return $"{SizeID} {SizeName}	{Freight}";
+			return $"{SizeID} {SizeName}  {Freight}";
 		}
 	}
 
@@ -58,7 +64,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 	{
 		public override string ToString()
 		{
-			return $"{InvoiceID} {Date}	{TotalAmount} {FarmID}";
+			return $"{InvoiceID}  {Date}  {TotalAmount}  {FarmID}  ";
 		}
 	}
 
@@ -66,7 +72,30 @@ namespace RosePurchaseManagementCodeFirstFromDB
 	{
 		public override string ToString()
 		{
-			return $"{WarehouseID} {WarehouseName}";
+			return $"{WarehouseName}";
+		}
+	}
+
+
+	public partial class Inventory
+	{
+		public override string ToString()
+		{
+			return $"{InventoryID} {Farm.FarmName} {RoseSizeID} {Price_per_stem}  ";
+		}
+	}
+	public partial class Box
+	{
+		public override string ToString()
+		{
+			return $"{BoxID}  {BoxName}";
+		}
+	}
+	public partial class BoxInventory
+	{
+		public override string ToString()
+		{
+			return $"{Quantity}";
 		}
 	}
 }
