@@ -73,15 +73,12 @@ namespace ProjectTeam05RosePurchaseManagement
                 context.SaveChanges();
             }
 
-
             GetSupplierInventory();
 
         }
 
         private void ButtonUpdateInventory_Click(object sender, EventArgs e)
         {
-
-
             var selectedInventory = dataGridViewFlowers.SelectedRows
                  .OfType<DataGridViewRow>()
                  .ToArray();
@@ -210,23 +207,17 @@ namespace ProjectTeam05RosePurchaseManagement
             }
 
             GetSupplierInventory();
-
-
-
-
         }
 
         private void SupplierInventory_Load()
         {
-
-
             InitializeDataGridView<Inventory>(dataGridViewFlowers);
             dataGridViewFlowers.DataSource = GetSupplierInventory();
             dataGridViewFlowers.Columns["Inventory"].Visible = false;
             dataGridViewFlowers.Columns["BoxInventory"].Visible = false;
             dataGridViewFlowers.Columns["RoseSizeID"].Visible = false;
             dataGridViewFlowers.Columns["BoxID"].Visible = false;
-            dataGridViewFlowers.Columns["BoxName"].Visible = false;
+            //dataGridViewFlowers.Columns["BoxName"].Visible = false;
 
             dataGridViewFlowers.DataError += (s, e) => GetSupplierInventory();
 

@@ -81,7 +81,7 @@ namespace RosePurchaseManagementCodeFirstFromDB
 	{
 		public override string ToString()
 		{
-			return $"{InventoryID} {Farm.FarmName} {RoseSizeID} {Price_per_stem}  ";
+			return $"{InventoryID} {FarmID} {RoseSizeID} {Price_per_stem}  ";
 		}
 	}
 	public partial class Box
