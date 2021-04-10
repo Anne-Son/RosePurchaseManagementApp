@@ -561,7 +561,5 @@ namespace ProjectTeam05RosePurchaseManagement
             public String RoseName { get; set; }
             public int NumberOfBunches { get; set; }
         }
-
-
     }
 }

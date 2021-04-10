@@ -94,7 +94,7 @@ namespace SeedDatabaseExtensions
 
 
 			//Loading Farm data to the database
-			List<Farm>FarmList = new List<Farm>()  {
+			List<Farm> farmList = new List<Farm>()  {
 				new  Farm { FarmID=1,FarmName="Qualisa",Phone="593484427",Email="qualisa@qualisa.com" },
 				new  Farm { FarmID=2,FarmName="Ecuatorian",Phone="593556879",Email="ecuatorian@ecuatorian.com" },
 				new  Farm { FarmID=3,FarmName="Welyflor",Phone="593556543",Email="welyflor@welyflor.com" },
@@ -230,12 +230,6 @@ namespace SeedDatabaseExtensions
 				new  BoxPurchase { Purchase=purchases[4],Box=boxes[3],Quantity=5 },
 
 
-			//Loading BoxPurchase data to the database
-			List<BoxPurchase> boxPurchaseList = new List<BoxPurchase>()  {
-				new  BoxPurchase { Purchase=purchases[1],Box=boxes[3],Quantity=2 },
-				new  BoxPurchase { Purchase=purchases[2],Box=boxes[2],Quantity=10 },
-				new  BoxPurchase { Purchase=purchases[3],Box=boxes[1],Quantity=4 },
-				new  BoxPurchase { Purchase=purchases[4],Box=boxes[3],Quantity=5 },
 			};
 
 			//var boxPurchase = boxPurchaseList.ToDictionary(x => Tuple.Create(x.PurchaseID, x.BoxID), x => x);

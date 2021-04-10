@@ -45,7 +45,7 @@ namespace ProjectTeam05RosePurchaseManagement
             //hide the current form
             this.Hide();
            //display the form
-                var result = form.ShowDialog();
+            var result = form.ShowDialog();
             form.Hide();
             this.Show();
         }
