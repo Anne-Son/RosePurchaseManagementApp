@@ -14,4 +14,6 @@ The project is based on a Rose Shop.
 1.	The invoice(freight +price per rose = sum total)
 
 <hr/>
+
+![](roseApp.gif)
 ![](roseApp.gif)
