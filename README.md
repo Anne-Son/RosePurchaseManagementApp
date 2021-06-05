@@ -12,3 +12,6 @@ The project is based on a Rose Shop.
 1.	The size of the box ordered(half, quarter or full)
 1.	The farm from which the rose was ordered
 1.	The invoice(freight +price per rose = sum total)
+
+<hr/>
+![](roseApp.gif)
