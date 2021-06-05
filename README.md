@@ -15,4 +15,4 @@ The project is based on a Rose Shop.
 
 <hr/>
 
-![](roseApp.gif)
+<p align="center">![](roseApp.gif)</p>
