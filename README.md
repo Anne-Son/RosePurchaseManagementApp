@@ -15,7 +15,6 @@ The project is based on a Rose Shop.
 
 <hr/>
 
-<img align="center" ![](roseApp.gif) />
 
 <p align="center">
   <img src="roseApp.gif" alt="animated" />
